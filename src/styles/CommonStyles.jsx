@@ -6,14 +6,21 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 20px;
     margin-left: 20px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+`;
+
+// Wrapper for table to ensure full-width behavior
+export const TableWrapper = styled.div`
+    width: 100%;
+    overflow-x: auto; /* Handle overflow if table is too wide */
 `;
 
 export const SearchContainer = styled.div`
     display: flex;
-    justify-content: flex-end; /* 오른쪽 정렬 */
+    justify-content: flex-end;
     margin-bottom: 10px;
+    margin-right: 20px;
 `;
 
 export const Table = styled.table`
@@ -55,12 +62,9 @@ export const TableRow = styled.tr`
 // Sort icon styling
 export const SortIcon = styled.span`
     margin-left: 8px;
-    font-size: 12px;
-    position: relative;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    visibility: ${props => props.active ? 'visible' : 'hidden'};
-    color: ${props => props.active ? '#007bff' : '#aaa'}; /* Active color for sorted column, inactive for others */
+    font-size: 14px;
+    color: ${props => props.active ? '#007bff' : '#aaa'};
+    opacity: ${props => props.active ? '1' : '0.5'}; /* 비활성화 상태에서 투명도 조절 */
+    transition: font-size 0.3s, color 0.3s, opacity 0.3s; /* 부드러운 전환 효과 */
 `;
 

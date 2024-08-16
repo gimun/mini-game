@@ -1,13 +1,16 @@
 // src/App.jsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Layout from './layout/AppLayout.jsx';
 import UserManager from './pages/UserManager.jsx';
 
 function App() {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<UserManager />} />
-            </Routes>
+            <Layout>
+                <Routes>
+                    <Route path="/" element={<UserManager/>}/>
+                </Routes>
+            </Layout>
         </BrowserRouter>
     );
 }
