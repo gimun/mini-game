@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const MainContentWrapper = styled.main`
-    flex: 1; /* Main content should take up the remaining space */
 `;
 
 const MainContent = ({children}) => {
