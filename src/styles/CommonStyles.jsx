@@ -6,7 +6,6 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: 20px;
     box-sizing: border-box; /* Ensure padding and border are included in the width */
 `;
 
@@ -29,7 +28,7 @@ export const Table = styled.table`
 `;
 
 export const TableHeader = styled.th`
-    flex: ${props => props.flex || '1'};  /* 기본 비율을 1로 설정 */
+    flex: ${props => props.flex || '1'} !important;  /* 기본 비율을 1로 설정 */
     cursor: pointer;
     text-align: center;
     padding: 10px;

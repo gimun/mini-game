@@ -9,7 +9,6 @@ import UnderConstruction from '../pages/UnderConstruction';
 // Header 스타일링
 const HeaderWrapper = styled.header`
     background-color: #ffffff;
-    padding: 10px 20px;
     border-bottom: 1px solid #ddd;
     display: flex;
     flex-direction: column;
