@@ -56,7 +56,7 @@ export const TableRow = styled.tr`
 export const SortIcon = styled.span`
     margin-left: 8px;
     font-size: 12px;
-    position: absolute;
+    position: relative;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
