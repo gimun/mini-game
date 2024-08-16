@@ -61,8 +61,8 @@ export const TableRow = styled.tr`
 
 // Sort icon styling
 export const SortIcon = styled.span`
-    margin-left: 8px;
-    font-size: 14px;
+    margin-left: 5px;
+    font-size: ${props => props.active ? '14px' : '10px'};
     color: ${props => props.active ? '#007bff' : '#aaa'};
     opacity: ${props => props.active ? '1' : '0.5'}; /* 비활성화 상태에서 투명도 조절 */
     transition: font-size 0.3s, color 0.3s, opacity 0.3s; /* 부드러운 전환 효과 */

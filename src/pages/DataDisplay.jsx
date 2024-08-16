@@ -22,8 +22,8 @@ const DataDisplay = (
     const columns = [
         {key: COLUMNS.RANK, label: LABELS[COLUMNS.RANK], flex: 1, align: 'center'},
         {key: COLUMNS.NAME, label: LABELS[COLUMNS.NAME], flex: 4, align: 'center'},
-        {key: COLUMNS.ROLE, label: LABELS[COLUMNS.ROLE], flex: 2, align: 'center'},
-        {key: COLUMNS.TOTAL_SCORE, label: LABELS[COLUMNS.TOTAL_SCORE], flex: 3, align: 'center'}
+        {key: COLUMNS.ROLE, label: LABELS[COLUMNS.ROLE], flex: 3, align: 'center'},
+        {key: COLUMNS.TOTAL_SCORE, label: LABELS[COLUMNS.TOTAL_SCORE], flex: 4, align: 'center'}
     ];
 
     const getSortIcon = (columnKey) => {
