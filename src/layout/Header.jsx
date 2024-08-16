@@ -2,6 +2,7 @@
 import {useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import IconComponent from '../components/IconComponent';
 import Tabs from '../components/Tabs';
 import UserManager from '../pages/UserManager';
 import UnderConstruction from '../pages/UnderConstruction';
@@ -30,11 +31,17 @@ const HeaderTitle = styled.span`
 
 // Subtitle 스타일링
 const HeaderSubTitle = styled.span`
+    display: flex;
+    align-items: center; /* 수직 정렬 */
     margin-bottom: 3px;
     font-family: 'SUITE_Regular', sans-serif;
     font-size: 20px;
-    color: #ff7100;
+    color: #607d8b;
     font-weight: 200;
+`;
+
+const IconContainer = styled.div`
+    margin-right: 10px; /* 아이콘과 텍스트 사이에 간격 추가 */
 `;
 
 // Content 영역 스타일링
@@ -75,7 +82,10 @@ const Header = () => {
                 Mini Game
             </HeaderTitle>
             <HeaderSubTitle>
-                ★고양이는야옹★
+                <IconContainer>
+                    <IconComponent width={30} height={30} /> {}
+                </IconContainer>
+                고양이는야옹
             </HeaderSubTitle>
             <Tabs
                 tabs={tabs}
