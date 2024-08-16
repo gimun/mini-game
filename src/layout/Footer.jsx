@@ -5,7 +5,6 @@ import {FaSyncAlt} from 'react-icons/fa'; // Refresh icon
 
 const FooterWrapper = styled.footer`
     background-color: #f8f9fa;
-    padding: 10px 20px;
     border-top: 1px solid #ddd;
     text-align: center;
     font-size: 0.9em;

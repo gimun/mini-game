@@ -17,7 +17,7 @@ export const LABELS = {
     [COLUMNS.ROLE]: '역할',
     [COLUMNS.TOTAL_SCORE]: '역대 기록',
 
-    [COLUMNS.RANK]: 'Rank'
+    [COLUMNS.RANK]: '순위'
 };
 
 export const SORT = {

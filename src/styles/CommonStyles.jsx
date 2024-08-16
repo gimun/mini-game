@@ -17,9 +17,21 @@ export const TableWrapper = styled.div`
 
 export const SearchContainer = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
+`;
+
+export const InfoContainer = styled.div`
+    margin-left: 10px;
+    font-size: 14px;
+    color: #555; /* 텍스트 색상 */
+`;
+
+export const HighlightValue = styled.span`
+    color: rgba(177, 41, 41, 0.8);
+    font-weight: bold;
 `;
 
 export const Table = styled.table`
@@ -28,7 +40,6 @@ export const Table = styled.table`
 `;
 
 export const TableHeader = styled.th`
-    flex: ${props => props.flex || '1'} !important;  /* 기본 비율을 1로 설정 */
     cursor: pointer;
     text-align: center;
     padding: 10px;

@@ -7,11 +7,12 @@ import styled from 'styled-components';
 
 const LayoutWrapper = styled.div`
     display: flex;
+    flex: 1;
     flex-direction: column;
     min-height: 100vh; /* Ensure the layout takes up at least the full viewport height */
 `;
 
-const Layout = ({children}) => {
+const AppLayout = ({children}) => {
     return (
         <LayoutWrapper>
             <Header/>
@@ -24,9 +25,9 @@ const Layout = ({children}) => {
 };
 
 // PropTypes validation
-Layout.propTypes = {
+AppLayout.propTypes = {
     children: PropTypes.node
 };
 
-export default Layout;
+export default AppLayout;
 

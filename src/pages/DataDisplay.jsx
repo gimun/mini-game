@@ -8,7 +8,9 @@ import {
     TableData,
     TableRow,
     SortIcon,
-    SearchContainer
+    SearchContainer,
+    InfoContainer,
+    HighlightValue
 } from '../styles/CommonStyles';
 import {FaSortUp, FaSortDown, FaSort} from 'react-icons/fa';
 
@@ -45,6 +47,9 @@ const DataDisplay = (
         <Container>
             <TableWrapper>
                 <SearchContainer>
+                    <InfoContainer>
+                        <HighlightValue>{data.length}</HighlightValue> / 50
+                    </InfoContainer>
                     <input
                         type="text"
                         value={config.search.term}

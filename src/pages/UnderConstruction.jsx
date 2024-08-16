@@ -11,10 +11,15 @@ const UnderConstructionWrapper = styled.div`
     color: #656565;
 `;
 
+export const HighlightValue = styled.span`
+    color: rgba(177, 41, 41, 0.8);
+    font-weight: bold;
+`;
+
 const UnderConstruction = () => {
     return (
         <UnderConstructionWrapper>
-            개발 진행 중입니다....
+            <HighlightValue>개발 진행 중입니다....</HighlightValue>
         </UnderConstructionWrapper>
     );
 };
