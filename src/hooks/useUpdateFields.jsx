@@ -10,8 +10,8 @@ const useUpdateFields = () => {
 
     const updateFields = async (updates) => {
         const app = getApp(); // Firebase App 인스턴스 가져오기
-        //const functions = getFunctions(app, 'us-central1');
-        const functions = getFunctions(app, 'asia-northeast3');
+        const functions = getFunctions(app, 'us-central1');
+        //const functions = getFunctions(app, 'asia-northeast3');
         const updateUserFields = httpsCallable(functions, 'updateUserFields');
 
         setLoading(true);
