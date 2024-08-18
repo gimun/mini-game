@@ -1,24 +1,19 @@
 // src/App.jsx
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import AppLayout from './layout/AppLayout.jsx';
-import LoginPage from './pages/LoginPage.jsx';
-import AdminPage from './pages/AdminPage.jsx';
-import UpdatePage from './pages/UpdatePage.jsx';
-import PrivateRoute from './components/PrivateRoute.jsx';
+import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {AuthProvider} from './contexts/AuthContext';
+import AppLayout from './layout/AppLayout';
 
-function App() {
+const App = () => {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<AppLayout/>}></Route>
-                <Route path="/login" element={<LoginPage />} />
-                <Route element={<PrivateRoute />}>
-                    <Route path="/admin/*" element={<AdminPage />} />
-                    <Route path="/update" element={<UpdatePage />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<AppLayout/>}></Route>
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
     );
-}
+};
 
 export default App;

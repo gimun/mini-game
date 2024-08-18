@@ -1,38 +1,32 @@
 // src/layout/Header.jsx
-import {useState} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 import IconComponent from '../components/IconComponent';
 import Tabs from '../components/Tabs';
-import UserManager from '../pages/UserManager';
-import UnderConstruction from '../pages/UnderConstruction';
+import LoginButton from '../components/LoginButton';
 
-// Header 스타일링
 const HeaderWrapper = styled.header`
     background-color: #ffffff;
     border-bottom: 1px solid #ddd;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; /* 전체 너비를 차지하도록 설정 */
-    box-sizing: border-box; /* 패딩과 보더를 포함하여 전체 너비를 계산 */
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
 `;
 
-// Title 스타일링
 const HeaderTitle = styled.span`
-    position: relative;
     font-family: 'Giants-Inline', sans-serif;
     font-size: 35px;
     color: #2e8b57;
     font-weight: normal;
-    left: 4px;
     letter-spacing: 3px;
 `;
 
-// Subtitle 스타일링
 const HeaderSubTitle = styled.span`
     display: flex;
-    align-items: center; /* 수직 정렬 */
+    align-items: center;
     margin-bottom: 3px;
     font-family: 'SUITE_Regular', sans-serif;
     font-size: 20px;
@@ -41,67 +35,31 @@ const HeaderSubTitle = styled.span`
 `;
 
 const IconContainer = styled.div`
-    margin-right: 10px; /* 아이콘과 텍스트 사이에 간격 추가 */
+    margin-right: 10px;
 `;
 
-// Content 영역 스타일링
-const ContentWrapper = styled.div`
-    width: 100%;
-    padding: 20px;
+const LoginButtonContainer = styled.div`
+    position: absolute;
+    top: 10px;
+    right: 10px;
 `;
 
-const Header = () => {
-    const [activeTab, setActiveTab] = useState('home');
-
-    const tabs = [
-        {key: 'home', label: 'Home'},
-        {key: 'tab1', label: 'Tab 1'},
-        {key: 'tab2', label: 'Tab 2'}
-    ];
-
-    const handleTabChange = (tabKey) => {
-        setActiveTab(tabKey);
-    };
-
-    const renderContent = () => {
-        switch (activeTab) {
-            case 'home':
-                return <UserManager/>;
-            case 'tab1':
-                return <UnderConstruction/>;
-            case 'tab2':
-                return <UnderConstruction/>;
-            default:
-                return <UserManager/>;
-        }
-    };
-
+const Header = ({activeTab, onTabChange, onLoginClick, onLogout, tabs}) => {
     return (
         <HeaderWrapper>
-            <HeaderTitle>
-                Mini Game
-            </HeaderTitle>
+            <HeaderTitle>Mini Game</HeaderTitle>
             <HeaderSubTitle>
                 <IconContainer>
-                    <IconComponent width={30} height={30} /> {}
+                    <IconComponent width={30} height={30}/>
                 </IconContainer>
                 고양이는야옹
             </HeaderSubTitle>
-            <Tabs
-                tabs={tabs}
-                activeTab={activeTab}
-                onTabChange={handleTabChange}
-            />
-            <ContentWrapper>
-                {renderContent()}
-            </ContentWrapper>
+            <LoginButtonContainer>
+                <LoginButton onClick={onLoginClick} onLogout={onLogout}/>
+            </LoginButtonContainer>
+            <Tabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange}/>
         </HeaderWrapper>
     );
-};
-
-// PropTypes validation
-Header.propTypes = {
-    onTabChange: PropTypes.func
 };
 
 export default Header;

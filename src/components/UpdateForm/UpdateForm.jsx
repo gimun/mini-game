@@ -6,31 +6,43 @@ import validateUpdateForm from '../../utils/validateUpdateForm.js';
 import styled from 'styled-components';
 import InputField from '../InputField';
 
+const FormWrapper = styled.div`
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+`;
 
-// Styled Form Component
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 400px;
-    margin: auto;
+    gap: 20px;
 `;
 
 const Button = styled.button`
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+    }
 
     &:disabled {
         background-color: #6c757d;
+        cursor: not-allowed;
     }
 `;
 
-const UpdateForm = ({onUpdate}) => {
+const UpdateForm = ({ onUpdate }) => {
     const initialData = {
         id: '',
         role: '',
@@ -48,7 +60,7 @@ const UpdateForm = ({onUpdate}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            const {id, role, totalScore} = formData;
+            const { id, role, totalScore } = formData;
             const updates = [
                 {
                     id,
@@ -65,33 +77,35 @@ const UpdateForm = ({onUpdate}) => {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <InputField
-                name="id"
-                value={formData.id}
-                onChange={handleChange}
-                label="Document ID:"
-                required
-                error={errors.id}
-            />
-            <InputField
-                name="role"
-                value={formData.role}
-                onChange={handleChange}
-                label="Role:"
-                error={errors.role}
-            />
-            <InputField
-                name="totalScore"
-                value={formData.totalScore}
-                onChange={handleChange}
-                label="Total Score:"
-                type="number"
-                required
-                error={errors.totalScore}
-            />
-            <Button type="submit">Update</Button>
-        </Form>
+        <FormWrapper>
+            <Form onSubmit={handleSubmit}>
+                <InputField
+                    name="id"
+                    value={formData.id}
+                    onChange={handleChange}
+                    label="Document ID:"
+                    required
+                    error={errors.id}
+                />
+                <InputField
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    label="Role:"
+                    error={errors.role}
+                />
+                <InputField
+                    name="totalScore"
+                    value={formData.totalScore}
+                    onChange={handleChange}
+                    label="Total Score:"
+                    type="number"
+                    required
+                    error={errors.totalScore}
+                />
+                <Button type="submit">Update</Button>
+            </Form>
+        </FormWrapper>
     );
 };
 
@@ -101,5 +115,3 @@ UpdateForm.propTypes = {
 };
 
 export default UpdateForm;
-
-
