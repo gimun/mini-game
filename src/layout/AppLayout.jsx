@@ -31,7 +31,7 @@ const AppLayout = () => {
             label: 'Home',
             component: <UserManager/>,
             protected: false,
-            lastUpdated: '2024-08-08',
+            lastUpdated: '2024-08-19',
             showFooter: true
         },
         {
