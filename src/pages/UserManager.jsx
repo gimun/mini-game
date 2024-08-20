@@ -1,4 +1,4 @@
-import {useState, useCallback, useEffect} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import DataFetcher from '../components/DataFetcher.jsx';
 import DataDisplay from './DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';

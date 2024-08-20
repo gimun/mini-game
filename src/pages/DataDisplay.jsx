@@ -2,17 +2,17 @@ import PropTypes from 'prop-types';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 import {
     Container,
-    TableWrapper,
-    Table,
-    TableHeader,
-    TableData,
-    TableRow,
-    SortIcon,
-    SearchContainer,
+    HighlightValue,
     InfoContainer,
-    HighlightValue
+    SearchContainer,
+    SortIcon,
+    Table,
+    TableData,
+    TableHeader,
+    TableRow,
+    TableWrapper
 } from '../styles/CommonStyles';
-import {FaSortUp, FaSortDown, FaSort} from 'react-icons/fa';
+import {FaSort, FaSortDown, FaSortUp} from 'react-icons/fa';
 
 const DataDisplay = (
     {

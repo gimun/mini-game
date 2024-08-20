@@ -1,5 +1,6 @@
 // src/layout/AppLayout.jsx
-import React, {useState} from 'react';
+import {useState} from 'react';
+import {Analytics} from "@vercel/analytics/react";
 import {useAuth} from '../contexts/AuthContext';
 import ProtectedRoute from '../components/ProtectedRoute';
 import Header from './Header';
@@ -125,6 +126,7 @@ const AppLayout = () => {
             {showLoginModal && (
                 <LoginPage onClose={handleCloseModal} onLoginSuccess={handleLoginSuccess}/>
             )}
+            <Analytics/>
         </LayoutWrapper>
     );
 };

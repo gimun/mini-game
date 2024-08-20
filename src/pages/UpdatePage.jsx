@@ -1,7 +1,6 @@
 // src/pages/UpdatePage.jsx
-import React from 'react';
 import UpdateForm from '../components/UpdateForm/UpdateForm.jsx';
-import {getFirestore, writeBatch, doc} from 'firebase/firestore';
+import {doc, getFirestore, writeBatch} from 'firebase/firestore';
 import {COLLECTIONS} from '../constants/Keys.js';
 
 const UpdateFieldsInBatch = async (updates) => {

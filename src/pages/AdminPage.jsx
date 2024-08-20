@@ -1,5 +1,4 @@
 // src/pages/AdminPage.jsx
-import React from 'react';
 import useUpdateFields from '../hooks/useUpdateFields';
 import UpdateForm from '../components/UpdateForm/UpdateForm.jsx';
 import styled from 'styled-components';
