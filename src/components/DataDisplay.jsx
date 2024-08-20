@@ -12,7 +12,7 @@ import {
     TableHeader,
     TableRow,
     TableWrapper
-} from '../styles/CommonStyles';
+} from '../styles/CommonStyles.jsx';
 
 const DataDisplay = (props) => {
     const {data, columns, onSort, config, onSearchChange} = props;

@@ -1,10 +1,10 @@
 import {useCallback, useEffect, useState} from 'react';
 import DataFetcher from '../components/DataFetcher.jsx';
-import DataDisplay from './DataDisplay.jsx';
+import DataDisplay from '../components/DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';
 import {COLLECTIONS, COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 
-const UserManager = () => {
+const MemberModule = () => {
     const [data, setData] = useState([]);
     const [sortedData, setSortedData] = useState([]);
     const [config, setConfig] = useState({
@@ -73,4 +73,4 @@ const UserManager = () => {
     );
 };
 
-export default UserManager;
+export default MemberModule;

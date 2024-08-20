@@ -8,7 +8,7 @@ import Footer from './Footer';
 import MainContent from './MainContent';
 import styled from 'styled-components';
 import UnderConstruction from '../pages/UnderConstruction';
-import UserManager from '../pages/UserManager';
+import MemberModule from '../modules/MemberModule';
 import LoginPage from '../pages/LoginPage';
 import AdminPage from '../pages/AdminPage';
 
@@ -30,7 +30,7 @@ const AppLayout = () => {
         {
             key: 'home',
             label: 'Home',
-            component: <UserManager/>,
+            component: <MemberModule/>,
             protected: false,
             lastUpdated: '2024-08-19',
             showFooter: true
