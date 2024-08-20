@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
+import {SORT} from '../constants/Keys.js';
+import {FaSort, FaSortDown, FaSortUp} from 'react-icons/fa';
 import {
     Container,
     HighlightValue,
@@ -12,21 +13,11 @@ import {
     TableRow,
     TableWrapper
 } from '../styles/CommonStyles';
-import {FaSort, FaSortDown, FaSortUp} from 'react-icons/fa';
 
-const DataDisplay = (
-    {
-        data,
-        onSort,
-        config,
-        onSearchChange
-    }) => {
-    const columns = [
-        {key: COLUMNS.RANK, label: LABELS[COLUMNS.RANK], flex: 1, align: 'center'},
-        {key: COLUMNS.NAME, label: LABELS[COLUMNS.NAME], flex: 4, align: 'center'},
-        {key: COLUMNS.ROLE, label: LABELS[COLUMNS.ROLE], flex: 3, align: 'center'},
-        {key: COLUMNS.TOTAL_SCORE, label: LABELS[COLUMNS.TOTAL_SCORE], flex: 4, align: 'center'}
-    ];
+const DataDisplay = (props) => {
+    const {data, columns, onSort, config, onSearchChange} = props;
+
+    const keyColumn = columns.find(col => col.isKey);
 
     const getSortIcon = (columnKey) => {
         if (config.sort.key !== columnKey) {
@@ -54,33 +45,37 @@ const DataDisplay = (
                         type="text"
                         value={config.search.term}
                         onChange={onSearchChange}
-                        placeholder={`Search by ${LABELS[COLUMNS.NAME]}`}
+                        placeholder={`Search by ${config.search.placeholder}`}
                     />
                 </SearchContainer>
                 <Table>
                     <thead>
                     <tr>
                         {columns.map(col => (
-                            <TableHeader
-                                key={col.key}
-                                onClick={() => onSort(col.key)}
-                                flex={col.flex}  /* flex 비율을 설정 */
-                            >
-                                {col.label}
-                                {getSortIcon(col.key)}
-                            </TableHeader>
+                            col !== keyColumn && (
+                                <TableHeader
+                                    key={col.key}
+                                    onClick={() => onSort(col.key)}
+                                    flex={col.flex}
+                                >
+                                    {col.label}
+                                    {getSortIcon(col.key)}
+                                </TableHeader>
+                            )
                         ))}
                     </tr>
                     </thead>
                     <tbody>
                     {data.map(item => (
-                        <TableRow key={item[COLUMNS.ID]}>
+                        <TableRow key={item[keyColumn.key]}>  {/* keyColumn 을 사용 */}
                             {columns.map(col => (
-                                <TableData key={col.key} align={col.align}>
-                                    {col.key === COLUMNS.TOTAL_SCORE
-                                        ? formatNumber(item[col.key])
-                                        : item[col.key]}
-                                </TableData>
+                                col !== keyColumn ? (
+                                    <TableData key={col.key} align={col.align}>
+                                        {col.type === 'number'
+                                            ? formatNumber(item[col.key])
+                                            : item[col.key]}
+                                    </TableData>
+                                ) : null
                             ))}
                         </TableRow>
                     ))}
@@ -94,12 +89,16 @@ const DataDisplay = (
 // PropTypes validation
 DataDisplay.propTypes = {
     data: PropTypes.arrayOf(
+        PropTypes.object.isRequired
+    ).isRequired,
+    columns: PropTypes.arrayOf(
         PropTypes.shape({
-            [COLUMNS.ID]: PropTypes.string.isRequired,
-            [COLUMNS.NAME]: PropTypes.string.isRequired,
-            [COLUMNS.ROLE]: PropTypes.string.isRequired,
-            [COLUMNS.TOTAL_SCORE]: PropTypes.number.isRequired,
-            [COLUMNS.RANK]: PropTypes.number
+            key: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+            flex: PropTypes.number.isRequired,
+            align: PropTypes.string,
+            type: PropTypes.string.isRequired,
+            isKey: PropTypes.bool
         })
     ).isRequired,
     onSort: PropTypes.func.isRequired,
@@ -109,10 +108,21 @@ DataDisplay.propTypes = {
             direction: PropTypes.string.isRequired
         }).isRequired,
         search: PropTypes.shape({
-            term: PropTypes.string.isRequired
-        }).isRequired
+            term: PropTypes.string,
+            placeholder: PropTypes.string
+        })
     }).isRequired,
     onSearchChange: PropTypes.func.isRequired
+};
+
+// 기본값 설정
+DataDisplay.defaultProps = {
+    config: {
+        search: {
+            term: '',
+            placeholder: ''
+        }
+    }
 };
 
 export default DataDisplay;

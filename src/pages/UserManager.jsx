@@ -2,17 +2,24 @@ import {useCallback, useEffect, useState} from 'react';
 import DataFetcher from '../components/DataFetcher.jsx';
 import DataDisplay from './DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';
-import {COLLECTIONS, COLUMNS, SORT} from '../constants/Keys.js';
+import {COLLECTIONS, COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 
 const UserManager = () => {
     const [data, setData] = useState([]);
     const [sortedData, setSortedData] = useState([]);
     const [config, setConfig] = useState({
         sort: {key: COLUMNS.TOTAL_SCORE, direction: SORT.DESC},
-        search: {term: ''}
+        search: { term: '', placeholder: LABELS[COLUMNS.NAME] || 'Name' }
     });
 
-    // Add ranking to the data when it is first fetched
+    const columns = [
+        {key: COLUMNS.ID, label: LABELS[COLUMNS.ID], flex: 1, align: 'center', type: 'string', isKey: true},
+        {key: COLUMNS.RANK, label: LABELS[COLUMNS.RANK], flex: 1, align: 'center', type: 'number'},
+        {key: COLUMNS.NAME, label: LABELS[COLUMNS.NAME], flex: 4, align: 'center', type: 'string'},
+        {key: COLUMNS.ROLE, label: LABELS[COLUMNS.ROLE], flex: 3, align: 'center', type: 'string'},
+        {key: COLUMNS.TOTAL_SCORE, label: LABELS[COLUMNS.TOTAL_SCORE], flex: 4, align: 'center', type: 'number'}
+    ];
+
     useEffect(() => {
         if (data.length > 0) {
             const rankedData = calculateRankings(data, COLUMNS.TOTAL_SCORE);
@@ -20,16 +27,8 @@ const UserManager = () => {
         }
     }, [data]);
 
-    // Sorting function
     const handleSort = useCallback((key) => {
         setConfig(prevConfig => {
-            if (!prevConfig) {
-                return {
-                    sort: {key, direction: SORT.ASC},
-                    search: {term: ''}
-                };
-            }
-
             const newDirection = prevConfig.sort.key === key && prevConfig.sort.direction === SORT.ASC ? SORT.DESC : SORT.ASC;
             return {
                 ...prevConfig,
@@ -38,24 +37,13 @@ const UserManager = () => {
         });
     }, []);
 
-    // Search Change Handler
     const handleSearchChange = useCallback((e) => {
-        setConfig(prevConfig => {
-            if (!prevConfig) {
-                return {
-                    sort: {key: COLUMNS.TOTAL_SCORE, direction: SORT.DESC},
-                    search: {term: e.target.value}
-                };
-            }
-
-            return {
-                ...prevConfig,
-                search: {...prevConfig.search, term: e.target.value}
-            };
-        });
+        setConfig(prevConfig => ({
+            ...prevConfig,
+            search: {...prevConfig.search, term: e.target.value}
+        }));
     }, []);
 
-    // Sorting and Filtering
     const sortedDataList = [...sortedData].sort((a, b) => {
         if (config.sort.key) {
             const aValue = a[config.sort.key];
@@ -76,6 +64,7 @@ const UserManager = () => {
             <DataFetcher collectionName={COLLECTIONS.MEMBER} onDataFetched={setData}/>
             <DataDisplay
                 data={filteredData}
+                columns={columns}
                 onSort={handleSort}
                 config={config}
                 onSearchChange={handleSearchChange}
