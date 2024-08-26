@@ -115,14 +115,4 @@ DataDisplay.propTypes = {
     onSearchChange: PropTypes.func.isRequired
 };
 
-// 기본값 설정
-DataDisplay.defaultProps = {
-    config: {
-        search: {
-            term: '',
-            placeholder: ''
-        }
-    }
-};
-
 export default DataDisplay;

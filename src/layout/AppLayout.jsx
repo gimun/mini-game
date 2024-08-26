@@ -8,9 +8,10 @@ import Footer from './Footer';
 import MainContent from './MainContent';
 import styled from 'styled-components';
 import UnderConstruction from '../pages/UnderConstruction';
-import MemberModule from '../modules/MemberModule';
 import LoginPage from '../pages/LoginPage';
 import AdminPage from '../pages/AdminPage';
+import MemberJsonModule from "../modules/MemberJsonModule.jsx";
+import BattleJsonModule from "../modules/BattleJsonModule.jsx";
 
 const LayoutWrapper = styled.div`
     display: flex;
@@ -30,18 +31,19 @@ const AppLayout = () => {
         {
             key: 'home',
             label: 'Home',
-            component: <MemberModule/>,
+            //component: <MemberModule/>,
+            component: <MemberJsonModule/>,
             protected: false,
             lastUpdated: '2024-08-19',
             showFooter: true
         },
         {
-            key: 'tab1',
-            label: 'Tab 1',
-            component: <UnderConstruction/>,
+            key: 'clan-battle',
+            label: '클랜 배틀',
+            component: <BattleJsonModule/>,
             protected: false,
-            lastUpdated: '-',
-            showFooter: true
+            lastUpdated: '2024-08-26',
+            showFooter: false
         },
         {
             key: 'tab2',

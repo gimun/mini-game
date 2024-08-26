@@ -45,6 +45,7 @@ export const TableHeader = styled.th`
     padding: 10px;
     border-bottom: 1px solid #ddd; 
     border-right: 1px solid #ddd;
+    flex: ${(props) => props.flex || '1'};
     
     &:last-child {
         border-right: none; /* 마지막 열의 오른쪽 테두리 제거 */
