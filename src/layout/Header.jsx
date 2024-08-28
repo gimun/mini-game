@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import IconComponent from '../components/IconComponent';
 import Tabs from '../components/Tabs';
-import LoginButton from '../components/LoginButton';
 
 const HeaderWrapper = styled.header`
     background-color: #ffffff;
@@ -38,13 +37,7 @@ const IconContainer = styled.div`
     margin-right: 10px;
 `;
 
-const LoginButtonContainer = styled.div`
-    position: absolute;
-    top: 10px;
-    right: 10px;
-`;
-
-const Header = ({activeTab, onTabChange, onLoginClick, onLogout, tabs}) => {
+const Header = ({activeTab, onTabChange, tabs}) => {
     return (
         <HeaderWrapper>
             <HeaderTitle>Mini Game</HeaderTitle>
@@ -54,9 +47,6 @@ const Header = ({activeTab, onTabChange, onLoginClick, onLogout, tabs}) => {
                 </IconContainer>
                 고양이는야옹
             </HeaderSubTitle>
-            <LoginButtonContainer>
-                <LoginButton onClick={onLoginClick} onLogout={onLogout}/>
-            </LoginButtonContainer>
             <Tabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange}/>
         </HeaderWrapper>
     );

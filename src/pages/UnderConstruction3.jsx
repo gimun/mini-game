@@ -19,7 +19,7 @@ export const HighlightValue = styled.span`
 const UnderConstruction = () => {
     return (
         <UnderConstructionWrapper>
-            <HighlightValue>개발 진행 중입니다....1</HighlightValue>
+            <HighlightValue>개발 진행 중입니다....3</HighlightValue>
         </UnderConstructionWrapper>
     );
 };
