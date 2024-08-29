@@ -7,7 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import MainContent from './MainContent';
 import styled from 'styled-components';
-import UnderConstruction from '../pages/UnderConstruction';
+import Tab2Page from '../pages/Tab2Page';
 import LoginPage from '../pages/LoginPage';
 import AdminPage from '../pages/AdminPage';
 import MemberJsonModule from "../modules/MemberJsonModule.jsx";
@@ -48,7 +48,7 @@ const AppLayout = () => {
         {
             key: 'tab2',
             label: 'Tab 2',
-            component: <UnderConstruction/>,
+            component: <Tab2Page/>,
             protected: false,
             lastUpdated: '-',
             showFooter: false

@@ -1,5 +1,5 @@
 // src/contexts/AuthContext.jsx
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
 import {onAuthStateChanged, signInWithEmailAndPassword, signOut} from 'firebase/auth';
 import {auth} from '../../firebase'; // Firebase 설정 파일에서 가져오기
 
