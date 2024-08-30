@@ -1,15 +1,11 @@
 // src/layout/AppLayout.jsx
 import {useState} from 'react';
 import {Analytics} from "@vercel/analytics/react";
-import {useAuth} from '../contexts/AuthContext';
-import ProtectedRoute from '../components/ProtectedRoute';
 import Header from './Header';
 import Footer from './Footer';
 import MainContent from './MainContent';
 import styled from 'styled-components';
 import Tab2Page from '../pages/Tab2Page';
-import LoginPage from '../pages/LoginPage';
-import AdminPage from '../pages/AdminPage';
 import MemberJsonModule from "../modules/MemberJsonModule.jsx";
 import BattleJsonModule from "../modules/BattleJsonModule.jsx";
 
@@ -22,9 +18,6 @@ const LayoutWrapper = styled.div`
 
 const AppLayout = () => {
     const [activeTab, setActiveTab] = useState('home');
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const [pendingTab, setPendingTab] = useState(null);
-    const {isAuthenticated} = useAuth();
 
     // TODO: lastUpdated 하드 코딩 제거
     const tabs = [
@@ -52,60 +45,18 @@ const AppLayout = () => {
             protected: false,
             lastUpdated: '-',
             showFooter: false
-        },
-        ...(isAuthenticated ? [{
-            key: 'admin',
-            label: 'Admin',
-            component: <AdminPage/>,
-            protected: true,
-            lastUpdated: '2024-08-05',
-            showFooter: false
-        }] : [])
+        }
     ];
 
     const handleTabChange = (tabKey) => {
-        const selectedTab = tabs.find(tab => tab.key === tabKey);
-
-        if (selectedTab.protected && !isAuthenticated) {
-            setPendingTab(tabKey);
-            setShowLoginModal(true);
-        } else {
-            setActiveTab(tabKey);
-        }
-    };
-
-    const handleLoginClick = () => {
-        setShowLoginModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setShowLoginModal(false);
-        if (isAuthenticated && pendingTab) {
-            setActiveTab(pendingTab);
-            setPendingTab(null);
-        }
-    };
-
-    const handleLogout = () => {
-        setActiveTab('home'); // 로그아웃 시 홈 탭으로 이동
-    };
-
-    const handleLoginSuccess = () => {
-        setShowLoginModal(false);
-        if (pendingTab) {
-            setActiveTab(pendingTab);
-            setPendingTab(null);
-        }
+        //const selectedTab = tabs.find(tab => tab.key === tabKey);
+        setActiveTab(tabKey);
     };
 
     const renderContent = () => {
         const activeTabInfo = tabs.find(tab => tab.key === activeTab);
         if (activeTabInfo) {
-            return activeTabInfo.protected ? (
-                <ProtectedRoute element={activeTabInfo.component} onShowLogin={handleLoginClick}/>
-            ) : (
-                activeTabInfo.component
-            );
+            return activeTabInfo.component;
         }
         return null;
     };
@@ -117,16 +68,11 @@ const AppLayout = () => {
             <Header
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
-                onLoginClick={handleLoginClick}
-                onLogout={handleLogout}
                 tabs={tabs}
             />
             <MainContent>{renderContent()}</MainContent>
             {activeTabInfo?.showFooter && (
                 <Footer lastUpdated={activeTabInfo.lastUpdated}/>
-            )}
-            {showLoginModal && (
-                <LoginPage onClose={handleCloseModal} onLoginSuccess={handleLoginSuccess}/>
             )}
             <Analytics/>
         </LayoutWrapper>
