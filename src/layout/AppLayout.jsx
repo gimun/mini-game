@@ -35,7 +35,7 @@ const AppLayout = () => {
             label: '클랜 배틀',
             component: <BattleJsonModule/>,
             protected: false,
-            lastUpdated: '2024-08-26',
+            lastUpdated: '2024-09-02',
             showFooter: false
         },
         {
