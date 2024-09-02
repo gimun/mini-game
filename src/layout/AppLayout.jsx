@@ -27,7 +27,7 @@ const AppLayout = () => {
             //component: <MemberModule/>,
             component: <MemberJsonModule/>,
             protected: false,
-            lastUpdated: '2024-08-19',
+            lastUpdated: '2024-09-02',
             showFooter: true
         },
         {

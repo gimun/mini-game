@@ -46,10 +46,13 @@ export const members = {
     44: {name: "나무", status: 1},
     45: {name: "빌런즈", status: 1},
     46: {name: "아르미아", status: 1},
-    47: {name: "저거저거", status: 1},
+    47: {name: "저거저거", status: 0},
     48: {name: "문짱이", status: 1},
     49: {name: "펭도리", status: 1},
-    50: {name: "SNFZO", status: 1}
+    50: {name: "SNFZO", status: 0},
+    51: {name: "조니", status: 1},
+    52: {name: "할매", status: 1},
+    53: {name: "riguleto", status: 1},
 };
 
 // Helper function to get member names with numeric status handling
