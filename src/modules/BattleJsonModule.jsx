@@ -21,7 +21,7 @@ const fileOptions = [
 
 // JSON 데이터 로드 함수
 const fetchData = async (file) => {
-    const response = await fetch(`/src/mock-data/battle/${file}`);
+    const response = await fetch(`/mock-data/battle/${file}`);
     if (!response.ok) {
         throw new Error(`Failed to load file: ${file}`);
     }

@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState, useMemo} from 'react';
 import DataDisplay from '../components/DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';
-import memberData from '../mock-data/member/member_20240902.json';
+import memberData from '../../public/mock-data/member/member_20240902.json';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 import {getMemberName} from '../utils/memberHelper.js';
 
