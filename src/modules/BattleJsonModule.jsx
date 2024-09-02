@@ -1,7 +1,7 @@
 import {useCallback, useState, useEffect} from 'react';
 import DataDisplay from '../components/DataDisplay.jsx';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
-import historyData from '../mock-data/clan_war_20240819.json';
+import historyData from '../mock-data/battle/clan_war_20240819.json';
 import {getMemberName} from '../utils/memberHelper.js';
 
 const BattleJsonModule = () => {
