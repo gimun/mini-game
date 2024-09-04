@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import Tab2Page from '../pages/Tab2Page';
 import MemberJsonModule from "../modules/MemberJsonModule.jsx";
 import BattleJsonModule from "../modules/BattleJsonModule.jsx";
+import PhotoGalleryModule from "../modules/PhotoGalleryModule.jsx";
 
 const LayoutWrapper = styled.div`
     display: flex;
@@ -39,6 +40,14 @@ const AppLayout = () => {
             showFooter: false
         },
         {
+            key: 'cat-images',
+            label: '냥냥 사진관',
+            component: <PhotoGalleryModule/>,
+            protected: false,
+            lastUpdated: '2024-09-02',
+            showFooter: false
+        },
+        {
             key: 'tab2',
             label: 'Tab 2',
             component: <Tab2Page/>,
@@ -48,19 +57,7 @@ const AppLayout = () => {
         }
     ];
 
-    const handleTabChange = (tabKey) => {
-        //const selectedTab = tabs.find(tab => tab.key === tabKey);
-        setActiveTab(tabKey);
-    };
-
-    const renderContent = () => {
-        const activeTabInfo = tabs.find(tab => tab.key === activeTab);
-        if (activeTabInfo) {
-            return activeTabInfo.component;
-        }
-        return null;
-    };
-
+    const handleTabChange = (tabKey) => setActiveTab(tabKey);
     const activeTabInfo = tabs.find(tab => tab.key === activeTab);
 
     return (
@@ -70,7 +67,7 @@ const AppLayout = () => {
                 onTabChange={handleTabChange}
                 tabs={tabs}
             />
-            <MainContent>{renderContent()}</MainContent>
+            <MainContent>{activeTabInfo?.component}</MainContent>
             {activeTabInfo?.showFooter && (
                 <Footer lastUpdated={activeTabInfo.lastUpdated}/>
             )}
