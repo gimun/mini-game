@@ -11,7 +11,7 @@ const TabsContainer = styled.div`
     border-top: 2px solid #2e8b57; /* 상단 가로선 */
     border-bottom: 2px solid #2e8b57; /* 하단 가로선 */
     box-sizing: border-box; /* 패딩과 보더를 포함하여 전체 너비를 계산 */
-    padding: 0 20px; /* 좌우 패딩 */
+    padding: 0 5px; /* 좌우 패딩 */
     background-color: #f8f9fa; /* 배경색 설정 */
 `;
 
@@ -22,7 +22,7 @@ const Tab = styled.button`
     padding: 10px;
     font-size: 16px;
     color: ${props => (props.active ? 'rgba(234, 179, 8)' : '#2e8b57')}; /* 선택된 탭 색상 */
-    font-weight: ${props => (props.active ? '700' : '400')}; /* 선택된 탭 굵기 */
+    font-weight: ${props => (props.active ? '500' : '400')}; /* 선택된 탭 굵기 */
     cursor: pointer;
     text-align: center;
     transition: color 0.3s;

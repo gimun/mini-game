@@ -9,7 +9,7 @@ import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 const GalleryWrapper = styled.div`
     max-width: 80%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,16 +21,14 @@ const HeaderWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding-bottom: 10px;
     border-bottom: 1px solid #e0e0e0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 `;
 
-const StyledTitle = styled.h2`
-    font-size: 20px;
+const StyledTitle = styled.h3`
+    font-size: 16px;
     color: #607d8b;
     font-weight: normal;
-    letter-spacing: 1px;
     margin: 0;
     text-align: left;
     flex-grow: 1;
@@ -44,20 +42,21 @@ const StyledTitle = styled.h2`
 const ToggleButton = styled.button`
     display: flex;
     align-items: center;
-    padding: 10px 10px;
-    background-color: #fffefe;
-    color: #05486e;
-    border: 1px solid #607d8b;
-    border-radius: 5px;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-        background-color: #e6fdd2;
-    }
 
     svg {
         margin-left: 5px;
+        color: #05486e;
+        font-size: 24px;
+    }
+
+    &:hover {
+        svg {
+            color: #04608e;
+        }
     }
 `;
 
@@ -68,16 +67,14 @@ const SliderContainer = styled.div`
     overflow: hidden;
     transition: height 0.3s ease-in-out;
 
-    /* aria-hidden과 inert를 통해 포커스를 차단 */
     &[aria-hidden='true'] {
-        pointer-events: none; /* 클릭 차단 */
-        user-select: none; /* 텍스트 선택 차단 */
+        pointer-events: none;
+        user-select: none;
     }
 
-    /* 슬라이더가 열려 있어도 포커스를 막음 */
     .slick-slide, img, .slick-track, .slick-list {
-        outline: none; /* 포커스 outline 제거 */
-        user-select: none; /* 사용자 상호작용 차단 */
+        outline: none;
+        user-select: none;
     }
 `;
 
@@ -93,7 +90,7 @@ const ImageWrapper = styled.div`
         height: 100%;
         object-fit: contain;
         transition: width 0.3s ease-in-out;
-        pointer-events: none; /* 이미지의 포커스와 클릭 차단 */
+        pointer-events: none;
     }
 `;
 
@@ -108,7 +105,7 @@ const settings = {
     autoplaySpeed: 3000,
     pauseOnHover: true,
     draggable: true,
-    focusOnSelect: false, // 선택 시 포커스 방지
+    focusOnSelect: false,
 };
 
 // UI 컴포넌트
@@ -122,7 +119,6 @@ const PhotoGalleryUI = ({ title, isExpanded, toggleSlider, imageList }) => {
             <HeaderWrapper>
                 <StyledTitle>{title}</StyledTitle>
                 <ToggleButton onClick={toggleSlider}>
-                    {isExpanded ? '냥이 감추기' : '냥이 보기'}
                     {isExpanded ? <FiChevronUp /> : <FiChevronDown />}
                 </ToggleButton>
             </HeaderWrapper>

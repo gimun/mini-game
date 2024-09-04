@@ -5,7 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import MainContent from './MainContent';
 import styled from 'styled-components';
-import Tab2Page from '../pages/Tab2Page';
+//import Tab2Page from '../pages/Tab2Page';
 import MemberJsonModule from "../modules/MemberJsonModule.jsx";
 import BattleJsonModule from "../modules/BattleJsonModule.jsx";
 import PhotoGalleryModule from "../modules/PhotoGalleryModule.jsx";
@@ -33,7 +33,7 @@ const AppLayout = () => {
         },
         {
             key: 'clan-battle',
-            label: '클랜 배틀',
+            label: '클랜전',
             component: <BattleJsonModule/>,
             protected: false,
             lastUpdated: '2024-09-02',
@@ -45,16 +45,17 @@ const AppLayout = () => {
             component: <PhotoGalleryModule/>,
             protected: false,
             lastUpdated: '2024-09-02',
-            showFooter: false
-        },
-        {
-            key: 'tab2',
-            label: 'Tab 2',
-            component: <Tab2Page/>,
-            protected: false,
-            lastUpdated: '-',
-            showFooter: false
+            showFooter: true
         }
+        // ,
+        // {
+        //     key: 'tab2',
+        //     label: 'Tab 2',
+        //     component: <Tab2Page/>,
+        //     protected: false,
+        //     lastUpdated: '-',
+        //     showFooter: false
+        // }
     ];
 
     const handleTabChange = (tabKey) => setActiveTab(tabKey);
