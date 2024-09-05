@@ -45,7 +45,7 @@ const AppLayout = () => {
             component: <PhotoGalleryModule/>,
             protected: false,
             lastUpdated: '2024-09-02',
-            showFooter: true
+            showFooter: false
         }
         // ,
         // {

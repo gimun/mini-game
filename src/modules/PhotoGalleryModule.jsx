@@ -44,8 +44,7 @@ const PhotoGalleryModule = () => {
     // member_id 목록에 따라 타이틀을 생성
     const [galleries] = useState(getMemberTitles([3, 4])); // 멤버 ID를 전달하여 타이틀 생성
 
-    // 활성화된 갤러리 ID를 관리 (초기값은 첫 번째 갤러리만 열림)
-    const [activeGalleries, setActiveGalleries] = useState([galleries[0].member_id]);
+    const [activeGalleries, setActiveGalleries] = useState([]);
 
     // 슬라이더 토글 핸들러 (여러 개를 동시에 열 수 있도록 설정)
     const toggleSlider = (member_id) => {
