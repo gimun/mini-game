@@ -109,7 +109,7 @@ const settings = {
 };
 
 // UI 컴포넌트
-const PhotoGalleryUI = ({ title, isExpanded, toggleSlider, imageList }) => {
+const PhotoSlider = ({ title, isExpanded, toggleSlider, imageList }) => {
     if (!imageList.length) {
         return <p>No images found</p>;
     }
@@ -138,7 +138,7 @@ const PhotoGalleryUI = ({ title, isExpanded, toggleSlider, imageList }) => {
 };
 
 // PropTypes 정의
-PhotoGalleryUI.propTypes = {
+PhotoSlider.propTypes = {
     title: PropTypes.string.isRequired,
     isExpanded: PropTypes.bool.isRequired,
     toggleSlider: PropTypes.func.isRequired,
@@ -150,4 +150,4 @@ PhotoGalleryUI.propTypes = {
     ).isRequired,
 };
 
-export default PhotoGalleryUI;
+export default PhotoSlider;

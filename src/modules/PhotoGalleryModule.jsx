@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PhotoGalleryUI from '../components/PhotoGalleryUI.jsx';
+import PhotoSlider from '../components/PhotoSlider.jsx';
 import { getMemberName } from '../utils/memberHelper.js';
 
 // 가로형 이미지 가져오기
@@ -65,7 +65,7 @@ const PhotoGalleryModule = () => {
     return (
         <>
             {galleries.map((gallery) => (
-                <PhotoGalleryUI
+                <PhotoSlider
                     key={gallery.member_id}
                     title={gallery.title}
                     isExpanded={activeGalleries.includes(gallery.member_id)} // 활성화된 갤러리만 열림
