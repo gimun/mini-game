@@ -109,7 +109,7 @@ const settings = {
 };
 
 // UI 컴포넌트
-const PhotoSlider = ({ title, isExpanded, toggleSlider, imageList }) => {
+const PhotoSlider = ({ title, isExpanded, toggleSlider, imageList, onGalleryClick }) => {
     if (!imageList.length) {
         return <p>No images found</p>;
     }
@@ -117,7 +117,9 @@ const PhotoSlider = ({ title, isExpanded, toggleSlider, imageList }) => {
     return (
         <GalleryWrapper>
             <HeaderWrapper>
-                <StyledTitle>{title}</StyledTitle>
+                <StyledTitle onClick={onGalleryClick}>
+                    {title}
+                </StyledTitle>
                 <ToggleButton onClick={toggleSlider}>
                     {isExpanded ? <FiChevronUp /> : <FiChevronDown />}
                 </ToggleButton>
@@ -137,6 +139,7 @@ const PhotoSlider = ({ title, isExpanded, toggleSlider, imageList }) => {
     );
 };
 
+
 // PropTypes 정의
 PhotoSlider.propTypes = {
     title: PropTypes.string.isRequired,
@@ -148,6 +151,8 @@ PhotoSlider.propTypes = {
             alt: PropTypes.string.isRequired,
         })
     ).isRequired,
+    onGalleryClick: PropTypes.func.isRequired, // 갤러리 클릭 핸들러 추가
 };
 
 export default PhotoSlider;
+
