@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import IconComponent from '../components/IconComponent';
 import Tabs from '../components/Tabs';
+import { TitleStyle, SubTitleStyle, BodyTextStyle } from '../styles/Typography.jsx';
 
 const HeaderWrapper = styled.header`
     background-color: #ffffff;
@@ -16,21 +17,16 @@ const HeaderWrapper = styled.header`
 `;
 
 const HeaderTitle = styled.span`
-    font-family: 'Giants-Inline', sans-serif;
-    font-size: 35px;
-    color: #2e8b57;
-    font-weight: normal;
-    letter-spacing: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    ${TitleStyle}
 `;
 
 const HeaderSubTitle = styled.span`
     display: flex;
     align-items: center;
     margin-bottom: 3px;
-    font-family: 'SUITE_Regular', sans-serif;
-    font-size: 20px;
-    color: #607d8b;
-    font-weight: 200;
+    ${SubTitleStyle}
 `;
 
 const IconContainer = styled.div`
