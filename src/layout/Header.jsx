@@ -1,9 +1,9 @@
 // src/layout/Header.jsx
-import React from 'react';
 import styled from 'styled-components';
 import IconComponent from '../components/IconComponent';
 import Tabs from '../components/Tabs';
-import { TitleStyle, SubTitleStyle, BodyTextStyle } from '../styles/Typography.jsx';
+import { TitleStyle, SubTitleStyle } from '../styles/Typography.jsx';
+import PropTypes from "prop-types";
 
 const HeaderWrapper = styled.header`
     background-color: #ffffff;
@@ -46,6 +46,18 @@ const Header = ({activeTab, onTabChange, tabs}) => {
             <Tabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange}/>
         </HeaderWrapper>
     );
+};
+
+// PropTypes 정의
+Header.propTypes = {
+    activeTab: PropTypes.string.isRequired,
+    onTabChange: PropTypes.func.isRequired,
+    tabs: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            value: PropTypes.string.isRequired
+        })
+    ).isRequired
 };
 
 export default Header;

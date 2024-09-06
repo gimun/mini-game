@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import MemberJsonModule from "../modules/MemberJsonModule.jsx";
 import BattleJsonModule from "../modules/BattleJsonModule.jsx";
 import PhotoGalleryModule from "../modules/PhotoGalleryModule.jsx";
+import HiddenJsonModule from "../modules/HiddenJsonModule.jsx";
 
 const LayoutWrapper = styled.div`
     display: flex;
@@ -45,6 +46,14 @@ const AppLayout = () => {
             component: <PhotoGalleryModule/>,
             protected: false,
             lastUpdated: '2024-09-02',
+            showFooter: false
+        },
+        {
+            key: '냥냥 꿀팁방',
+            label: 'test',
+            component: <HiddenJsonModule/>,
+            protected: false,
+            lastUpdated: '2024-09-06',
             showFooter: false
         }
         // ,

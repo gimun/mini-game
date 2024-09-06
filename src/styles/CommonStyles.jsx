@@ -40,6 +40,8 @@ export const Table = styled.table`
 `;
 
 export const TableHeader = styled.th`
+    font-family: 'SUITE_Regular', sans-serif;
+    font-size: clamp(12px, 3vw, 16px);
     cursor: pointer;
     text-align: center;
     padding: 10px;
@@ -53,6 +55,8 @@ export const TableHeader = styled.th`
 `;
 
 export const TableData = styled.td`
+    font-family: 'SUITE_Regular', sans-serif;
+    font-size: clamp(12px, 3vw, 16px);
     padding: 10px;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;

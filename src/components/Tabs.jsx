@@ -20,9 +20,9 @@ const Tab = styled.button`
     background: none;
     border: none;
     padding: 10px;
-    font-size: 16px;
+    font-size: clamp(13px, 3vw, 17px);
     color: ${props => (props.active ? 'rgba(234, 179, 8)' : '#2e8b57')}; /* 선택된 탭 색상 */
-    font-weight: ${props => (props.active ? '500' : '400')}; /* 선택된 탭 굵기 */
+    font-weight: 200;
     cursor: pointer;
     text-align: center;
     transition: color 0.3s;
