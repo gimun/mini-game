@@ -32,17 +32,28 @@ const verticalImageList = Object.entries(verticalImages).map(([path, module]) =>
 // 전체 이미지 리스트 (가로형과 세로형을 합침)
 const imageList = [...horizontalImageList, ...verticalImageList];
 
+// 멤버 ID에 따른 커스텀 타이틀을 정의하는 함수
+const getCustomTitle = (id) => {
+    const memberName = getMemberName(id); // 멤버 이름 가져오기
+    const customTitles = {
+        1: `냥집사 대리인 '${memberName}' 님`,
+    };
+
+    // 커스텀 타이틀이 있으면 사용하고, 없으면 기본 타이틀을 반환
+    return customTitles[id] || `냥집사 '${memberName}' 님`;
+};
+
 // 멤버의 ID를 기반으로 타이틀을 생성하는 함수
 const getMemberTitles = (memberIds) => {
     return memberIds.map((id) => ({
         member_id: id,
-        title: `냥집사 '${getMemberName(id)}' 님`,
+        title: getCustomTitle(id), // 커스텀 타이틀 함수 호출
     }));
 };
 
 // PhotoGalleryModule: 슬라이더를 열고 닫는 로직을 제공하는 모듈
 const PhotoGalleryModule = () => {
-    const [galleries] = useState(getMemberTitles([3, 4]));
+    const [galleries] = useState(getMemberTitles([3, 4, 1]));
     const [activeGalleries, setActiveGalleries] = useState([]);
     const [selectedGallery, setSelectedGallery] = useState(null);  // 선택된 갤러리 상태 추가
 

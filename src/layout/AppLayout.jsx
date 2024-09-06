@@ -21,7 +21,7 @@ const AppLayout = () => {
     const tabs = [
         {
             key: 'home',
-            label: 'Home',
+            label: '냥냥 패밀리',
             component: <MemberJsonModule/>,
             protected: false,
             footerText: '데이터 최신화: 2024-09-02',

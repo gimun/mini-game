@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {SORT} from '../constants/Keys.js';
 import {FaSort, FaSortDown, FaSortUp} from 'react-icons/fa';
-import {useState} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import Modal from './Modal'; // 모달 컴포넌트 가져오기
 import {
     HighlightValue,
@@ -45,13 +45,13 @@ const Table = styled.table`
 
 const TableHeader = styled.th`
     padding: 8px;
-    text-align: center;
+    text-align: left;
     border-bottom: 1px solid #ddd;
     white-space: nowrap;
     font-size: clamp(12px, 2vw, 16px);
     background-color: #f9f9f9;
     border-right: 1px solid #e0e0e0;
-    flex: ${({ $flex }) => $flex || '1'};  // $flex 사용
+    flex: ${({$flex}) => $flex || '1'}; // $flex 사용
 
     &:last-child {
         border-right: none;
@@ -107,16 +107,64 @@ const MissionText = styled.span`
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
-    font-size: clamp(10px, 1.8vw, 14px); // 반응형 폰트 크기 적용
+    font-size: clamp(10px, 1.8vw, 14px);
+    white-space: nowrap; // 줄바꿈을 하지 않음
+    overflow: hidden; // 넘칠 경우 숨김
+    text-overflow: ellipsis; // 넘칠 경우 점점점 처리
+    max-width: 100%;
 
     &:hover {
-        text-decoration: underline; // 호버 시 강조
+        text-decoration: underline;
     }
 
     @media (max-width: 600px) {
-        font-size: 12px;  // 모바일에서 폰트 크기 줄이기
+        font-size: 12px;
     }
 `;
+
+// MissionTextComponent
+const MissionTextComponent = ({ text, onClick }) => {
+    const textRef = useRef(null);
+    const [isEllipsis, setIsEllipsis] = useState(false);
+    const [isDragging, setIsDragging] = useState(false); // 드래그 상태 추가
+    const touchStartX = useRef(0); // 터치 시작 X좌표
+
+    useEffect(() => {
+        if (textRef.current) {
+            setIsEllipsis(textRef.current.scrollWidth > textRef.current.clientWidth);
+        }
+    }, [text]);
+
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX; // 터치 시작 위치 저장
+        setIsDragging(false); // 드래그 상태 초기화
+    };
+
+    const handleTouchMove = (e) => {
+        const touchMoveX = e.touches[0].clientX; // 현재 터치 이동 위치
+        if (Math.abs(touchMoveX - touchStartX.current) > 10) {
+            setIsDragging(true); // 드래그 상태로 전환
+        }
+    };
+
+    const handleClick = (e) => {
+        if (!isDragging) {
+            onClick(); // 드래그 상태가 아닐 때만 클릭 이벤트 실행
+        }
+    };
+
+    return (
+        <MissionText
+            ref={textRef}
+            title={isEllipsis ? text : ''}
+            onClick={handleClick} // 클릭 이벤트
+            onTouchStart={handleTouchStart} // 터치 시작 이벤트
+            onTouchMove={handleTouchMove} // 터치 이동 이벤트
+        >
+            {text}
+        </MissionText>
+    );
+};
 
 // DataFilteredDisplay 컴포넌트
 const DataFilteredDisplay = (props) => {
@@ -128,22 +176,21 @@ const DataFilteredDisplay = (props) => {
         if (config.sort.key !== columnKey) {
             return (
                 <SortIcon $active={false}>
-                    <FaSort />
+                    <FaSort/>
                 </SortIcon>
             );
         }
 
         return config.sort.direction === SORT.ASC ? (
             <SortIcon $active={true}>
-                <FaSortUp />
+                <FaSortUp/>
             </SortIcon>
         ) : (
             <SortIcon $active={true}>
-                <FaSortDown />
+                <FaSortDown/>
             </SortIcon>
         );
     };
-
 
     const formatNumber = (number) => {
         const safeNumber = number != null && !isNaN(number) ? number : 0;
@@ -196,9 +243,10 @@ const DataFilteredDisplay = (props) => {
                                         className={col.key === 'mission' ? 'clickable' : ''}
                                     >
                                         {col.key === 'mission' ? (
-                                            <MissionText onClick={() => setSelectedMission(item[col.key] || 'No mission available')}>
-                                                {(item[col.key] && item[col.key].slice(0, 30)) || 'No mission'}...
-                                            </MissionText>
+                                            <MissionTextComponent
+                                                text={item[col.key] || 'No mission available'}
+                                                onClick={() => setSelectedMission(item[col.key] || 'No mission available')}
+                                            />
                                         ) : col.type === 'number' ? (
                                             formatNumber(item[col.key])
                                         ) : (

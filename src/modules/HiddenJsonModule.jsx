@@ -138,9 +138,9 @@ const HiddenJsonModule = () => {
         {key: 'mission_id', label: 'No.', flex: 1, align: 'center', type: 'number', isKey: true},
         {key: 'reward_type', label: '분류', flex: 1, align: 'center', type: 'string'},
         {key: 'game_name', label: '게임', flex: 1, align: 'center', type: 'string'},
-        {key: 'emblem', label: '칭호', flex: 1, align: 'center', type: 'string'},
-        {key: 'reward', label: '보상', flex: 1, align: 'center', type: 'string'},
-        {key: 'mission', label: '미션', flex: 1, align: 'center', type: 'string'},
+        {key: 'emblem', label: '칭호', flex: 1, align: 'left', type: 'string'},
+        {key: 'reward', label: '보상', flex: 1, align: 'left', type: 'string'},
+        {key: 'mission', label: '미션', flex: 1, align: 'left', type: 'string'},
     ], []);
 
     const handleSort = useCallback((key) => {

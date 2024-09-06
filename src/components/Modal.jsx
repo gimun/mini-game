@@ -16,22 +16,35 @@ const ModalOverlay = styled.div`
 const ModalContent = styled.div`
     background-color: white;
     padding: 20px;
+    padding-top: 40px; /* 상단에 닫기 버튼과의 여백 추가 */
     border-radius: 8px;
     width: 80%;
     max-width: 600px;
     max-height: 80%;
     overflow-y: auto;
-    position: relative; // 엑스 버튼의 절대 위치를 위해 relative 추가
+    position: relative; /* 엑스 버튼의 절대 위치를 위해 relative 추가 */
+
+    @media (max-width: 600px) {
+        width: 90%;
+        padding: 15px;
+        padding-top: 50px; /* 모바일에서 더 많은 상단 여백 */
+    }
 `;
 
 const CloseButton = styled.button`
     background-color: transparent;
     border: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     position: absolute;
     top: 10px;
-    right: 10px;  // 모달의 오른쪽 모서리와 가깝게 설정
+    right: 10px;
     cursor: pointer;
+    padding: 5px;
+    z-index: 10; /* 닫기 버튼이 항상 앞에 표시되도록 설정 */
+
+    @media (max-width: 600px) {
+        font-size: 2.5rem; /* 모바일에서 닫기 버튼 크기 증가 */
+    }
 `;
 
 const Modal = ({ children, onClose }) => {
@@ -51,3 +64,4 @@ Modal.propTypes = {
 };
 
 export default Modal;
+
