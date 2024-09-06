@@ -1,4 +1,3 @@
-// src/styles/CommonStyles.jsx
 import styled from 'styled-components';
 
 // Container styling with flex layout and margins
@@ -45,10 +44,10 @@ export const TableHeader = styled.th`
     cursor: pointer;
     text-align: center;
     padding: 10px;
-    border-bottom: 1px solid #ddd; 
+    border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
-    flex: ${(props) => props.flex || '1'};
-    
+    flex: ${({$flex}) => $flex || '1'}; // flex 속성을 $flex로 변경
+
     &:last-child {
         border-right: none; /* 마지막 열의 오른쪽 테두리 제거 */
     }
@@ -60,8 +59,8 @@ export const TableData = styled.td`
     padding: 10px;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
-    text-align: ${props => props.align || 'left'};
-    
+    text-align: ${({$align}) => $align || 'left'}; // align 속성을 $align으로 변경
+
     &:last-child {
         border-right: none; /* 마지막 열의 오른쪽 테두리 제거 */
     }
@@ -74,12 +73,34 @@ export const TableRow = styled.tr`
     }
 `;
 
-// Sort icon styling
+// CommonStyles.jsx에서
 export const SortIcon = styled.span`
     margin-left: 5px;
-    font-size: ${props => props.active ? '14px' : '10px'};
-    color: ${props => props.active ? '#007bff' : '#aaa'};
-    opacity: ${props => props.active ? '1' : '0.5'}; /* 비활성화 상태에서 투명도 조절 */
-    transition: font-size 0.3s, color 0.3s, opacity 0.3s; /* 부드러운 전환 효과 */
+    font-size: ${({$active}) => ($active ? '14px' : '10px')};
+    color: ${({$active}) => ($active ? '#007bff' : '#aaa')};
+    opacity: ${({$active}) => ($active ? '1' : '0.5')};
+    transition: font-size 0.3s, color 0.3s, opacity 0.3s;
 `;
 
+export const SearchInput = styled.input`
+    width: 40%; /* 입력 필드의 너비를 50%로 조정 */
+    padding: 6px 8px; /* 패딩을 줄여서 작게 보이도록 설정 */
+    border: 1px solid #ccc; /* 테두리 색상 조금 더 연하게 변경 */
+    border-radius: 4px; /* 둥근 모서리 유지 */
+    font-size: clamp(12px, 2vw, 14px); /* 폰트 크기 줄이기 */
+    box-sizing: border-box; /* 패딩 포함한 너비 계산 */
+    margin-top: 8px; /* 위쪽 여백 줄이기 */
+
+    /* 포커스 시 스타일 */
+    &:focus {
+        border-color: #007bff; /* 포커스 시 파란 테두리 */
+        outline: none; /* 기본 포커스 스타일 제거 */
+        box-shadow: 0 0 3px rgba(0, 123, 255, 0.5); /* 파란색 그림자 효과 줄이기 */
+    }
+
+    @media (max-width: 600px) {
+        width: 40%; /* 모바일에서는 전체 너비 차지 */
+        font-size: 12px; /* 모바일에서 폰트 크기 줄이기 */
+        padding: 6px; /* 모바일에서 패딩 유지 */
+    }
+`;

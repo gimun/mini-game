@@ -64,8 +64,9 @@ export function getMemberName(memberId, includeDeleted = false) {
         return "Unknown";
     }
 
+    // 삭제된 멤버인 경우 취소선을 적용
     if (!includeDeleted && member.status === 0) {
-        return "Deleted Member";
+        return <s>{member.name}</s>; // HTML <s> 태그로 취소선 적용
     }
 
     return member.name;

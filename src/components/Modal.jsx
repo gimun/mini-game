@@ -1,4 +1,3 @@
-// src/components/Modal.jsx
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -19,9 +18,10 @@ const ModalContent = styled.div`
     padding: 20px;
     border-radius: 8px;
     width: 80%;
-    max-width: 600px; // 모달 최대 크기 설정
-    max-height: 80%;  // 모달 높이 제한
-    overflow-y: auto; // 내용이 넘치면 스크롤
+    max-width: 600px;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative; // 엑스 버튼의 절대 위치를 위해 relative 추가
 `;
 
 const CloseButton = styled.button`
@@ -30,7 +30,7 @@ const CloseButton = styled.button`
     font-size: 1.5rem;
     position: absolute;
     top: 10px;
-    right: 20px;
+    right: 10px;  // 모달의 오른쪽 모서리와 가깝게 설정
     cursor: pointer;
 `;
 

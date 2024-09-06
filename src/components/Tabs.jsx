@@ -1,27 +1,25 @@
-// src/components/Tabs.jsx
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-// Tabs 스타일링
+// TabsContainer는 그대로 유지
 const TabsContainer = styled.div`
     display: flex;
-    justify-content: space-evenly; /* 탭 간격을 전체 너비에서 균등하게 나누기 */
-    position: relative;
-    width: 100%; /* 전체 너비를 차지하도록 설정 */
-    border-top: 2px solid #2e8b57; /* 상단 가로선 */
-    border-bottom: 2px solid #2e8b57; /* 하단 가로선 */
-    box-sizing: border-box; /* 패딩과 보더를 포함하여 전체 너비를 계산 */
-    padding: 0 5px; /* 좌우 패딩 */
-    background-color: #f8f9fa; /* 배경색 설정 */
+    justify-content: space-evenly;
+    width: 100%;
+    border-top: 2px solid #2e8b57;
+    border-bottom: 2px solid #2e8b57;
+    padding: 0 5px;
+    background-color: #f8f9fa;
 `;
 
+// Tab에서 active를 $active로 변경하여 transient prop으로 설정
 const Tab = styled.button`
     flex: 1;
     background: none;
     border: none;
     padding: 10px;
     font-size: clamp(13px, 3vw, 17px);
-    color: ${props => (props.active ? 'rgba(234, 179, 8)' : '#2e8b57')}; /* 선택된 탭 색상 */
+    color: ${(props) => (props.$active ? 'rgba(234, 179, 8)' : '#2e8b57')}; // $active로 변경
     font-weight: 200;
     cursor: pointer;
     text-align: center;
@@ -32,13 +30,13 @@ const Tab = styled.button`
     }
 `;
 
-const Tabs = ({tabs, activeTab, onTabChange}) => {
+const Tabs = ({ tabs, activeTab, onTabChange }) => {
     return (
         <TabsContainer>
-            {tabs.map(tab => (
+            {tabs.map((tab) => (
                 <Tab
                     key={tab.key}
-                    active={tab.key === activeTab}
+                    $active={tab.key === activeTab}  // $active로 변경하여 DOM에 전달되지 않도록 처리
                     onClick={() => onTabChange(tab.key)}
                 >
                     {tab.label}
@@ -48,16 +46,15 @@ const Tabs = ({tabs, activeTab, onTabChange}) => {
     );
 };
 
-// PropTypes validation
 Tabs.propTypes = {
     tabs: PropTypes.arrayOf(
         PropTypes.shape({
             key: PropTypes.string.isRequired,
-            label: PropTypes.string.isRequired
+            label: PropTypes.string.isRequired,
         })
     ).isRequired,
     activeTab: PropTypes.string.isRequired,
-    onTabChange: PropTypes.func.isRequired
+    onTabChange: PropTypes.func.isRequired,
 };
 
 export default Tabs;

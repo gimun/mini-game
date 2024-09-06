@@ -1,96 +1,149 @@
-// src/components/DataFilteredDisplay.jsx
 import PropTypes from 'prop-types';
-import { SORT } from '../constants/Keys.js';
-import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa';
-import { useState } from 'react';
+import {SORT} from '../constants/Keys.js';
+import {FaSort, FaSortDown, FaSortUp} from 'react-icons/fa';
+import {useState} from 'react';
 import Modal from './Modal'; // 모달 컴포넌트 가져오기
 import {
-    Container,
     HighlightValue,
     InfoContainer,
     SearchContainer,
     SortIcon,
+    SearchInput
 } from '../styles/CommonStyles.jsx';
 
 import styled from 'styled-components';
 
-// TableWrapper 스타일 수정
+// 테이블 컨테이너 스타일 수정 (모바일 고려)
 const TableWrapper = styled.div`
     width: 100%;
-    overflow-x: auto;  // 수평 스크롤을 허용
-    -webkit-overflow-scrolling: touch;  // 모바일에서 부드러운 스크롤
+    overflow-x: auto; // 수평 스크롤 허용
+    -webkit-overflow-scrolling: touch; // 모바일에서 부드러운 스크롤
+
+    @media (max-width: 600px) {
+        padding: 10px;  // 모바일에서 테이블 좌우 여백 추가
+    }
+`;
+
+// TableContainer로 이름 변경하여 중복 피함
+const TableContainer = styled.div`
+    padding: 20px;
+
+    @media (max-width: 600px) {
+        padding: 10px;  // 모바일에서 패딩 줄이기
+    }
 `;
 
 const Table = styled.table`
-    width: 100%;  // 테이블은 100% 너비로 표시
+    width: 100%;
     border-collapse: collapse;
-    table-layout: auto;
+    table-layout: auto; // 열의 너비가 콘텐츠에 맞게 조정
+
+    @media (max-width: 600px) {
+        font-size: 12px;  // 모바일에서 폰트 크기 줄이기
+    }
 `;
 
 const TableHeader = styled.th`
     padding: 8px;
-    text-align: center;  // 헤더를 가운데 정렬
+    text-align: center;
     border-bottom: 1px solid #ddd;
     white-space: nowrap;
-    font-size: clamp(12px, 2vw, 16px);  // 반응형 폰트 크기 적용
+    font-size: clamp(12px, 2vw, 16px);
+    background-color: #f9f9f9;
+    border-right: 1px solid #e0e0e0;
+    flex: ${({ $flex }) => $flex || '1'};  // $flex 사용
+
+    &:last-child {
+        border-right: none;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 10px;
+    }
 `;
 
 const TableRow = styled.tr`
     &:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: #f2f2f2; // 짝수 행의 배경색
+    }
+
+    &:nth-child(odd) {
+        background-color: #ffffff; // 홀수 행의 배경색
+    }
+
+    &:hover {
+        background-color: #e6f7ff; // 호버 시 강조 효과
+    }
+
+    @media (max-width: 600px) {
+        &:hover {
+            background-color: inherit; // 모바일에서는 호버 효과 제거
+        }
     }
 `;
 
 const TableData = styled.td`
     padding: 8px;
-    text-align: ${({ align }) => (align ? align : 'left')};
-    white-space: nowrap;  // 텍스트 줄바꿈 방지
-    font-size: clamp(10px, 1.8vw, 14px);  // 반응형 폰트 크기 적용
+    text-align: ${({$align}) => $align || 'left'}; // $align으로 변경
+    white-space: nowrap; // 텍스트 줄바꿈 방지
+    font-size: clamp(10px, 1.8vw, 14px); // 반응형 폰트 크기 적용
+    border-right: 1px solid #e0e0e0; // 연한 회색 계열의 수직선 추가
 
-    &.clickable {
-        cursor: pointer;
-        background-color: #f9f9f9;  // 배경 유지
-        &:hover {
-            background-color: #e6e6e6;  // 호버 시 배경색 변경
-        }
+    &:last-child {
+        border-right: none; // 마지막 열의 경계선 제거
+    }
+
+    &:hover {
+        background-color: #e6e6e6; // 클릭 가능한 셀에 호버 시 배경색 변경
+    }
+
+    @media (max-width: 600px) {
+        font-size: 12px;  // 모바일에서 폰트 크기 줄이기
+        padding: 6px;  // 모바일에서 패딩 줄이기
     }
 `;
 
 const MissionText = styled.span`
     display: inline-block;
     cursor: pointer;
-    text-decoration: none;  // 버튼처럼 보이지 않도록
-    font-size: clamp(10px, 1.8vw, 14px);  // 미션 텍스트에 반응형 폰트 크기 적용
+    text-decoration: none;
+    font-size: clamp(10px, 1.8vw, 14px); // 반응형 폰트 크기 적용
+
     &:hover {
-        text-decoration: underline;  // 호버 시 강조
+        text-decoration: underline; // 호버 시 강조
+    }
+
+    @media (max-width: 600px) {
+        font-size: 12px;  // 모바일에서 폰트 크기 줄이기
     }
 `;
 
 // DataFilteredDisplay 컴포넌트
 const DataFilteredDisplay = (props) => {
-    const { data, columns, onSort, config, onSearchChange } = props;
+    const {data, columns, onSort, config, onSearchChange} = props;
 
     const keyColumn = columns.find((col) => col.isKey);
 
     const getSortIcon = (columnKey) => {
         if (config.sort.key !== columnKey) {
             return (
-                <SortIcon active={false}>
+                <SortIcon $active={false}>
                     <FaSort />
                 </SortIcon>
             );
         }
 
         return config.sort.direction === SORT.ASC ? (
-            <SortIcon active>
+            <SortIcon $active={true}>
                 <FaSortUp />
             </SortIcon>
         ) : (
-            <SortIcon active>
+            <SortIcon $active={true}>
                 <FaSortDown />
             </SortIcon>
         );
     };
+
 
     const formatNumber = (number) => {
         const safeNumber = number != null && !isNaN(number) ? number : 0;
@@ -101,13 +154,13 @@ const DataFilteredDisplay = (props) => {
     const [selectedMission, setSelectedMission] = useState(null);
 
     return (
-        <Container>
+        <TableContainer> {/* Container 대신 TableContainer 사용 */}
             <TableWrapper>
                 <SearchContainer>
                     <InfoContainer>
-                        조회된 목록 수: <HighlightValue>{data.length}</HighlightValue>
+                        Total Count: <HighlightValue>{data.length}</HighlightValue>
                     </InfoContainer>
-                    <input
+                    <SearchInput
                         type="text"
                         value={config.search.term}
                         onChange={onSearchChange}
@@ -123,7 +176,7 @@ const DataFilteredDisplay = (props) => {
                                     <TableHeader
                                         key={col.key}
                                         onClick={() => onSort(col.key)}
-                                        flex={col.flex}
+                                        $flex={col.flex}  // $flex 사용
                                     >
                                         {col.label}
                                         {getSortIcon(col.key)}
@@ -137,7 +190,11 @@ const DataFilteredDisplay = (props) => {
                         <TableRow key={item[keyColumn.key]}>
                             {columns.map((col) =>
                                 col !== keyColumn ? (
-                                    <TableData key={col.key} align={col.align} className={col.key === 'mission' ? 'clickable' : ''}>
+                                    <TableData
+                                        key={col.key}
+                                        $align={col.key === 'mission' ? 'left' : col.align}  // $align 사용
+                                        className={col.key === 'mission' ? 'clickable' : ''}
+                                    >
                                         {col.key === 'mission' ? (
                                             <MissionText onClick={() => setSelectedMission(item[col.key] || 'No mission available')}>
                                                 {(item[col.key] && item[col.key].slice(0, 30)) || 'No mission'}...
@@ -162,7 +219,7 @@ const DataFilteredDisplay = (props) => {
                     <p>{selectedMission}</p>
                 </Modal>
             )}
-        </Container>
+        </TableContainer>
     );
 };
 

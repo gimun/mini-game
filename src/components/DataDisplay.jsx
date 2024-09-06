@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import {SORT} from '../constants/Keys.js';
 import {FaSort, FaSortDown, FaSortUp} from 'react-icons/fa';
 import {
     Container,
@@ -11,9 +10,11 @@ import {
     TableData,
     TableHeader,
     TableRow,
-    TableWrapper
+    TableWrapper,
+    SearchInput
 } from '../styles/CommonStyles.jsx';
 
+// 수정된 TableHeader, TableData에서 $로 변경하여 transient props로 처리
 const DataDisplay = (props) => {
     const {data, columns, onSort, config, onSearchChange} = props;
 
@@ -21,12 +22,12 @@ const DataDisplay = (props) => {
 
     const getSortIcon = (columnKey) => {
         if (config.sort.key !== columnKey) {
-            return <SortIcon active={false}><FaSort/></SortIcon>;
+            return <SortIcon $active={false}><FaSort/></SortIcon>; // $active로 변경
         }
 
-        return config.sort.direction === SORT.ASC
-            ? <SortIcon active><FaSortUp/></SortIcon>
-            : <SortIcon active><FaSortDown/></SortIcon>;
+        return config.sort.direction === 'ASC'
+            ? <SortIcon $active><FaSortUp/></SortIcon>
+            : <SortIcon $active><FaSortDown/></SortIcon>;
     };
 
     const formatNumber = (number) => {
@@ -41,7 +42,7 @@ const DataDisplay = (props) => {
                     <InfoContainer>
                         <HighlightValue>{data.length}</HighlightValue> / 50
                     </InfoContainer>
-                    <input
+                    <SearchInput
                         type="text"
                         value={config.search.term}
                         onChange={onSearchChange}
@@ -56,7 +57,7 @@ const DataDisplay = (props) => {
                                 <TableHeader
                                     key={col.key}
                                     onClick={() => onSort(col.key)}
-                                    flex={col.flex}
+                                    $flex={col.flex}  // $flex로 변경
                                 >
                                     {col.label}
                                     {getSortIcon(col.key)}
@@ -66,14 +67,12 @@ const DataDisplay = (props) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {data.map(item => (
-                        <TableRow key={item[keyColumn.key]}>  {/* keyColumn 을 사용 */}
+                    {data.map((item, index) => (  // key에 index 추가하여 고유하게 만듦
+                        <TableRow key={`${item[keyColumn.key]}-${index}`}>
                             {columns.map(col => (
                                 col !== keyColumn ? (
-                                    <TableData key={col.key} align={col.align}>
-                                        {col.type === 'number'
-                                            ? formatNumber(item[col.key])
-                                            : item[col.key]}
+                                    <TableData key={`${col.key}-${item[keyColumn.key]}-${index}`} $align={col.align}>
+                                        {col.type === 'number' ? formatNumber(item[col.key]) : item[col.key]}
                                     </TableData>
                                 ) : null
                             ))}
@@ -86,7 +85,6 @@ const DataDisplay = (props) => {
     );
 };
 
-// PropTypes validation
 DataDisplay.propTypes = {
     data: PropTypes.arrayOf(
         PropTypes.object.isRequired

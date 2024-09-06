@@ -3,15 +3,16 @@ import DataDisplay from '../components/DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';
 import memberData from '../../public/mock-data/member/member_20240902.json';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
-import {getMemberName} from '../utils/memberHelper.js';
+import {getMemberName} from '../utils/memberHelper.jsx';
 
-const MemberModule = () => {
+const MemberJsonModule = () => {
     const [data, setData] = useState([]);
     const [config, setConfig] = useState({
         sort: {key: COLUMNS.TOTAL_SCORE, direction: SORT.DESC},
         search: {term: '', placeholder: LABELS[COLUMNS.NAME] || 'Name'}
     });
 
+    // 테이블 컬럼 정의
     const columns = useMemo(() => [
         {key: COLUMNS.MEMBER_ID, label: '', flex: 1, align: 'center', type: 'string', isKey: true},
         {key: COLUMNS.RANK, label: LABELS[COLUMNS.RANK], flex: 1, align: 'center', type: 'number'},
@@ -21,11 +22,13 @@ const MemberModule = () => {
     ], []);
 
     useEffect(() => {
+        // 데이터에 멤버 이름 추가
         const enrichedData = memberData.map(item => ({
             ...item,
             [COLUMNS.NAME]: getMemberName(item[COLUMNS.MEMBER_ID])
         }));
 
+        // 점수에 따라 랭킹을 계산한 데이터
         const rankedData = calculateRankings(enrichedData, COLUMNS.TOTAL_SCORE);
         setData(rankedData);
     }, []);
@@ -47,8 +50,8 @@ const MemberModule = () => {
         }));
     }, []);
 
+    // 필터링 및 정렬된 데이터 계산
     const filteredAndSortedData = useMemo(() => {
-
         return data
             .filter(item => item[COLUMNS.NAME]?.toString().toLowerCase().includes(config.search.term.toLowerCase()))
             .sort((a, b) => {
@@ -74,4 +77,4 @@ const MemberModule = () => {
     );
 };
 
-export default MemberModule;
+export default MemberJsonModule;

@@ -1,9 +1,8 @@
-// src/layout/Header.jsx
 import styled from 'styled-components';
 import IconComponent from '../components/IconComponent';
 import Tabs from '../components/Tabs';
-import { TitleStyle, SubTitleStyle } from '../styles/Typography.jsx';
-import PropTypes from "prop-types";
+import {TitleStyle, SubTitleStyle} from '../styles/Typography.jsx';
+import PropTypes from 'prop-types';
 
 const HeaderWrapper = styled.header`
     background-color: #ffffff;
@@ -16,16 +15,11 @@ const HeaderWrapper = styled.header`
     position: relative;
 `;
 
-const HeaderTitle = styled.span`
-    margin-top: 10px;
-    margin-bottom: 10px;
-    ${TitleStyle}
-`;
-
 const HeaderSubTitle = styled.span`
+    margin-top: 15px;
     display: flex;
     align-items: center;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
     ${SubTitleStyle}
 `;
 
@@ -36,7 +30,6 @@ const IconContainer = styled.div`
 const Header = ({activeTab, onTabChange, tabs}) => {
     return (
         <HeaderWrapper>
-            <HeaderTitle>Mini Game</HeaderTitle>
             <HeaderSubTitle>
                 <IconContainer>
                     <IconComponent width={30} height={30}/>
@@ -48,16 +41,15 @@ const Header = ({activeTab, onTabChange, tabs}) => {
     );
 };
 
-// PropTypes 정의
 Header.propTypes = {
     activeTab: PropTypes.string.isRequired,
     onTabChange: PropTypes.func.isRequired,
     tabs: PropTypes.arrayOf(
         PropTypes.shape({
+            key: PropTypes.string.isRequired, // key 속성으로 변경
             label: PropTypes.string.isRequired,
-            value: PropTypes.string.isRequired
         })
-    ).isRequired
+    ).isRequired,
 };
 
 export default Header;

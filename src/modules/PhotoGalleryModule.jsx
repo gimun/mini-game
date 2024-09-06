@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PhotoSlider from '../components/PhotoSlider.jsx';
 import PhotoGallery from '../components/PhotoGallery.jsx';
-import { getMemberName } from '../utils/memberHelper.js';
+import { getMemberName } from '../utils/memberHelper.jsx';
 
 // 가로형 이미지 가져오기
 const horizontalImages = import.meta.glob('../images/cats/horizontal/*.jpg', {

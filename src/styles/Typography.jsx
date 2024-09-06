@@ -13,9 +13,9 @@ export const TitleStyle = css`
 // 기본 서브 타이틀 스타일
 export const SubTitleStyle = css`
     font-family: 'SUITE_Regular', sans-serif;
-    font-size: clamp(14px, 4vw, 18px);
+    font-size: clamp(14px, 4vw, 19px);
     color: #607d8b;
-    font-weight: 200;
+    font-weight: 300;
 `;
 
 // 기본 본문 텍스트 스타일
