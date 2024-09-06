@@ -239,7 +239,7 @@ const DataFilteredDisplay = (props) => {
                                 col !== keyColumn ? (
                                     <TableData
                                         key={col.key}
-                                        $align={col.key === 'mission' ? 'left' : col.align}  // $align 사용
+                                        $align={col.align}  // $align 사용
                                         className={col.key === 'mission' ? 'clickable' : ''}
                                     >
                                         {col.key === 'mission' ? (

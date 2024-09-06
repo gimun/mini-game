@@ -120,82 +120,83 @@ const HiddenJsonModule = () => {
     const [data] = useState(missionData);
     const [config, setConfig] = useState({
         sort: {key: 'mission_id', direction: SORT.DESC},
-        search: {term: '', placeholder: '보상'}
+        search: {term: '', placeholder: '보상'},
     });
 
     const [filters, setFilters] = useState({
         reward_type: [],
-        game_name: []
+        game_name: [],
     });
 
-    const [isRewardFilterVisible, setIsRewardFilterVisible] = useState(true);
-    const [isGameNameFilterVisible, setIsGameNameFilterVisible] = useState(true);
+    const [isRewardFilterVisible, setIsRewardFilterVisible] = useState(false); // 기본적으로 닫혀 있는 상태로 설정
+    const [isGameNameFilterVisible, setIsGameNameFilterVisible] = useState(false); // 기본적으로 닫혀 있는 상태로 설정
 
     const rewardTypes = ['스킨', '코스튬', '캐릭터'];
     const gameNames = getAllGameNames();
 
-    const columns = useMemo(() => [
-        {key: 'mission_id', label: 'No.', flex: 1, align: 'center', type: 'number', isKey: true},
-        {key: 'reward_type', label: '분류', flex: 1, align: 'center', type: 'string'},
-        {key: 'game_name', label: '게임', flex: 1, align: 'center', type: 'string'},
-        {key: 'emblem', label: '칭호', flex: 1, align: 'left', type: 'string'},
-        {key: 'reward', label: '보상', flex: 1, align: 'left', type: 'string'},
-        {key: 'mission', label: '미션', flex: 1, align: 'left', type: 'string'},
-    ], []);
+    const columns = useMemo(
+        () => [
+            {key: 'mission_id', label: 'No.', flex: 1, align: 'center', type: 'number', isKey: true},
+            {key: 'reward_type', label: '분류', flex: 1, align: 'center', type: 'string'},
+            {key: 'game_name', label: '게임', flex: 1, align: 'center', type: 'string'},
+            {key: 'emblem', label: '칭호', flex: 1, align: 'left', type: 'string'},
+            {key: 'reward', label: '보상', flex: 1, align: 'left', type: 'string'},
+            {key: 'mission', label: '미션', flex: 1, align: 'left', type: 'string'},
+        ],
+        []
+    );
 
     const handleSort = useCallback((key) => {
-        setConfig(prevConfig => {
+        setConfig((prevConfig) => {
             const newDirection = prevConfig.sort.key === key && prevConfig.sort.direction === SORT.ASC ? SORT.DESC : SORT.ASC;
             return {
                 ...prevConfig,
-                sort: {key, direction: newDirection}
+                sort: {key, direction: newDirection},
             };
         });
     }, []);
 
     const handleSearchChange = useCallback((e) => {
-        setConfig(prevConfig => ({
+        setConfig((prevConfig) => ({
             ...prevConfig,
-            search: {...prevConfig.search, term: e.target.value}
+            search: {...prevConfig.search, term: e.target.value},
         }));
     }, []);
 
     const handleCheckboxChange = useCallback((e) => {
         const {name, value} = e.target;
-        setFilters(prevFilters => {
+        setFilters((prevFilters) => {
             const isChecked = e.target.checked;
             const currentValues = prevFilters[name];
 
-            const newValues = isChecked
-                ? [...currentValues, value]
-                : currentValues.filter(val => val !== value);
+            const newValues = isChecked ? [...currentValues, value] : currentValues.filter((val) => val !== value);
 
             return {
                 ...prevFilters,
-                [name]: newValues
+                [name]: newValues,
             };
         });
     }, []);
 
     const clearSingleFilter = useCallback((name, value) => {
-        setFilters(prevFilters => ({
+        setFilters((prevFilters) => ({
             ...prevFilters,
-            [name]: prevFilters[name].filter(val => val !== value)
+            [name]: prevFilters[name].filter((val) => val !== value),
         }));
     }, []);
 
     const clearAllFilters = useCallback(() => {
         setFilters({
             reward_type: [],
-            game_name: []
+            game_name: [],
         });
     }, []);
 
     const filteredAndSortedData = useMemo(() => {
         return data
-            .filter(item => item['reward']?.toString().toLowerCase().includes(config.search.term.toLowerCase()))
-            .filter(item => (filters.reward_type.length === 0 || filters.reward_type.includes(item.reward_type)))
-            .filter(item => (filters.game_name.length === 0 || filters.game_name.includes(item.game_name)))
+            .filter((item) => item['reward']?.toString().toLowerCase().includes(config.search.term.toLowerCase()))
+            .filter((item) => (filters.reward_type.length === 0 || filters.reward_type.includes(item.reward_type)))
+            .filter((item) => (filters.game_name.length === 0 || filters.game_name.includes(item.game_name)))
             .sort((a, b) => {
                 const aValue = a[config.sort.key];
                 const bValue = b[config.sort.key];
@@ -212,12 +213,12 @@ const HiddenJsonModule = () => {
                 <FilterFieldset>
                     <legend onClick={() => setIsRewardFilterVisible(!isRewardFilterVisible)}>
                         <ClearButton>
-                            보상 분류 {isRewardFilterVisible ? ' ▲' : ' ▼'}
+                            보상 분류별 필터 {isRewardFilterVisible ? ' ▲' : ' ▼'}
                         </ClearButton>
                     </legend>
                     {filters.reward_type.length > 0 && (
                         <SelectedFilters>
-                            {filters.reward_type.map(type => (
+                            {filters.reward_type.map((type) => (
                                 <FilterTag key={type}>
                                     {type}
                                     <FaTimes onClick={() => clearSingleFilter('reward_type', type)}/>
@@ -226,7 +227,7 @@ const HiddenJsonModule = () => {
                         </SelectedFilters>
                     )}
                     <CheckboxGroup $isVisible={isRewardFilterVisible}>
-                        {rewardTypes.map(type => (
+                        {rewardTypes.map((type) => (
                             <CheckboxLabel key={type}>
                                 <input
                                     type="checkbox"
@@ -243,14 +244,13 @@ const HiddenJsonModule = () => {
 
                 <FilterFieldset>
                     <legend onClick={() => setIsGameNameFilterVisible(!isGameNameFilterVisible)}>
-
                         <ClearButton>
-                            게임 이름 {isGameNameFilterVisible ? ' ▲' : ' ▼'}
+                            게임별 필터 {isGameNameFilterVisible ? ' ▲' : ' ▼'}
                         </ClearButton>
                     </legend>
                     {filters.game_name.length > 0 && (
                         <SelectedFilters>
-                            {filters.game_name.map(name => (
+                            {filters.game_name.map((name) => (
                                 <FilterTag key={name}>
                                     {name}
                                     <FaTimes onClick={() => clearSingleFilter('game_name', name)}/>
@@ -259,7 +259,7 @@ const HiddenJsonModule = () => {
                         </SelectedFilters>
                     )}
                     <CheckboxGroup $isVisible={isGameNameFilterVisible}>
-                        {gameNames.map(name => (
+                        {gameNames.map((name) => (
                             <CheckboxLabel key={name}>
                                 <input
                                     type="checkbox"
@@ -275,7 +275,7 @@ const HiddenJsonModule = () => {
                 </FilterFieldset>
 
                 <AllClearButton onClick={clearAllFilters}>
-                    모든 필터 초기화 <FaSync/>
+                    필터 초기화 <FaSync/>
                 </AllClearButton>
             </div>
 
