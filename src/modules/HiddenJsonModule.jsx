@@ -194,7 +194,7 @@ const HiddenJsonModule = () => {
     const [isRewardFilterVisible, setIsRewardFilterVisible] = useState(false); // 기본적으로 닫혀 있는 상태로 설정
     const [isGameNameFilterVisible, setIsGameNameFilterVisible] = useState(false); // 기본적으로 닫혀 있는 상태로 설정
 
-    const rewardTypes = ['스킨', '코스튬', '캐릭터'];
+    const rewardTypes = ['캐릭터', '스킨', '코스튬', '배경음'];
     const gameNames = getAllGameNames();
 
     const columns = useMemo(
