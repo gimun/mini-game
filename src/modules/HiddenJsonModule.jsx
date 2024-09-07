@@ -1,6 +1,7 @@
 import {useCallback, useState, useMemo} from 'react';
 import DataFilteredDisplay from '../components/DataFilteredDisplay.jsx';
-import missionData from '../../public/mock-data/hidden/mission_data.json';
+//import missionData from '../../public/mock-data/hidden/mission_data.json';
+import missionData from '../data/mission_data.json'; // JSON 데이터 import
 import {SORT} from '../constants/Keys.js';
 import {getAllGameNames} from '../utils/gameNameHelper';
 import styled from 'styled-components';
