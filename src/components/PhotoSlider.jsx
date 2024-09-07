@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { FiChevronDown, FiChevronUp, FiExternalLink } from 'react-icons/fi';
 
 // styled-components로 스타일 정의 (반응형)
 const GalleryWrapper = styled.div`
@@ -14,6 +14,11 @@ const GalleryWrapper = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    @media (max-width: 600px) {
+        max-width: 100%;
+        padding: 10px;
+    }
 `;
 
 const HeaderWrapper = styled.div`
@@ -23,19 +28,53 @@ const HeaderWrapper = styled.div`
     width: 100%;
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 10px;
+
+    @media (max-width: 600px) {
+        flex-direction: row;
+        align-items: center;
+    }
+`;
+
+const TitleWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
 `;
 
 const StyledTitle = styled.h3`
     font-size: 16px;
-    color: #607d8b;
+    color: #55679C; /* 제목 색상 */
     font-weight: normal;
     margin: 0;
     text-align: left;
-    flex-grow: 1;
     transition: color 0.3s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:hover {
-        color: #04608e;
+        color: #55679C; /* 제목 hover 시 색상 */
+    }
+
+    @media (max-width: 600px) {
+        font-size: 14px;
+    }
+`;
+
+const StyledIcon = styled(FiExternalLink)`
+    margin-left: 10px;
+    color: #1E2A5E; /* 아이콘 색상 */
+    font-size: 20px;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        color: #1E2A5E; /* 아이콘 hover 시 색상 */
+    }
+
+    @media (max-width: 600px) {
+        font-size: 18px;
+        margin-left: 5px;
     }
 `;
 
@@ -58,6 +97,14 @@ const ToggleButton = styled.button`
             color: #04608e;
         }
     }
+
+    @media (max-width: 600px) {
+        padding: 0;
+
+        svg {
+            font-size: 20px;
+        }
+    }
 `;
 
 const SliderContainer = styled.div`
@@ -70,6 +117,10 @@ const SliderContainer = styled.div`
     &[aria-hidden='true'] {
         pointer-events: none;
         user-select: none;
+    }
+
+    @media (max-width: 600px) {
+        max-width: 100%;
     }
 
     .slick-slide, img, .slick-track, .slick-list {
@@ -92,6 +143,16 @@ const ImageWrapper = styled.div`
         transition: width 0.3s ease-in-out;
         pointer-events: none;
     }
+
+    @media (max-width: 600px) {
+        width: 300px;
+        height: 300px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
 `;
 
 // react-slick 슬라이더 설정
@@ -102,7 +163,7 @@ const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 1000,
     pauseOnHover: true,
     draggable: true,
     focusOnSelect: false,
@@ -117,9 +178,12 @@ const PhotoSlider = ({ title, isExpanded, toggleSlider, imageList, onGalleryClic
     return (
         <GalleryWrapper>
             <HeaderWrapper>
-                <StyledTitle onClick={onGalleryClick}>
-                    {title}
-                </StyledTitle>
+                <TitleWrapper>
+                    <StyledTitle onClick={onGalleryClick}>
+                        {title}
+                    </StyledTitle>
+                    <StyledIcon onClick={onGalleryClick} /> {/* 상세보기 아이콘 */}
+                </TitleWrapper>
                 <ToggleButton onClick={toggleSlider}>
                     {isExpanded ? <FiChevronUp /> : <FiChevronDown />}
                 </ToggleButton>
@@ -139,7 +203,6 @@ const PhotoSlider = ({ title, isExpanded, toggleSlider, imageList, onGalleryClic
     );
 };
 
-
 // PropTypes 정의
 PhotoSlider.propTypes = {
     title: PropTypes.string.isRequired,
@@ -155,4 +218,3 @@ PhotoSlider.propTypes = {
 };
 
 export default PhotoSlider;
-
