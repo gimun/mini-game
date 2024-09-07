@@ -3,6 +3,7 @@ import {SORT} from '../constants/Keys.js';
 import {FaSort, FaSortDown, FaSortUp} from 'react-icons/fa';
 import {useState, useEffect, useRef} from 'react';
 import Modal from './Modal'; // 모달 컴포넌트 가져오기
+import NoData from './NoData';
 import {
     HighlightValue,
     InfoContainer,
@@ -20,7 +21,6 @@ const TableWrapper = styled.div`
     -webkit-overflow-scrolling: touch; // 모바일에서 부드러운 스크롤
 
     @media (max-width: 600px) {
-        padding: 10px;  // 모바일에서 테이블 좌우 여백 추가
     }
 `;
 
@@ -99,7 +99,6 @@ const TableData = styled.td`
 
     @media (max-width: 600px) {
         font-size: 12px;  // 모바일에서 폰트 크기 줄이기
-        padding: 6px;  // 모바일에서 패딩 줄이기
     }
 `;
 
@@ -123,7 +122,7 @@ const MissionText = styled.span`
 `;
 
 // MissionTextComponent
-const MissionTextComponent = ({ text, onClick }) => {
+const MissionTextComponent = ({text, onClick}) => {
     const textRef = useRef(null);
     const [isEllipsis, setIsEllipsis] = useState(false);
     const [isDragging, setIsDragging] = useState(false); // 드래그 상태 추가
@@ -233,30 +232,39 @@ const DataFilteredDisplay = (props) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {data.map((item) => (
-                        <TableRow key={item[keyColumn.key]}>
-                            {columns.map((col) =>
-                                col !== keyColumn ? (
-                                    <TableData
-                                        key={col.key}
-                                        $align={col.align}  // $align 사용
-                                        className={col.key === 'mission' ? 'clickable' : ''}
-                                    >
-                                        {col.key === 'mission' ? (
-                                            <MissionTextComponent
-                                                text={item[col.key] || 'No mission available'}
-                                                onClick={() => setSelectedMission(item[col.key] || 'No mission available')}
-                                            />
-                                        ) : col.type === 'number' ? (
-                                            formatNumber(item[col.key])
-                                        ) : (
-                                            item[col.key]
-                                        )}
-                                    </TableData>
-                                ) : null
-                            )}
-                        </TableRow>
-                    ))}
+                    {/* 데이터가 없는 경우 NoData 컴포넌트를 표시 */}
+                    {data.length === 0 ? (
+                        <tr>
+                            <td colSpan={columns.length}>
+                                <NoData message="조회된 데이터가 없습니다."/>
+                            </td>
+                        </tr>
+                    ) : (
+                        data.map((item) => (
+                            <TableRow key={item[keyColumn.key]}>
+                                {columns.map((col) =>
+                                    col !== keyColumn ? (
+                                        <TableData
+                                            key={col.key}
+                                            $align={col.align}  // $align 사용
+                                            className={col.key === 'mission' ? 'clickable' : ''}
+                                        >
+                                            {col.key === 'mission' ? (
+                                                <MissionTextComponent
+                                                    text={item[col.key] || 'No mission available'}
+                                                    onClick={() => setSelectedMission(item[col.key] || 'No mission available')}
+                                                />
+                                            ) : col.type === 'number' ? (
+                                                formatNumber(item[col.key])
+                                            ) : (
+                                                item[col.key]
+                                            )}
+                                        </TableData>
+                                    ) : null
+                                )}
+                            </TableRow>
+                        ))
+                    )}
                     </tbody>
                 </Table>
             </TableWrapper>

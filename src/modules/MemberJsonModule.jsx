@@ -1,9 +1,10 @@
 import {useCallback, useEffect, useState, useMemo} from 'react';
 import DataDisplay from '../components/DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';
-import memberData from '../../public/mock-data/member/member_20240902.json';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 import {getMemberName} from '../utils/memberHelper.jsx';
+
+const fileName = "member_20240902.json";
 
 const MemberJsonModule = () => {
     const [data, setData] = useState([]);
@@ -22,15 +23,27 @@ const MemberJsonModule = () => {
     ], []);
 
     useEffect(() => {
-        // 데이터에 멤버 이름 추가
-        const enrichedData = memberData.map(item => ({
-            ...item,
-            [COLUMNS.NAME]: getMemberName(item[COLUMNS.MEMBER_ID])
-        }));
+        // fetch로 JSON 데이터 가져오기
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`/mock-data/member/${fileName}`); // public 폴더에서 가져오는 경로
+                const memberData = await response.json();
 
-        // 점수에 따라 랭킹을 계산한 데이터
-        const rankedData = calculateRankings(enrichedData, COLUMNS.TOTAL_SCORE);
-        setData(rankedData);
+                // 데이터에 멤버 이름 추가
+                const enrichedData = memberData.map(item => ({
+                    ...item,
+                    [COLUMNS.NAME]: getMemberName(item[COLUMNS.MEMBER_ID])
+                }));
+
+                // 점수에 따라 랭킹을 계산한 데이터
+                const rankedData = calculateRankings(enrichedData, COLUMNS.TOTAL_SCORE);
+                setData(rankedData);
+            } catch (error) {
+                console.error('데이터를 가져오는 중 에러가 발생했습니다:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     const handleSort = useCallback((key) => {

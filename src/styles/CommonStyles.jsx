@@ -14,20 +14,6 @@ export const TableWrapper = styled.div`
     overflow-x: auto; /* Handle overflow if table is too wide */
 `;
 
-export const SearchContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-right: 10px;
-`;
-
-export const InfoContainer = styled.div`
-    margin-left: 10px;
-    font-size: 14px;
-    color: #555; /* 텍스트 색상 */
-`;
-
 export const HighlightValue = styled.span`
     color: rgba(177, 41, 41, 0.8);
     font-weight: bold;
@@ -40,7 +26,7 @@ export const Table = styled.table`
 
 export const TableHeader = styled.th`
     font-family: 'SUITE_Regular', sans-serif;
-    font-size: clamp(12px, 3vw, 16px);
+    font-size: clamp(12px, 1.5vw, 16px); /* 최소 크기와 최대 크기 조정 */
     cursor: pointer;
     text-align: center;
     padding: 10px;
@@ -55,7 +41,7 @@ export const TableHeader = styled.th`
 
 export const TableData = styled.td`
     font-family: 'SUITE_Regular', sans-serif;
-    font-size: clamp(12px, 3vw, 16px);
+    font-size: clamp(12px, 1.5vw, 16px); /* 최소 크기와 최대 크기 조정 */
     padding: 10px;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
@@ -73,7 +59,6 @@ export const TableRow = styled.tr`
     }
 `;
 
-// CommonStyles.jsx에서
 export const SortIcon = styled.span`
     margin-left: 5px;
     font-size: ${({$active}) => ($active ? '14px' : '10px')};
@@ -82,14 +67,29 @@ export const SortIcon = styled.span`
     transition: font-size 0.3s, color 0.3s, opacity 0.3s;
 `;
 
+export const SearchContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    flex-wrap: wrap; /* 모바일에서 필드들이 줄 바꿈되도록 설정 */
+`;
+
+export const InfoContainer = styled.div`
+    margin-left: 10px;
+    font-size: 14px;
+    color: #555;
+`;
+
 export const SearchInput = styled.input`
     width: 40%; /* 입력 필드의 너비를 50%로 조정 */
+    max-width: 250px; /* 최대 너비를 300px로 제한 */
     padding: 6px 8px; /* 패딩을 줄여서 작게 보이도록 설정 */
     border: 1px solid #ccc; /* 테두리 색상 조금 더 연하게 변경 */
     border-radius: 4px; /* 둥근 모서리 유지 */
     font-size: clamp(12px, 2vw, 14px); /* 폰트 크기 줄이기 */
     box-sizing: border-box; /* 패딩 포함한 너비 계산 */
-    margin-top: 8px; /* 위쪽 여백 줄이기 */
 
     /* 포커스 시 스타일 */
     &:focus {

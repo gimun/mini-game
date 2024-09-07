@@ -5,12 +5,59 @@ import missionData from '../data/mission_data.json'; // JSON 데이터 import
 import {SORT} from '../constants/Keys.js';
 import {getAllGameNames} from '../utils/gameNameHelper';
 import styled from 'styled-components';
-import {FaTimes, FaSync} from 'react-icons/fa'; // 새로운 아이콘 가져오기
+import {FaTimes, FaSync} from 'react-icons/fa'; // FaSync 아이콘 추가
 
-// 스타일 정의
+// 전체 레이아웃 스타일 정의 (flexbox)
+const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; // 페이지 전체 높이 설정
+`;
+
+const MainContent = styled.main`
+    flex: 1; // 남은 공간을 모두 차지
+
+    @media (max-width: 600px) {
+    }
+`;
+
+const Footer = styled.footer`
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px 0; /* 상하 여백 */
+    font-size: 14px;
+    color: #333;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가 */
+
+    a {
+        color: #1230AE;
+        text-decoration: none; /* 기본 밑줄 제거 */
+        font-weight: bold; /* 링크를 강조 */
+
+        &:hover {
+            text-decoration: underline; /* 링크에 마우스를 올렸을 때 밑줄 표시 */
+        }
+    }
+
+    p {
+        margin: 10px 0; /* 각 문단의 상하 여백 */
+        line-height: 1.6; /* 문장 간격 */
+    }
+
+    strong {
+        color: #3282B8; /* 강조된 텍스트 색상 */
+        font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 12px; /* 모바일에서 폰트 크기 줄임 */
+        padding: 15px 0; /* 모바일에서 패딩 줄임 */
+    }
+`;
+
 const FilterFieldset = styled.fieldset`
     margin-bottom: 10px;
-    margin-left: 10px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -37,12 +84,15 @@ const SelectedFilters = styled.div`
         color: #6591bf;
         margin-right: 5px;
     }
+
+    @media (max-width: 600px) {
+        font-size: 12px; // 모바일에서 폰트 크기 줄임
+    }
 `;
 
 const FilterTag = styled.span`
     display: inline-flex;
     align-items: center;
-    margin-right: 10px;
     cursor: pointer;
     color: #333;
 
@@ -52,6 +102,10 @@ const FilterTag = styled.span`
         color: #e14444; /* 빨간색 설정 */
         cursor: pointer;
     }
+
+    @media (max-width: 600px) {
+        font-size: 12px; // 모바일에서 텍스트 크기 줄임
+    }
 `;
 
 const AllClearButton = styled.button`
@@ -59,7 +113,7 @@ const AllClearButton = styled.button`
     border: none;
     color: #0d52ac;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 15px;
     display: flex;
     align-items: center;
 
@@ -69,6 +123,10 @@ const AllClearButton = styled.button`
 
     svg {
         margin-left: 5px;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 13px; // 모바일에서 폰트 크기 줄임
     }
 `;
 
@@ -89,6 +147,10 @@ const ClearButton = styled.button`
     svg {
         margin-left: 5px;
     }
+
+    @media (max-width: 600px) {
+        font-size: 13px; // 모바일에서 폰트 크기 줄임
+    }
 `;
 
 const CheckboxLabel = styled.label`
@@ -103,11 +165,11 @@ const CheckboxLabel = styled.label`
 
     @media (max-width: 600px) {
         margin-right: 10px;
-        font-size: 14px;
+        font-size: 12px;
 
         input {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
         }
     }
 `;
@@ -209,8 +271,8 @@ const HiddenJsonModule = () => {
     }, [data, config, filters]);
 
     return (
-        <>
-            <div>
+        <PageContainer>
+            <MainContent>
                 <FilterFieldset>
                     <legend onClick={() => setIsRewardFilterVisible(!isRewardFilterVisible)}>
                         <ClearButton>
@@ -278,16 +340,29 @@ const HiddenJsonModule = () => {
                 <AllClearButton onClick={clearAllFilters}>
                     필터 초기화 <FaSync/>
                 </AllClearButton>
-            </div>
 
-            <DataFilteredDisplay
-                data={filteredAndSortedData}
-                columns={columns}
-                onSort={handleSort}
-                config={config}
-                onSearchChange={handleSearchChange}
-            />
-        </>
+                <DataFilteredDisplay
+                    data={filteredAndSortedData}
+                    columns={columns}
+                    onSort={handleSort}
+                    config={config}
+                    onSearchChange={handleSearchChange}
+                />
+            </MainContent>
+
+            <Footer>
+                <p>
+                    이 페이지는 <strong>물베님</strong>이 <strong>미니게임천국 공식 카페</strong>의
+                    <strong>공략&Tip 게시판</strong>에 게시한 자료를 기반으로 검색 기능을 구현한 것입니다. 출처:
+                    <a href="https://cafe.naver.com/minigameparty/31951" target="_blank" rel="noopener noreferrer">
+                        미니게임천국 공식 카페
+                    </a>
+                </p>
+                <p>&copy; 2024 mini-game</p>
+            </Footer>
+
+
+        </PageContainer>
     );
 };
 
