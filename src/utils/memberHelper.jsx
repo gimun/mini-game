@@ -23,7 +23,7 @@ export const members = {
     21: {name: "예슬쿵야", status: 1},
     22: {name: "디제이", status: 1},
     23: {name: "고양이랑", status: 1},
-    24: {name: "룰루", status: 1},
+    24: {name: "룰루", status: 0},
     25: {name: "백현", status: 1},
     26: {name: "밤양갱", status: 1},
     27: {name: "큐밍", status: 1},
@@ -51,7 +51,7 @@ export const members = {
     49: {name: "펭도리", status: 1},
     50: {name: "SNFZO", status: 0},
     51: {name: "조니", status: 1},
-    52: {name: "할매", status: 1},
+    52: {name: "할매", status: 0},
     53: {name: "riguleto", status: 1},
 };
 

@@ -31,7 +31,7 @@ const verticalImageList = Object.entries(verticalImages).map(([path, module]) =>
 
 // 전체 이미지 리스트 (가로형과 세로형을 합침)
 const imageList = [...horizontalImageList, ...verticalImageList];
-const imageOwnerIds = [3, 4, 1, 23];
+const imageOwnerIds = [3, 4, 1, 23, 5];
 
 // 멤버 ID에 따른 커스텀 타이틀을 정의하는 함수
 const getCustomTitle = (id) => {

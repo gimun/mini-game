@@ -14,9 +14,9 @@ import {
 
 // 날짜별 JSON 파일 목록
 const fileOptions = [
-    {label: '2024-08-26', value: 'battle_20240826.json'},
-    {label: '2024-08-19', value: 'battle_20240819.json'},
-    {label: '2024-08-12', value: 'battle_20240812.json'},
+    {label: '2024-09-01', value: 'battle_20240901.json'},
+    {label: '2024-08-25', value: 'battle_20240825.json'},
+    {label: '2024-08-18', value: 'battle_20240818.json'},
 ];
 
 // JSON 데이터 로드 함수
