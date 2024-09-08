@@ -60,7 +60,7 @@ export function getMemberName(memberId, includeDeleted = false) {
     const member = members[memberId];
 
     if (!member) {
-        console.error(`Member not found for rank: ${memberId}`);
+        console.error(`Member not found for memberId: ${memberId}`);
         return "Unknown";
     }
 
@@ -70,4 +70,15 @@ export function getMemberName(memberId, includeDeleted = false) {
     }
 
     return member.name;
+}
+
+export function getMember(memberId) {
+    const member = members[memberId];
+
+    if (!member) {
+        console.error(`Member not found for memberId: ${memberId}`);
+        return null;
+    }
+
+    return member;
 }

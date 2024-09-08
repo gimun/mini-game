@@ -2,9 +2,9 @@ import {useCallback, useEffect, useState, useMemo} from 'react';
 import DataDisplay from '../components/DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
-import {getMemberName} from '../utils/memberHelper.jsx';
+import {getMember} from '../utils/memberHelper.jsx'; // getMember로 변경
 
-const fileName = "member_20240902.json";
+const fileName = "member_data.json";
 
 const MemberJsonModule = () => {
     const [data, setData] = useState([]);
@@ -29,11 +29,19 @@ const MemberJsonModule = () => {
                 const response = await fetch(`/mock-data/member/${fileName}`); // public 폴더에서 가져오는 경로
                 const memberData = await response.json();
 
-                // 데이터에 멤버 이름 추가
-                const enrichedData = memberData.map(item => ({
-                    ...item,
-                    [COLUMNS.NAME]: getMemberName(item[COLUMNS.MEMBER_ID])
-                }));
+                // 데이터에서 멤버 정보를 가져오고, status가 0이거나 멤버가 없는 경우 제외
+                const enrichedData = memberData
+                    .map(item => {
+                        const member = getMember(item[COLUMNS.MEMBER_ID]);
+                        if (member && member.status === 1) {
+                            return {
+                                ...item,
+                                [COLUMNS.NAME]: member.name
+                            };
+                        }
+                        return null;
+                    })
+                    .filter(item => item !== null); // null인 항목 제외
 
                 // 점수에 따라 랭킹을 계산한 데이터
                 const rankedData = calculateRankings(enrichedData, COLUMNS.TOTAL_SCORE);
