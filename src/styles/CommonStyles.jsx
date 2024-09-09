@@ -54,9 +54,10 @@ export const TableData = styled.td`
 
 // Row styling with hover effect
 export const TableRow = styled.tr`
-    &:hover {
-        background-color: #f9f9f9;
-    }
+    // todo: 다그 모드 고려 필요
+    //&:hover {
+    //    background-color: #f9f9f9;
+    //}
 `;
 
 export const SortIcon = styled.span`
