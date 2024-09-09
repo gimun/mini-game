@@ -223,7 +223,7 @@
   },
   {
     "name": "타기",
-    "role": "장로",
+    "role": "클랜원",
     "total_score": 30142635,
     "member_id": 39
   },
@@ -241,7 +241,7 @@
   },
   {
     "name": "슈퍼샤이",
-    "role": "장로",
+    "role": "클랜원",
     "total_score": 25512209,
     "member_id": 42
   },
@@ -286,5 +286,17 @@
     "role": "클랜원",
     "total_score": 42549185,
     "member_id": 51
+  },
+  {
+    "name": "닝곰",
+    "role": "클랜원",
+    "total_score": 58840568,
+    "member_id": 54
+  },
+  {
+    "name": "핑퐁당",
+    "role": "클랜원",
+    "total_score": 50235558,
+    "member_id": 55
   }
 ]
