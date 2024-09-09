@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import IconComponent from '../components/IconComponent';
 import Tabs from '../components/Tabs';
-import {TitleStyle, SubTitleStyle} from '../styles/Typography.jsx';
+import {SubTitleStyle} from '../styles/Typography.jsx';
 import PropTypes from 'prop-types';
 
 const HeaderWrapper = styled.header`
@@ -20,11 +19,18 @@ const HeaderSubTitle = styled.span`
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    font-size: 24px; /* 글자 크기를 크게 */
+    font-weight: 700; /* 글자 두께를 두껍게 */
     ${SubTitleStyle}
 `;
 
 const IconContainer = styled.div`
     margin-right: 10px;
+
+    img {
+        border-radius: 25%; /* 이미지를 동그랗게 */
+        border: 2px solid #f5f7fa; /* 테두리 추가 (선택 사항) */
+    }
 `;
 
 const Header = ({activeTab, onTabChange, tabs}) => {
@@ -32,9 +38,9 @@ const Header = ({activeTab, onTabChange, tabs}) => {
         <HeaderWrapper>
             <HeaderSubTitle>
                 <IconContainer>
-                    <IconComponent width={30} height={30}/>
+                    <img src="/clan-icon-white-bg.png" alt="고양이는야옹 아이콘" width={72} height={72}/>
                 </IconContainer>
-                고양이는야옹
+                고양이는야옹!
             </HeaderSubTitle>
             <Tabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange}/>
         </HeaderWrapper>
