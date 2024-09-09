@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Tabs from '../components/Tabs';
+import Tabs from '../components/templates/Tabs.jsx';
 import {SubTitleStyle} from '../styles/Typography.jsx';
 import PropTypes from 'prop-types';
 

@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
-import {SORT} from '../constants/Keys.js';
+import {SORT} from '../../constants/Keys.js';
 import {FaSort, FaSortDown, FaSortUp} from 'react-icons/fa';
 import {useState, useEffect, useRef} from 'react';
-import Modal from './Modal'; // 모달 컴포넌트 가져오기
-import NoData from './NoData';
+import Modal from '../molecules/Modal.jsx'; // 모달 컴포넌트 가져오기
+import NoData from '../molecules/NoData.jsx';
 import {
     HighlightValue,
     InfoContainer,
     SearchContainer,
     SortIcon,
     SearchInput
-} from '../styles/CommonStyles.jsx';
+} from '../../styles/CommonStyles.jsx';
 
 import styled from 'styled-components';
 

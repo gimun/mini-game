@@ -1,5 +1,5 @@
 import {useCallback, useState, useEffect, useMemo} from 'react';
-import DataDisplay from '../components/DataDisplay.jsx';
+import DataDisplay from '../components/paegs/DataDisplay.jsx';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 import {getMemberName} from '../utils/memberHelper.jsx';
 import {

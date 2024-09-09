@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState, useMemo} from 'react';
-import DataDisplay from '../components/DataDisplay.jsx';
+import DataDisplay from '../components/paegs/DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 import {getMember} from '../utils/memberHelper.jsx'; // getMember로 변경

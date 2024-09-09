@@ -12,7 +12,7 @@ import {
     TableRow,
     TableWrapper,
     SearchInput
-} from '../styles/CommonStyles.jsx';
+} from '../../styles/CommonStyles.jsx';
 
 // 수정된 TableHeader, TableData에서 $로 변경하여 transient props로 처리
 const DataDisplay = (props) => {
