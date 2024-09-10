@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const HeaderWrapper = styled.header`
     background-color: #ffffff;
+    margin-top: 10px;
     border-bottom: 1px solid #ddd;
     display: flex;
     flex-direction: column;
@@ -14,18 +15,15 @@ const HeaderWrapper = styled.header`
     position: relative;
 `;
 
-const HeaderSubTitle = styled.span`
-    margin-top: 15px;
+const IconAndTitleWrapper = styled.div`
     display: flex;
+    flex-direction: column;  /* 아이콘과 텍스트를 수직 배치 */
     align-items: center;
-    margin-bottom: 10px;
-    font-size: 24px; /* 글자 크기를 크게 */
-    font-weight: 700; /* 글자 두께를 두껍게 */
-    ${SubTitleStyle}
+    margin-bottom: 10px; /* 아이콘과 탭 사이 여백 추가 */
 `;
 
 const IconContainer = styled.div`
-    margin-right: 10px;
+    margin-bottom: 5px;  /* 아이콘과 텍스트 사이 간격 */
 
     img {
         border-radius: 25%; /* 이미지를 동그랗게 */
@@ -33,15 +31,22 @@ const IconContainer = styled.div`
     }
 `;
 
+const HeaderSubTitle = styled.div`
+    margin-left: 12px;
+    ${SubTitleStyle}
+`;
+
 const Header = ({activeTab, onTabChange, tabs}) => {
     return (
         <HeaderWrapper>
-            <HeaderSubTitle>
+            <IconAndTitleWrapper>
                 <IconContainer>
                     <img src="/clan-icon-white-bg.png" alt="고양이는야옹 아이콘" width={72} height={72}/>
                 </IconContainer>
-                고양이는야옹!
-            </HeaderSubTitle>
+                <HeaderSubTitle>
+                    고양이는야옹
+                </HeaderSubTitle>
+            </IconAndTitleWrapper>
             <Tabs tabs={tabs} activeTab={activeTab} onTabChange={onTabChange}/>
         </HeaderWrapper>
     );

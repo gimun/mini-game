@@ -13,9 +13,9 @@ export const TitleStyle = css`
 // 기본 서브 타이틀 스타일
 export const SubTitleStyle = css`
     font-family: 'SUITE_Regular', sans-serif;
-    font-size: clamp(18px, 5vw, 24px); /* 글자 크기 증가 */
+    font-size: clamp(16px, 5vw, 24px);
     color: #607d8b;
-    font-weight: 600; /* 글자 두께를 두껍게 변경 */
+    font-weight: 700;
 `;
 
 // 기본 본문 텍스트 스타일
