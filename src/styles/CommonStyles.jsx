@@ -101,7 +101,7 @@ export const SearchInput = styled.input`
 
     @media (max-width: 600px) {
         width: 40%; /* 모바일에서는 전체 너비 차지 */
-        font-size: 12px; /* 모바일에서 폰트 크기 줄이기 */
+        font-size: 16px; /* 16px 이상으로 설정하여 확대를 방지 */
         padding: 6px; /* 모바일에서 패딩 유지 */
     }
 `;

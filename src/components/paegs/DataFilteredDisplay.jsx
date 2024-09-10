@@ -49,7 +49,6 @@ const TableHeader = styled.th`
     border-bottom: 1px solid #ddd;
     white-space: nowrap;
     font-size: clamp(12px, 2vw, 16px);
-    background-color: #f9f9f9;
     border-right: 1px solid #e0e0e0;
     flex: ${({$flex}) => $flex || '1'}; // $flex 사용
 
@@ -63,17 +62,6 @@ const TableHeader = styled.th`
 `;
 
 const TableRow = styled.tr`
-    &:nth-child(even) {
-        background-color: #f2f2f2; // 짝수 행의 배경색
-    }
-
-    &:nth-child(odd) {
-        background-color: #ffffff; // 홀수 행의 배경색
-    }
-
-    &:hover {
-        background-color: #e6f7ff; // 호버 시 강조 효과
-    }
 
     @media (max-width: 600px) {
         &:hover {
@@ -91,10 +79,6 @@ const TableData = styled.td`
 
     &:last-child {
         border-right: none; // 마지막 열의 경계선 제거
-    }
-
-    &:hover {
-        background-color: #e6e6e6; // 클릭 가능한 셀에 호버 시 배경색 변경
     }
 
     @media (max-width: 600px) {
