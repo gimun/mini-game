@@ -23,9 +23,16 @@ const ModalContent = styled.div`
     max-height: 80%;
     overflow-y: auto;
     position: relative; /* 엑스 버튼의 절대 위치를 위해 relative 추가 */
+    color: black;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: #333;
+        color: white;
+    }
 
     @media (max-width: 600px) {
-        width: 90%;
+        width: 90%;  /* 너비를 90%로 설정 */
+        max-width: 400px; /* 최대 너비를 400px로 제한 */
         padding: 15px;
         padding-top: 50px; /* 모바일에서 더 많은 상단 여백 */
     }
@@ -41,13 +48,18 @@ const CloseButton = styled.button`
     cursor: pointer;
     padding: 5px;
     z-index: 10; /* 닫기 버튼이 항상 앞에 표시되도록 설정 */
+    color: black;
+
+    @media (prefers-color-scheme: dark) {
+        color: white;
+    }
 
     @media (max-width: 600px) {
         font-size: 2.5rem; /* 모바일에서 닫기 버튼 크기 증가 */
     }
 `;
 
-const Modal = ({ children, onClose }) => {
+const Modal = ({children, onClose}) => {
     return (
         <ModalOverlay>
             <ModalContent>
@@ -64,4 +76,3 @@ Modal.propTypes = {
 };
 
 export default Modal;
-
