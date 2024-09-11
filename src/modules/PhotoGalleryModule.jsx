@@ -4,13 +4,13 @@ import PhotoGallery from '../components/paegs/PhotoGallery.jsx';
 import { getMemberName } from '../utils/memberHelper.jsx';
 
 // 가로형 이미지 가져오기
-const horizontalImages = import.meta.glob('../images/cats/horizontal/*.jpg', {
+const horizontalImages = import.meta.glob('../assets/images/cats/horizontal/*.jpg', {
     eager: true,
     query: { w: 800, format: 'webp' }
 });
 
 // 세로형 이미지 가져오기
-const verticalImages = import.meta.glob('../images/cats/vertical/*.jpg', {
+const verticalImages = import.meta.glob('../assets/images/cats/vertical/*.jpg', {
     eager: true,
     query: { h: 800, format: 'webp' }
 });

@@ -2,7 +2,7 @@ import {useState} from 'react';
 import UnderConstruction from '../pages/UnderConstruction';
 import UnderConstruction2 from '../pages/UnderConstruction2';
 import UnderConstruction3 from '../pages/UnderConstruction3';
-import SubTabs from '../components/templates/SubTabs.jsx';
+import SubTabs from '../components/organisms/SubTabs.jsx';
 
 const Tab2Page = () => {
     const [activeSubTab, setActiveSubTab] = useState('subTab1');

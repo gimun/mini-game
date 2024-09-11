@@ -1,7 +1,7 @@
 // src/App.jsx
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import AppLayout from './layout/AppLayout';
-import AppLayout2 from './layout/AppLayout2';
+import AppLayout from './components/templates/AppLayout.jsx';
+import AppLayout2 from './components/templates/AppLayout2.jsx';
 
 const App = () => {
     return (

@@ -1,6 +1,6 @@
 // src/components/IconComponent.jsx
 import PropTypes from 'prop-types';
-import catIcon from '../assets/icons/cat.svg';
+import catIcon from '../../assets/icons/cat.svg';
 
 const IconComponent = ({ width = 30, height = 30 }) => {
     return <img src={catIcon} width={width} height={height} alt="Cat Icon" />;

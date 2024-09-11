@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useState} from 'react';
-import DataFetcher from '../components/DataFetcher.jsx';
+import DataFetcher from './DataFetcher.jsx';
 import DataDisplay from '../components/paegs/DataDisplay.jsx';
 import {calculateRankings} from '../utils/dataUtils.js';
 import {COLLECTIONS, COLUMNS, LABELS, SORT} from '../constants/Keys.js';

@@ -9,7 +9,7 @@ import {
     FileSelect,
     LoadingMessage,
     ErrorMessage
-} from '../styles/SelectBoxStyles.jsx';
+} from '../components/atoms/styles/SelectBoxStyles.jsx';
 
 
 const generateFileOptions = (dates) => {

@@ -10,7 +10,7 @@ import {
     SearchContainer,
     SortIcon,
     SearchInput
-} from '../../styles/CommonStyles.jsx';
+} from '../atoms/styles/CommonStyles.jsx';
 
 import styled from 'styled-components';
 

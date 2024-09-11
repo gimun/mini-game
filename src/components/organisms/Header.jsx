@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Tabs from '../components/templates/Tabs.jsx';
-import {SubTitleStyle} from '../styles/Typography.jsx';
+import Tabs from './Tabs.jsx';
+import {SubTitleStyle} from '../atoms/styles/Typography.jsx';
 import PropTypes from 'prop-types';
 
 const HeaderWrapper = styled.header`
