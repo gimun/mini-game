@@ -12,12 +12,27 @@ import {
 } from '../styles/SelectBoxStyles.jsx';
 
 
-// 날짜별 JSON 파일 목록
-const fileOptions = [
-    {label: '2024-09-01', value: 'battle_20240901.json'},
-    {label: '2024-08-25', value: 'battle_20240825.json'},
-    {label: '2024-08-18', value: 'battle_20240818.json'},
+const generateFileOptions = (dates) => {
+    return dates.map(date => {
+        const formattedDate = date.toISOString().slice(0, 10); // 'YYYY-MM-DD' 포맷
+        const value = `battle_${formattedDate.replace(/-/g, '')}.json`; // 'battle_YYYYMMDD.json' 파일명 포맷
+        return {
+            label: formattedDate,
+            value: value
+        };
+    });
+};
+
+// 날짜 배열
+const dates = [
+    new Date('2024-09-08'),
+    new Date('2024-09-01'),
+    new Date('2024-08-25'),
+    new Date('2024-08-18')
 ];
+
+// fileOptions 생성
+const fileOptions = generateFileOptions(dates);
 
 // JSON 데이터 로드 함수
 const fetchData = async (file) => {
