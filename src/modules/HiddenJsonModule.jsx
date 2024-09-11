@@ -1,6 +1,5 @@
 import {useCallback, useState, useMemo} from 'react';
 import DataFilteredDisplay from '../components/paegs/DataFilteredDisplay.jsx';
-//import missionData from '../../public/mock-data/hidden/mission_data.json';
 import missionData from '../assets/data/mission_data.json'; // JSON 데이터 import
 import {SORT} from '../constants/Keys.js';
 import {getAllGameNames} from '../utils/gameNameHelper';
@@ -52,7 +51,7 @@ const Footer = styled.footer`
 
     @media (max-width: 600px) {
         font-size: 12px; /* 모바일에서 폰트 크기 줄임 */
-        padding: 15px 0; /* 모바일에서 패딩 줄임 */
+        padding: 15px; /* 모바일에서 패딩 줄임 */
     }
 `;
 
@@ -191,7 +190,7 @@ const HiddenJsonModule = () => {
         game_name: [],
     });
 
-    const [isRewardFilterVisible, setIsRewardFilterVisible] = useState(false); // 기본적으로 닫혀 있는 상태로 설정
+    const [isRewardFilterVisible, setIsRewardFilterVisible] = useState(true); // 기본적으로 닫혀 있는 상태로 설정
     const [isGameNameFilterVisible, setIsGameNameFilterVisible] = useState(false); // 기본적으로 닫혀 있는 상태로 설정
 
     const rewardTypes = ['캐릭터', '스킨', '코스튬', '배경음'];
