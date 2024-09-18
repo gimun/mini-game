@@ -74,6 +74,23 @@ export function getMemberName(memberId, includeDeleted = false) {
     return member.name;
 }
 
+export function getMemberNameWithDefault(memberId, defaultName, includeDeleted = false) {
+    const member = members[memberId];
+
+    if (!member) {
+        console.error(`Member not found for memberId: ${memberId}`);
+        // 기본 이름에 취소선 적용하여 반환
+        return <s>{defaultName}</s>;
+    }
+
+    // 삭제된 멤버인 경우 취소선을 적용
+    if (!includeDeleted && member.status === 0) {
+        return <s>{member.name}</s>; // HTML <s> 태그로 취소선 적용
+    }
+
+    return member.name;
+}
+
 export function getMember(memberId) {
     const member = members[memberId];
 

@@ -1,7 +1,7 @@
 import {useCallback, useState, useEffect, useMemo} from 'react';
 import DataDisplay from '../components/paegs/DataDisplay.jsx';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
-import {getMemberName} from '../utils/memberHelper.jsx';
+import {getMemberName, getMemberNameWithDefault} from '../utils/memberHelper.jsx';
 import {
     Container,
     FileSelectContainer,
@@ -29,7 +29,12 @@ const dates = [
     new Date('2024-09-08'),
     new Date('2024-09-01'),
     new Date('2024-08-25'),
-    new Date('2024-08-18')
+    new Date('2024-08-18'),
+    new Date('2024-08-11'),
+    new Date('2024-08-04'),
+    new Date('2024-07-28'),
+    new Date('2024-07-21'),
+    new Date('2024-07-14')
 ];
 
 // fileOptions 생성
@@ -62,7 +67,7 @@ const BattleJsonModule = () => {
             const jsonData = await fetchData(selectedFile);
             const updatedData = jsonData.map(item => ({
                 ...item,
-                [COLUMNS.NAME]: getMemberName(item[COLUMNS.MEMBER_ID]),
+                [COLUMNS.NAME]: getMemberNameWithDefault(item[COLUMNS.MEMBER_ID], item[COLUMNS.NAME]),
             }));
             setData(updatedData);
         } catch (error) {
