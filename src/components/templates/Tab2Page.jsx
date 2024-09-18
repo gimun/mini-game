@@ -1,8 +1,17 @@
 import {useState} from 'react';
+import {DarkModeStyle} from '../atoms/styles/Typography.jsx';
+import styled from "styled-components";
+import SubTabs from '../organisms/SubTabs.jsx';
 import BattleRankModule from '../../modules/BattleRankModule.jsx';
 import BattleJsonModule from '../../modules/BattleJsonModule.jsx';
 import UnderConstruction3 from '../paegs/UnderConstruction3.jsx';
-import SubTabs from '../organisms/SubTabs.jsx';
+
+
+const SubTabsWrapper = styled.main`
+    background: none;
+    
+    ${DarkModeStyle}
+`;
 
 const Tab2Page = () => {
     const [activeSubTab, setActiveSubTab] = useState('subTab1');
@@ -17,7 +26,7 @@ const Tab2Page = () => {
     const activeSubTabInfo = subTabs.find((tab) => tab.key === activeSubTab);
 
     return (
-        <div>
+        <SubTabsWrapper>
             <SubTabs
                 subTabs={subTabs}
                 activeSubTab={activeSubTab}
@@ -26,7 +35,7 @@ const Tab2Page = () => {
             <div>
                 {activeSubTabInfo?.component}
             </div>
-        </div>
+        </SubTabsWrapper>
     );
 };
 

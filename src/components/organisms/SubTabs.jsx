@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {DarkModeStyle} from '../atoms/styles/Typography.jsx';
 
 // SubTabs 스타일링
 const SubTabsContainer = styled.div`
@@ -10,13 +11,17 @@ const SubTabsContainer = styled.div`
     border-bottom: 1px solid #d3d3d3; /* 하단 가로선을 연한 회색(#d3d3d3)으로 얇게 설정 */
     box-sizing: border-box; /* 패딩과 보더를 포함하여 전체 너비를 계산 */
     padding: 0 15px; /* 좌우 패딩 */
-    background-color: #ffffff; /* 배경색을 흰색으로 설정 */
     margin-bottom: 10px; /* 하단 마진 */
+    
+    /* 다크 모드일 경우 */
+    @media (prefers-color-scheme: dark) {
+        border-bottom: 2px solid #ffffff;
+        ${DarkModeStyle}
+    }
 `;
 
 const SubTab = styled.button`
     flex: 1;
-    background: none;
     border: none;
     padding: 10px;
     font-size: clamp(13px, 3vw, 17px);
@@ -28,6 +33,12 @@ const SubTab = styled.button`
 
     &:focus {
         outline: none;
+    }
+
+    /* 다크 모드일 경우 */
+    @media (prefers-color-scheme: dark) {
+        background-color: #121212;
+        color: ${(props) => (props.$active ? 'rgba(234, 179, 8)' : '#ffffff')}; // $active로 변경
     }
 `;
 

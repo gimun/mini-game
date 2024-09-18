@@ -1,4 +1,5 @@
 import {useCallback, useEffect, useMemo, useState} from 'react';
+import {DarkModeStyle} from '../components/atoms/styles/Typography.jsx';
 import DataDisplay from '../components/paegs/DataDisplay.jsx';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 import {getMember} from '../utils/memberHelper.jsx';
@@ -10,22 +11,24 @@ const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh; // 페이지 전체 높이 설정
+    
+    ${DarkModeStyle}
 `;
 
 const MainContent = styled.main`
     flex: 1; // 남은 공간을 모두 차지
-
+    
     @media (max-width: 600px) {
     }
 `;
 
 const MainTopContent = styled.div`
-    margin-bottom: 20px;
-    padding: 20px 0;
+    padding: 10px;
     font-size: 14px;
     color: #0d52ac;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
+    margin-bottom: 20px;
+    
     span {
         color: #0d52ac;
         margin-right: 5px;
@@ -37,13 +40,18 @@ const MainTopContent = styled.div`
     }
 
     strong {
-        color: #0d52ac; /* 강조된 텍스트 색상 */
         font-weight: bold;
     }
 
     @media (max-width: 600px) {
         font-size: 12px; // 모바일에서 폰트 크기 줄임
-        padding: 15px; /* 모바일에서 패딩 줄임 */
+        padding: 5px; /* 모바일에서 패딩 줄임 */
+    }
+
+    /* 다크 모드일 경우 */
+    @media (prefers-color-scheme: dark) {
+        border-bottom: 2px solid #ffffff;
+        ${DarkModeStyle}
     }
 `;
 

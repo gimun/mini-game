@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {DarkModeStyle} from '../atoms/styles/Typography.jsx';
 
 // TabsContainer는 그대로 유지
 const TabsContainer = styled.div`
@@ -10,6 +11,8 @@ const TabsContainer = styled.div`
     border-bottom: 2px solid #2e8b57;
     padding: 0 5px;
     background-color: #f8f9fa;
+
+    ${DarkModeStyle}
 `;
 
 // Tab에서 active를 $active로 변경하여 transient prop으로 설정
@@ -17,16 +20,22 @@ const Tab = styled.button`
     flex: 1;
     background: none;
     border: none;
-    padding: 10px;
+    padding: 10px 0;
     font-size: clamp(13px, 3vw, 17px);
     color: ${(props) => (props.$active ? 'rgba(234, 179, 8)' : '#2e8b57')}; // $active로 변경
-    font-weight: 200;
+    font-weight: 450;
     cursor: pointer;
     text-align: center;
     transition: color 0.3s;
 
     &:focus {
         outline: none;
+    }
+
+    /* 다크 모드일 경우 */
+    @media (prefers-color-scheme: dark) {
+        background-color: #121212;
+        color: ${(props) => (props.$active ? 'rgba(234, 179, 8)' : '#ffffff')}; // $active로 변경
     }
 `;
 

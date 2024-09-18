@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
+import {DarkModeStyle} from '../atoms/styles/Typography.jsx';
 import { FiChevronDown, FiChevronUp, FiExternalLink } from 'react-icons/fi';
 
 // styled-components로 스타일 정의 (반응형)
@@ -59,6 +60,9 @@ const StyledTitle = styled.h3`
     @media (max-width: 600px) {
         font-size: 14px;
     }
+    
+    ${DarkModeStyle}
+    
 `;
 
 const StyledIcon = styled(FiExternalLink)`
@@ -76,6 +80,8 @@ const StyledIcon = styled(FiExternalLink)`
         font-size: 18px;
         margin-left: 5px;
     }
+
+    ${DarkModeStyle}
 `;
 
 const ToggleButton = styled.button`
@@ -85,11 +91,13 @@ const ToggleButton = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;
-
+    
     svg {
         margin-left: 5px;
         color: #05486e;
         font-size: 24px;
+
+        ${DarkModeStyle}
     }
 
     &:hover {
@@ -105,6 +113,7 @@ const ToggleButton = styled.button`
             font-size: 20px;
         }
     }
+    
 `;
 
 const SliderContainer = styled.div`

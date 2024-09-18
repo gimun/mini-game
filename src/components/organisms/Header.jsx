@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import Tabs from './Tabs.jsx';
 import {SubTitleStyle} from '../atoms/styles/Typography.jsx';
+import Tabs from './Tabs.jsx';
 import PropTypes from 'prop-types';
 
 const HeaderWrapper = styled.header`
-    background-color: #ffffff;
     margin-top: 10px;
     border-bottom: 1px solid #ddd;
     display: flex;

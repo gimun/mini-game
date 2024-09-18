@@ -1,4 +1,5 @@
 import {useCallback, useState, useMemo} from 'react';
+import {DarkModeStyle} from '../components/atoms/styles/Typography.jsx';
 import DataFilteredDisplay from '../components/paegs/DataFilteredDisplay.jsx';
 import missionData from '../assets/data/mission_data.json'; // JSON 데이터 import
 import {SORT} from '../constants/Keys.js';
@@ -29,6 +30,8 @@ const Footer = styled.footer`
     border-top: 1px solid #ddd;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가 */
 
+    ${DarkModeStyle}
+    
     a {
         color: #1230AE;
         text-decoration: none; /* 기본 밑줄 제거 */
@@ -51,7 +54,7 @@ const Footer = styled.footer`
 
     @media (max-width: 600px) {
         font-size: 12px; /* 모바일에서 폰트 크기 줄임 */
-        padding: 15px; /* 모바일에서 패딩 줄임 */
+        padding: 10px; /* 모바일에서 패딩 줄임 */
     }
 `;
 
@@ -82,6 +85,7 @@ const SelectedFilters = styled.div`
     span {
         color: #6591bf;
         margin-right: 5px;
+        ${DarkModeStyle}
     }
 
     @media (max-width: 600px) {
@@ -127,6 +131,8 @@ const AllClearButton = styled.button`
     @media (max-width: 600px) {
         font-size: 13px; // 모바일에서 폰트 크기 줄임
     }
+
+    ${DarkModeStyle}
 `;
 
 const ClearButton = styled.button`
@@ -150,6 +156,8 @@ const ClearButton = styled.button`
     @media (max-width: 600px) {
         font-size: 13px; // 모바일에서 폰트 크기 줄임
     }
+
+    ${DarkModeStyle}
 `;
 
 const CheckboxLabel = styled.label`

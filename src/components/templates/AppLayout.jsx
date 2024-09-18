@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {Analytics} from '@vercel/analytics/react';
+import {DarkModeStyle} from '../atoms/styles/Typography.jsx';
 import Header from '../organisms/Header.jsx';
 import Footer from '../organisms/Footer.jsx';
 import MainContent from '../organisms/MainContent.jsx';
@@ -13,6 +14,8 @@ const LayoutWrapper = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    ${DarkModeStyle}
 `;
 
 const AppLayout = () => {

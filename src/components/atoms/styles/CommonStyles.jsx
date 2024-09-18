@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {DarkModeStyle} from './Typography.jsx';
 
 // Container styling with flex layout and margins
 export const Container = styled.div`
@@ -17,6 +18,11 @@ export const TableWrapper = styled.div`
 export const HighlightValue = styled.span`
     color: rgba(177, 41, 41, 0.8);
     font-weight: bold;
+
+    /* 다크 모드일 경우 */
+    @media (prefers-color-scheme: dark) {
+        color: red;
+    }
 `;
 
 export const Table = styled.table`
@@ -81,6 +87,9 @@ export const InfoContainer = styled.div`
     margin-left: 10px;
     font-size: 14px;
     color: #555;
+    
+    ${DarkModeStyle}
+    
 `;
 
 export const SearchInput = styled.input`

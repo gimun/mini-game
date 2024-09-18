@@ -3,6 +3,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IoMdClose } from 'react-icons/io'; // 새로운 아이콘 가져오기
+import {DarkModeStyle} from '../atoms/styles/Typography.jsx';
 
 // styled-components로 스타일 정의
 const GalleryWrapper = styled.div`
@@ -17,6 +18,8 @@ const StyledTitle = styled.h2`
     color: #607d8b;
     text-align: center;
     margin-bottom: 20px;
+    
+    ${DarkModeStyle}
 `;
 
 const CloseButton = styled.button`
@@ -33,6 +36,8 @@ const CloseButton = styled.button`
     &:hover {
         color: #455a64;
     }
+
+    ${DarkModeStyle}
 `;
 
 const PhotoGallery = ({ title, imageList, onBackClick }) => {

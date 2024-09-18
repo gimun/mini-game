@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {DarkModeStyle} from './Typography.jsx';
 
 export const Container = styled.div`
     padding: 3px;
@@ -29,11 +30,14 @@ export const FileSelect = styled.select`
     transition: border-color 0.3s ease;
     width: auto;
 
+    ${DarkModeStyle}
+    
     &:hover,
     &:focus {
         border-color: #007bff;
         outline: none;
     }
+    
 `;
 
 

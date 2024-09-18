@@ -15,8 +15,7 @@ const ModalOverlay = styled.div`
 
 const ModalContent = styled.div`
     background-color: white;
-    padding: 20px;
-    padding-top: 40px; /* 상단에 닫기 버튼과의 여백 추가 */
+    padding: 40px 20px 20px;
     border-radius: 8px;
     width: 80%;
     max-width: 600px;
@@ -33,8 +32,7 @@ const ModalContent = styled.div`
     @media (max-width: 600px) {
         width: 90%;  /* 너비를 90%로 설정 */
         max-width: 400px; /* 최대 너비를 400px로 제한 */
-        padding: 15px;
-        padding-top: 50px; /* 모바일에서 더 많은 상단 여백 */
+        padding: 50px 15px 15px;
     }
 `;
 

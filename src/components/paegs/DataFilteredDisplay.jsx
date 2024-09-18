@@ -76,7 +76,8 @@ const TableData = styled.td`
     white-space: nowrap; // 텍스트 줄바꿈 방지
     font-size: clamp(10px, 1.8vw, 14px); // 반응형 폰트 크기 적용
     border-right: 1px solid #e0e0e0; // 연한 회색 계열의 수직선 추가
-
+    border-bottom: 1px solid #ddd;
+    
     &:last-child {
         border-right: none; // 마지막 열의 경계선 제거
     }
@@ -90,7 +91,7 @@ const MissionText = styled.span`
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
-    font-size: clamp(10px, 1.8vw, 14px);
+    font-size: clamp(12px, 1.5vw, 16px); /* 최소 크기와 최대 크기 조정 */
     white-space: nowrap; // 줄바꿈을 하지 않음
     overflow: hidden; // 넘칠 경우 숨김
     text-overflow: ellipsis; // 넘칠 경우 점점점 처리
