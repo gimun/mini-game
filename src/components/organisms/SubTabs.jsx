@@ -19,9 +19,9 @@ const SubTab = styled.button`
     background: none;
     border: none;
     padding: 10px;
-    font-size: 21px;
-    color: ${props => (props.active ? 'rgba(234, 179, 8)' : '#607d8b')}; /* 선택된 서브탭 색상 */
-    font-weight: ${props => (props.active ? '700' : '400')}; /* 선택된 서브탭 굵기 */
+    font-size: clamp(13px, 3vw, 17px);
+    color: ${props => (props.$active ? 'rgba(234, 179, 8)' : '#607d8b')}; /* 선택된 서브탭 색상 */
+    font-weight: ${props => (props.$active ? '500' : '400')}; /* 선택된 서브탭 굵기 */
     cursor: pointer;
     text-align: center;
     transition: color 0.3s;
@@ -37,7 +37,7 @@ const SubTabs = ({ subTabs, activeSubTab, onSubTabChange }) => {
             {subTabs.map(tab => (
                 <SubTab
                     key={tab.key}
-                    active={tab.key === activeSubTab}
+                    $active={tab.key === activeSubTab}
                     onClick={() => onSubTabChange(tab.key)}
                 >
                     {tab.label}

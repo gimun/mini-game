@@ -5,9 +5,9 @@ import Footer from '../organisms/Footer.jsx';
 import MainContent from '../organisms/MainContent.jsx';
 import styled from 'styled-components';
 import MemberJsonModule from '../../modules/MemberJsonModule.jsx';
-import BattleJsonModule from '../../modules/BattleJsonModule.jsx';
 import PhotoGalleryModule from '../../modules/PhotoGalleryModule.jsx';
 import HiddenJsonModule from '../../modules/HiddenJsonModule.jsx';
+import Tab2Page from './Tab2Page.jsx'
 
 const LayoutWrapper = styled.div`
     display: flex;
@@ -30,7 +30,7 @@ const AppLayout = () => {
         {
             key: 'clan-battle',
             label: '냥냥 대전',
-            component: <BattleJsonModule/>,
+            component: <Tab2Page/>,
             protected: false,
             footerText: '클랜전 관련 개발 중...',
             showFooter: true,
@@ -50,7 +50,7 @@ const AppLayout = () => {
             protected: false,
             footerText: '',
             showFooter: false,
-        },
+        }
     ];
 
     const handleTabChange = (tabKey) => setActiveTab(tabKey);
