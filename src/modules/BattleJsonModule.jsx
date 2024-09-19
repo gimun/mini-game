@@ -1,7 +1,7 @@
 import {useCallback, useState, useEffect, useMemo} from 'react';
-import DataDisplay from '../components/paegs/DataDisplay.jsx';
+import DataDisplay from '../components/pages/DataDisplay.jsx';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
-import {getMemberName, getMemberNameWithDefault} from '../utils/memberHelper.jsx';
+import {getMemberNameWithDefault} from '../utils/memberHelper.jsx';
 import {
     Container,
     FileSelectContainer,

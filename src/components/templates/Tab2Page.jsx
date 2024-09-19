@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SubTabs from '../organisms/SubTabs.jsx';
 import BattleRankModule from '../../modules/BattleRankModule.jsx';
 import BattleJsonModule from '../../modules/BattleJsonModule.jsx';
-import UnderConstruction3 from '../paegs/UnderConstruction3.jsx';
+import UnderConstruction3 from '../pages/UnderConstruction3.jsx';
 
 
 const SubTabsWrapper = styled.main`

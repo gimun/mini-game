@@ -1,6 +1,6 @@
 import {useCallback, useState, useMemo} from 'react';
 import {DarkModeStyle} from '../components/atoms/styles/Typography.jsx';
-import DataFilteredDisplay from '../components/paegs/DataFilteredDisplay.jsx';
+import DataFilteredDisplay from '../components/pages/DataFilteredDisplay.jsx';
 import missionData from '../assets/data/mission_data.json'; // JSON 데이터 import
 import {SORT} from '../constants/Keys.js';
 import {getAllGameNames} from '../utils/gameNameHelper';

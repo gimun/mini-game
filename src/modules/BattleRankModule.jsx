@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import {DarkModeStyle} from '../components/atoms/styles/Typography.jsx';
-import DataDisplay from '../components/paegs/DataDisplay.jsx';
+import DataDisplay from '../components/pages/DataDisplay.jsx';
 import {COLUMNS, LABELS, SORT} from '../constants/Keys.js';
 import {getMember} from '../utils/memberHelper.jsx';
 import {calculateRankings} from "../utils/dataUtils.js";

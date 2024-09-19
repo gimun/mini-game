@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import PhotoSlider from '../components/paegs/PhotoSlider.jsx';
-import PhotoGallery from '../components/paegs/PhotoGallery.jsx';
+import PhotoSlider from '../components/pages/PhotoSlider.jsx';
+import PhotoGallery from '../components/pages/PhotoGallery.jsx';
 import { getMemberName } from '../utils/memberHelper.jsx';
 
 // 가로형 이미지 가져오기
