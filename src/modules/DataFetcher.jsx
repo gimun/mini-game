@@ -1,7 +1,7 @@
 // src/components/DataFetcher.jsx
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../../firebase.js';
+import { db } from '../../firebase.cjs';
 import PropTypes from 'prop-types';
 
 const DataFetcher = ({ collectionName, onDataFetched }) => {
