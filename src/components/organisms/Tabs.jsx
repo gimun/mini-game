@@ -1,62 +1,99 @@
-import PropTypes from 'prop-types';
+// src/components/organisms/Tabs.jsx
+import React from 'react';
 import styled from 'styled-components';
-import { DarkModeStyle } from '../atoms/styles/Typography.jsx';
+import PropTypes from 'prop-types';
+import { media } from '../atoms/styles/media.js';
 
-// TabsContainer는 그대로 유지
-const TabsContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  border-top: 2px solid #2e8b57;
-  border-bottom: 2px solid #2e8b57;
+const TabsWrapper = styled.div`
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  background-color: ${({ theme }) => theme.colors.footerBackground};
+  border-top: ${({ theme, $variant }) =>
+    $variant === 'main'
+      ? `2px solid ${theme.colors.primary}`
+      : `1px solid ${theme.colors.primary}`};
+  border-bottom: ${({ theme, $variant }) =>
+    $variant === 'main'
+      ? `2px solid ${theme.colors.primary}`
+      : `1px solid ${theme.colors.primary}`};
   padding: 0 5px;
-  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
 
-  ${DarkModeStyle}
+  ${media.mobile`
+    flex-direction: column;
+    border-top: 1px solid ${({ theme }) => theme.colors.primary};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
+  `}
 `;
 
-// Tab에서 active를 $active로 변경하여 transient prop으로 설정
-const Tab = styled.button`
+const TabsContainer = styled.div`
+  max-width: ${({ theme }) => theme.breakpoints.desktop};
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  ${media.mobile`
+    flex-direction: column;
+  `}
+`;
+
+const TabButton = styled.button`
   flex: 1;
   background: none;
   border: none;
   padding: 10px 0;
   font-size: clamp(13px, 3vw, 17px);
-  color: ${(props) =>
-    props.$active ? 'rgba(234, 179, 8)' : '#2e8b57'}; // $active로 변경
+  color: ${({ theme, $active }) =>
+    $active ? theme.colors.tabActive : theme.colors.tabInactive};
   font-weight: 450;
   cursor: pointer;
   text-align: center;
   transition: color 0.3s;
 
-  &:focus {
-    outline: none;
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
   }
 
-  /* 다크 모드일 경우 */
-  @media (prefers-color-scheme: dark) {
-    background-color: #121212;
-    color: ${(props) =>
-      props.$active ? 'rgba(234, 179, 8)' : '#ffffff'}; // $active로 변경
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme.colors.secondary};
+    outline-offset: 2px;
   }
+
+  ${media.mobile`
+    padding: 8px 0;
+    font-size: clamp(12px, 4vw, 16px);
+  `}
 `;
 
-const Tabs = ({ tabs, activeTab, onTabChange }) => {
+const Tabs = React.memo(({ tabs, activeTab, onTabChange, variant }) => {
   return (
-    <TabsContainer>
-      {tabs.map((tab) => (
-        <Tab
-          key={tab.key}
-          $active={tab.key === activeTab} // $active로 변경하여 DOM에 전달되지 않도록 처리
-          onClick={() => onTabChange(tab.key)}
-        >
-          {tab.label}
-        </Tab>
-      ))}
-    </TabsContainer>
+    <TabsWrapper $variant={variant} role="tablist">
+      <TabsContainer>
+        {tabs.map((tab) => (
+          <TabButton
+            key={tab.key}
+            $active={tab.key === activeTab}
+            onClick={() => onTabChange(tab.key)}
+            aria-selected={tab.key === activeTab}
+            role="tab"
+          >
+            {tab.label}
+          </TabButton>
+        ))}
+      </TabsContainer>
+    </TabsWrapper>
   );
-};
+});
 
+// displayName 설정
+Tabs.displayName = 'Tabs';
+
+// PropTypes 정의
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
@@ -66,6 +103,7 @@ Tabs.propTypes = {
   ).isRequired,
   activeTab: PropTypes.string.isRequired,
   onTabChange: PropTypes.func.isRequired,
+  variant: PropTypes.oneOf(['main', 'sub']), // 필요시 variant 추가
 };
 
 export default Tabs;

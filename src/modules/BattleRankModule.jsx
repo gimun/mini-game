@@ -1,36 +1,48 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { DarkModeStyle } from '../components/atoms/styles/Typography.jsx';
+// src/modules/BattleRankModule.jsx
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import styled from 'styled-components';
 import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
 import { getMember } from '../utils/memberHelper.jsx';
 import { calculateRankings } from '../utils/dataUtils.js';
-import styled from 'styled-components';
+import { media } from '../components/atoms/styles/media.js'; // 미디어 헬퍼 임포트
 
 // 전체 레이아웃 스타일 정의 (flexbox)
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh; // 페이지 전체 높이 설정
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
-  ${DarkModeStyle}
+  ${media.mobile`
+    padding: 10px;
+  `}
 `;
 
 const MainContent = styled.main`
   flex: 1; // 남은 공간을 모두 차지
+  padding: 20px;
+  background-color: ${({ theme }) => theme.colors.background};
 
-  @media (max-width: 600px) {
-  }
+  ${media.mobile`
+    padding: 15px;
+  `}
 `;
 
-const MainTopContent = styled.div`
+const MainTopContent = styled.section`
   padding: 10px;
   font-size: 14px;
-  color: #0d52ac;
+  color: ${({ theme }) => theme.colors.primary};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.border};
 
   span {
-    color: #0d52ac;
+    color: ${({ theme }) => theme.colors.primary};
     margin-right: 5px;
   }
 
@@ -43,21 +55,15 @@ const MainTopContent = styled.div`
     font-weight: bold;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     font-size: 12px; // 모바일에서 폰트 크기 줄임
     padding: 5px; /* 모바일에서 패딩 줄임 */
-  }
-
-  /* 다크 모드일 경우 */
-  @media (prefers-color-scheme: dark) {
-    border-bottom: 2px solid #ffffff;
-    ${DarkModeStyle}
-  }
+  `}
 `;
 
 const fileName = 'grouped_rank_score.json';
 
-const BattleRankModule = () => {
+const BattleRankModuleComponent = () => {
   const [data, setData] = useState([]);
   const [config, setConfig] = useState({
     sort: { key: 'rank_score', direction: SORT.DESC },
@@ -113,7 +119,7 @@ const BattleRankModule = () => {
         const response = await fetch(`/mock-data/rank/${fileName}`);
         const rankData = await response.json();
 
-        // 데이터에서 멤버 정보를 가져오고, status가 0이거나 멤버가 없는 경우 제외
+        // 데이터에서 멤버 정보를 가져오고, status가 1인 멤버만 포함
         const enrichedData = rankData
           .map((item) => {
             const member = getMember(item[COLUMNS.MEMBER_ID]);
@@ -206,5 +212,14 @@ const BattleRankModule = () => {
     </PageContainer>
   );
 };
+
+// PropTypes 정의
+BattleRankModuleComponent.propTypes = {};
+
+// displayName 설정
+BattleRankModuleComponent.displayName = 'BattleRankModuleComponent';
+
+// React.memo로 최적화된 BattleRankModule 컴포넌트 생성
+const BattleRankModule = React.memo(BattleRankModuleComponent);
 
 export default BattleRankModule;

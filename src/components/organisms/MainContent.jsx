@@ -1,18 +1,23 @@
-import PropTypes from 'prop-types';
+// src/components/organisms/MainContent.jsx
 import styled from 'styled-components';
-import { DarkModeStyle } from '../atoms/styles/Typography.jsx';
+import PropTypes from 'prop-types';
+import { media } from '../atoms/styles/media.js';
 
 const MainContentWrapper = styled.main`
   margin-top: 10px;
+  flex: 1;
+  padding: ${({ theme }) => theme.spacing.medium};
+  background-color: ${({ theme }) => theme.colors.background};
 
-  ${DarkModeStyle}
+  ${media.mobile`
+    padding: ${({ theme }) => theme.spacing.small};
+  `}
 `;
 
 const MainContent = ({ children }) => {
   return <MainContentWrapper>{children}</MainContentWrapper>;
 };
 
-// PropTypes validation
 MainContent.propTypes = {
   children: PropTypes.node,
 };

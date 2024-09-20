@@ -1,12 +1,20 @@
+// src/components/organisms/Footer.jsx
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { media } from '../atoms/styles/media.js';
 
 const FooterWrapper = styled.footer`
-  background-color: #f8f9fa;
+  background-color: ${({ theme }) => theme.colors.footerBackground};
   border-top: 1px solid #ddd;
   text-align: center;
   font-size: 0.9em;
-  color: #6c757d;
+  color: ${({ theme }) => theme.colors.footerText};
+  padding: ${({ theme }) => theme.spacing.small};
+
+  ${media.mobile`
+    font-size: 0.8em;
+    padding: ${({ theme }) => theme.spacing.xsmall};
+  `}
 `;
 
 const Footer = ({ footerText = '개발 중...' }) => {

@@ -1,15 +1,19 @@
-import { useState } from 'react';
-import { DarkModeStyle } from '../atoms/styles/Typography.jsx';
+// src/components/pages/Tab2Page.jsx
+import { Suspense, useState } from 'react';
 import styled from 'styled-components';
-import SubTabs from '../organisms/SubTabs.jsx';
+import Tabs from '../organisms/Tabs.jsx';
 import BattleRankModule from '../../modules/BattleRankModule.jsx';
 import BattleJsonModule from '../../modules/BattleJsonModule.jsx';
 import UnderConstruction3 from '../pages/UnderConstruction3.jsx';
+import { media } from '../atoms/styles/media.js';
 
 const SubTabsWrapper = styled.main`
   background: none;
+  padding: ${({ theme }) => theme.spacing.medium};
 
-  ${DarkModeStyle}
+  ${media.mobile`
+    padding: ${({ theme }) => theme.spacing.small};
+  `}
 `;
 
 const Tab2Page = () => {
@@ -26,12 +30,15 @@ const Tab2Page = () => {
 
   return (
     <SubTabsWrapper>
-      <SubTabs
-        subTabs={subTabs}
-        activeSubTab={activeSubTab}
-        onSubTabChange={handleSubTabChange}
+      <Tabs
+        tabs={subTabs}
+        activeTab={activeSubTab}
+        onTabChange={handleSubTabChange}
+        variant="sub"
       />
-      <div>{activeSubTabInfo?.component}</div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div>{activeSubTabInfo?.component}</div>
+      </Suspense>
     </SubTabsWrapper>
   );
 };

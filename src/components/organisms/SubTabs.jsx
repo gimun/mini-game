@@ -1,68 +1,69 @@
+// src/components/organisms/SubTabs.jsx
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { DarkModeStyle } from '../atoms/styles/Typography.jsx';
+import { media } from '../atoms/styles/media.js';
 
-// SubTabs 스타일링
 const SubTabsContainer = styled.div`
   display: flex;
-  justify-content: space-evenly; /* 서브탭 간격을 전체 너비에서 균등하게 나누기 */
-  position: relative;
-  width: 100%; /* 전체 너비를 차지하도록 설정 */
-  border-bottom: 1px solid #d3d3d3; /* 하단 가로선을 연한 회색(#d3d3d3)으로 얇게 설정 */
-  box-sizing: border-box; /* 패딩과 보더를 포함하여 전체 너비를 계산 */
-  padding: 0 15px; /* 좌우 패딩 */
-  margin-bottom: 10px; /* 하단 마진 */
+  justify-content: space-evenly;
+  width: 100%;
+  border-bottom: 1px solid #d3d3d3;
+  box-sizing: border-box;
+  padding: 0 15px;
+  margin-bottom: 10px;
 
-  /* 다크 모드일 경우 */
-  @media (prefers-color-scheme: dark) {
-    border-bottom: 2px solid #ffffff;
-    ${DarkModeStyle}
-  }
+  ${media.mobile`
+    flex-direction: column;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
+    padding: 0 10px;
+    margin-bottom: 8px;
+  `}
 `;
 
-const SubTab = styled.button`
+const SubTabButton = styled.button`
   flex: 1;
   border: none;
   padding: 10px;
   font-size: clamp(13px, 3vw, 17px);
-  color: ${(props) =>
-    props.$active ? 'rgba(234, 179, 8)' : '#607d8b'}; /* 선택된 서브탭 색상 */
-  font-weight: ${(props) =>
-    props.$active ? '500' : '400'}; /* 선택된 서브탭 굵기 */
+  color: ${({ theme, $active }) =>
+    $active ? theme.colors.subTabActive : theme.colors.subTabInactive};
+  font-weight: ${({ $active }) => ($active ? '500' : '400')};
   cursor: pointer;
   text-align: center;
   transition: color 0.3s;
 
   &:focus {
-    outline: none;
+    outline: 2px solid ${({ theme }) => theme.colors.secondary};
   }
 
-  /* 다크 모드일 경우 */
-  @media (prefers-color-scheme: dark) {
-    background-color: #121212;
-    color: ${(props) =>
-      props.$active ? 'rgba(234, 179, 8)' : '#ffffff'}; // $active로 변경
-  }
+  ${media.mobile`
+    padding: 8px;
+    font-size: clamp(12px, 4vw, 16px);
+  `}
 `;
 
-const SubTabs = ({ subTabs, activeSubTab, onSubTabChange }) => {
+// 명명된 함수로 SubTabs 컴포넌트 정의
+const SubTabsComponent = ({ subTabs, activeSubTab, onSubTabChange }) => {
   return (
-    <SubTabsContainer>
+    <SubTabsContainer role="tablist">
       {subTabs.map((tab) => (
-        <SubTab
+        <SubTabButton
           key={tab.key}
           $active={tab.key === activeSubTab}
           onClick={() => onSubTabChange(tab.key)}
+          aria-selected={tab.key === activeSubTab}
+          role="tab"
         >
           {tab.label}
-        </SubTab>
+        </SubTabButton>
       ))}
     </SubTabsContainer>
   );
 };
 
-// PropTypes validation
-SubTabs.propTypes = {
+// PropTypes 정의
+SubTabsComponent.propTypes = {
   subTabs: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
@@ -72,5 +73,8 @@ SubTabs.propTypes = {
   activeSubTab: PropTypes.string.isRequired,
   onSubTabChange: PropTypes.func.isRequired,
 };
+
+// React.memo로 최적화된 SubTabs 컴포넌트 생성
+const SubTabs = React.memo(SubTabsComponent);
 
 export default SubTabs;

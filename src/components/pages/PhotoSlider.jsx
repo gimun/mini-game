@@ -1,12 +1,14 @@
+// src/components/pages/PhotoSlider.jsx
+import React from 'react';
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
-import { DarkModeStyle } from '../atoms/styles/Typography.jsx';
 import { FiChevronDown, FiChevronUp, FiExternalLink } from 'react-icons/fi';
+import { media } from '../atoms/styles/media.js'; // 미디어 헬퍼 임포트
 
-// styled-components로 스타일 정의 (반응형)
+// 스타일 컴포넌트 정의
 const GalleryWrapper = styled.div`
   max-width: 80%;
   margin: 0 auto;
@@ -16,10 +18,10 @@ const GalleryWrapper = styled.div`
   align-items: center;
   flex-direction: column;
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     max-width: 100%;
     padding: 10px;
-  }
+  `}
 `;
 
 const HeaderWrapper = styled.div`
@@ -27,60 +29,60 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   margin-bottom: 10px;
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     flex-direction: row;
     align-items: center;
-  }
+  `}
 `;
 
-const TitleWrapper = styled.div`
+const TitleButton = styled.button`
   display: flex;
   align-items: center;
-  flex-grow: 1;
-`;
-
-const StyledTitle = styled.h3`
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: ${({ theme }) => theme.fonts.primary};
   font-size: 16px;
-  color: #55679c; /* 제목 색상 */
+  color: ${({ theme }) => theme.colors.titleText};
   font-weight: normal;
-  margin: 0;
+  cursor: pointer;
   text-align: left;
   transition: color 0.3s ease-in-out;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
-  &:hover {
-    color: #55679c; /* 제목 hover 시 색상 */
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.titleHover};
+    outline: none;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     font-size: 14px;
-  }
-
-  ${DarkModeStyle}
+  `}
 `;
 
 const StyledIcon = styled(FiExternalLink)`
   margin-left: 10px;
-  color: #1e2a5e; /* 아이콘 색상 */
+  color: ${({ theme }) => theme.colors.iconColor};
   font-size: 20px;
   transition: color 0.3s ease-in-out;
   cursor: pointer;
 
-  &:hover {
-    color: #1e2a5e; /* 아이콘 hover 시 색상 */
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.iconHover};
+    outline: none;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     font-size: 18px;
     margin-left: 5px;
-  }
-
-  ${DarkModeStyle}
+  `}
 `;
 
 const ToggleButton = styled.button`
@@ -93,25 +95,26 @@ const ToggleButton = styled.button`
 
   svg {
     margin-left: 5px;
-    color: #05486e;
+    color: ${({ theme }) => theme.colors.toggleIconColor};
     font-size: 24px;
-
-    ${DarkModeStyle}
+    transition: color 0.3s ease-in-out;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     svg {
-      color: #04608e;
+      color: ${({ theme }) => theme.colors.toggleIconHover};
     }
+    outline: none;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     padding: 0;
 
     svg {
       font-size: 20px;
     }
-  }
+  `}
 `;
 
 const SliderContainer = styled.div`
@@ -126,9 +129,9 @@ const SliderContainer = styled.div`
     user-select: none;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     max-width: 100%;
-  }
+  `}
 
   .slick-slide,
   img,
@@ -154,7 +157,7 @@ const ImageWrapper = styled.div`
     pointer-events: none;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     width: 300px;
     height: 300px;
 
@@ -162,7 +165,7 @@ const ImageWrapper = styled.div`
       width: 100%;
       height: 100%;
     }
-  }
+  `}
 `;
 
 // react-slick 슬라이더 설정
@@ -179,8 +182,20 @@ const settings = {
   focusOnSelect: false,
 };
 
-// UI 컴포넌트
-const PhotoSlider = ({
+// 추가된 스타일 컴포넌트: NoImagesText
+const NoImagesText = styled.p`
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.text};
+  text-align: center;
+  margin-top: 20px;
+
+  ${media.mobile`
+    font-size: 14px;
+  `}
+`;
+
+// 명명된 함수로 PhotoSlider 컴포넌트 정의
+const PhotoSliderComponent = ({
   title,
   isExpanded,
   toggleSlider,
@@ -188,17 +203,23 @@ const PhotoSlider = ({
   onGalleryClick,
 }) => {
   if (!imageList.length) {
-    return <p>No images found</p>;
+    return <NoImagesText>No images found</NoImagesText>;
   }
 
   return (
     <GalleryWrapper>
       <HeaderWrapper>
-        <TitleWrapper>
-          <StyledTitle onClick={onGalleryClick}>{title}</StyledTitle>
-          <StyledIcon onClick={onGalleryClick} /> {/* 상세보기 아이콘 */}
-        </TitleWrapper>
-        <ToggleButton onClick={toggleSlider}>
+        <TitleButton
+          onClick={onGalleryClick}
+          aria-label={`View gallery: ${title}`}
+        >
+          {title}
+          <StyledIcon aria-hidden="true" />
+        </TitleButton>
+        <ToggleButton
+          onClick={toggleSlider}
+          aria-label={isExpanded ? 'Collapse Slider' : 'Expand Slider'}
+        >
           {isExpanded ? <FiChevronUp /> : <FiChevronDown />}
         </ToggleButton>
       </HeaderWrapper>
@@ -218,7 +239,7 @@ const PhotoSlider = ({
 };
 
 // PropTypes 정의
-PhotoSlider.propTypes = {
+PhotoSliderComponent.propTypes = {
   title: PropTypes.string.isRequired,
   isExpanded: PropTypes.bool.isRequired,
   toggleSlider: PropTypes.func.isRequired,
@@ -228,7 +249,13 @@ PhotoSlider.propTypes = {
       alt: PropTypes.string.isRequired,
     })
   ).isRequired,
-  onGalleryClick: PropTypes.func.isRequired, // 갤러리 클릭 핸들러 추가
+  onGalleryClick: PropTypes.func.isRequired, // 갤러리 클릭 핸들러
 };
+
+// React.memo로 최적화된 PhotoSlider 컴포넌트 생성
+const PhotoSlider = React.memo(PhotoSliderComponent);
+
+// displayName 설정
+PhotoSlider.displayName = 'PhotoSlider';
 
 export default PhotoSlider;

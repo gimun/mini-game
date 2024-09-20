@@ -1,24 +1,56 @@
-import { useState } from 'react';
+// src/components/templates/AppLayout.jsx
+import React, { Suspense, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
-import { DarkModeStyle } from '../atoms/styles/Typography.jsx';
+import { media } from '../atoms/styles/media.js';
 import Header from '../organisms/Header.jsx';
 import Footer from '../organisms/Footer.jsx';
-import MainContent from '../organisms/MainContent.jsx';
 import styled from 'styled-components';
 import MemberJsonModule from '../../modules/MemberJsonModule.jsx';
 import PhotoGalleryModule from '../../modules/PhotoGalleryModule.jsx';
 import HiddenJsonModule from '../../modules/HiddenJsonModule.jsx';
 import Tab2Page from './Tab2Page.jsx';
 
+// 스타일 컴포넌트 정의
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
-  ${DarkModeStyle}
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 `;
 
-const AppLayout = () => {
+const ContentWrapper = styled.main`
+  flex: 1;
+  padding: 20px;
+  background-color: ${({ theme }) => theme.colors.background};
+
+  ${media.mobile`
+    padding: 15px;
+  `}
+`;
+
+const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+
+  p {
+    font-size: 18px;
+    color: ${({ theme }) => theme.colors.primary};
+    font-family: ${({ theme }) => theme.fonts.primary};
+    transition: color 0.3s ease;
+
+    ${media.mobile`
+      font-size: 16px;
+    `}
+  }
+`;
+
+const AppLayoutComponent = () => {
   const [activeTab, setActiveTab] = useState('home');
 
   const tabs = [
@@ -62,7 +94,15 @@ const AppLayout = () => {
   return (
     <LayoutWrapper>
       <Header activeTab={activeTab} onTabChange={handleTabChange} tabs={tabs} />
-      <MainContent>{activeTabInfo?.component}</MainContent>
+      <Suspense
+        fallback={
+          <LoadingWrapper>
+            <p>Loading...</p>
+          </LoadingWrapper>
+        }
+      >
+        <ContentWrapper>{activeTabInfo?.component}</ContentWrapper>
+      </Suspense>
       {activeTabInfo?.showFooter && (
         <Footer footerText={activeTabInfo.footerText} />
       )}
@@ -70,5 +110,14 @@ const AppLayout = () => {
     </LayoutWrapper>
   );
 };
+
+// PropTypes 정의
+AppLayoutComponent.propTypes = {};
+
+// displayName 설정
+AppLayoutComponent.displayName = 'AppLayoutComponent';
+
+// React.memo로 최적화된 AppLayout 컴포넌트 생성
+const AppLayout = React.memo(AppLayoutComponent);
 
 export default AppLayout;

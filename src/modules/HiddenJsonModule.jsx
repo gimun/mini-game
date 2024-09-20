@@ -1,39 +1,52 @@
-import { useCallback, useState, useMemo } from 'react';
-import { DarkModeStyle } from '../components/atoms/styles/Typography.jsx';
+// src/modules/HiddenJsonModule.jsx
+import { useCallback, useState, useMemo, useEffect } from 'react';
+import styled from 'styled-components';
+import { FaTimes, FaSync } from 'react-icons/fa';
 import DataFilteredDisplay from '../components/pages/DataFilteredDisplay.jsx';
 import missionData from '../assets/data/mission_data.json'; // JSON 데이터 import
 import { SORT } from '../constants/Keys.js';
 import { getAllGameNames } from '../utils/gameNameHelper';
-import styled from 'styled-components';
-import { FaTimes, FaSync } from 'react-icons/fa'; // FaSync 아이콘 추가
+import { media } from '../components/atoms/styles/media.js';
 
 // 전체 레이아웃 스타일 정의 (flexbox)
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // 페이지 전체 높이 설정
+  min-height: 100vh; /* 페이지 전체 높이 설정 */
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 `;
 
+// 메인 콘텐츠 스타일
 const MainContent = styled.main`
-  flex: 1; // 남은 공간을 모두 차지
+  flex: 1; /* 남은 공간을 모두 차지 */
+  padding: ${({ theme }) => theme.spacing.medium};
+  background-color: ${({ theme }) => theme.colors.background};
+  transition: padding 0.3s ease;
 
-  @media (max-width: 600px) {
-  }
+  ${media.mobile`
+    padding: ${({ theme }) => theme.spacing.small};
+  `}
 `;
 
+// 푸터 스타일
 const Footer = styled.footer`
-  background-color: #f8f9fa;
+  background-color: ${({ theme }) => theme.colors.footerBackground};
   text-align: center;
-  padding: 20px 0; /* 상하 여백 */
+  padding: ${({ theme }) => theme.spacing.medium} 0;
   font-size: 14px;
-  color: #333;
-  border-top: 1px solid #ddd;
+  color: ${({ theme }) => theme.colors.footerText};
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가 */
-
-  ${DarkModeStyle}
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   a {
-    color: #1230ae;
+    color: ${({ theme }) => theme.colors.primary};
     text-decoration: none; /* 기본 밑줄 제거 */
     font-weight: bold; /* 링크를 강조 */
 
@@ -48,20 +61,21 @@ const Footer = styled.footer`
   }
 
   strong {
-    color: #3282b8; /* 강조된 텍스트 색상 */
+    color: ${({ theme }) => theme.colors.primary}; /* 강조된 텍스트 색상 */
     font-weight: bold;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     font-size: 12px; /* 모바일에서 폰트 크기 줄임 */
-    padding: 10px; /* 모바일에서 패딩 줄임 */
-  }
+    padding: ${({ theme }) => theme.spacing.small} 0; /* 모바일에서 패딩 줄임 */
+  `}
 `;
 
+// 필터 필드셋 스타일
 const FilterFieldset = styled.fieldset`
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
+  margin-bottom: ${({ theme }) => theme.spacing.small};
+  padding: ${({ theme }) => theme.spacing.small};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 4px;
 
   legend {
@@ -70,96 +84,98 @@ const FilterFieldset = styled.fieldset`
     cursor: pointer;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     legend {
       font-size: 14px;
     }
-  }
+  `}
 `;
 
+// 선택된 필터 스타일
 const SelectedFilters = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: ${({ theme }) => theme.spacing.small};
   font-size: 14px;
-  color: #333;
+  color: ${({ theme }) => theme.colors.text};
 
   span {
-    color: #6591bf;
+    color: ${({ theme }) => theme.colors.primary};
     margin-right: 5px;
-    ${DarkModeStyle}
   }
 
-  @media (max-width: 600px) {
-    font-size: 12px; // 모바일에서 폰트 크기 줄임
-  }
+  ${media.mobile`
+    font-size: 12px; /* 모바일에서 폰트 크기 줄임 */
+  `}
 `;
 
+// 필터 태그 스타일
 const FilterTag = styled.span`
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  color: #333;
+  color: ${({ theme }) => theme.colors.text};
 
   svg {
     margin-left: 5px;
     font-size: 12px; /* 아이콘 크기를 작게 설정 */
-    color: #e14444; /* 빨간색 설정 */
+    color: ${({ theme }) => theme.colors.error}; /* 오류 색상으로 설정 */
     cursor: pointer;
   }
 
-  @media (max-width: 600px) {
-    font-size: 12px; // 모바일에서 텍스트 크기 줄임
-  }
+  ${media.mobile`
+    font-size: 12px; /* 모바일에서 텍스트 크기 줄임 */
+  `}
 `;
 
+// 모든 필터 초기화 버튼 스타일
 const AllClearButton = styled.button`
   background: none;
   border: none;
-  color: #0d52ac;
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   font-size: 15px;
   display: flex;
   align-items: center;
+  margin-bottom: ${({ theme }) => theme.spacing.medium};
 
   &:focus {
-    outline: none;
+    outline: 2px solid ${({ theme }) => theme.colors.focus};
+    outline-offset: 2px;
   }
 
   svg {
     margin-left: 5px;
   }
 
-  @media (max-width: 600px) {
-    font-size: 13px; // 모바일에서 폰트 크기 줄임
-  }
-
-  ${DarkModeStyle}
+  ${media.mobile`
+    font-size: 13px; /* 모바일에서 폰트 크기 줄임 */
+  `}
 `;
 
+// 개별 필터 초기화 버튼 스타일
 const ClearButton = styled.button`
   background: none;
   border: none;
-  color: #0d52ac;
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   font-size: 15px;
-  margin-bottom: 10px; /* Clear 버튼을 상단에 배치하고 아래 여백 추가 */
   display: flex;
   align-items: center;
 
   &:focus {
-    outline: none;
+    outline: 2px solid ${({ theme }) => theme.colors.focus};
+    outline-offset: 2px;
   }
 
   svg {
     margin-left: 5px;
   }
 
-  @media (max-width: 600px) {
-    font-size: 13px; // 모바일에서 폰트 크기 줄임
-  }
-
-  ${DarkModeStyle}
+  ${media.mobile`
+    font-size: 13px; /* 모바일에서 폰트 크기 줄임 */
+  `}
 `;
 
+// 체크박스 레이블 스타일
 const CheckboxLabel = styled.label`
   display: flex;
   align-items: center;
@@ -170,7 +186,7 @@ const CheckboxLabel = styled.label`
     margin-right: 5px;
   }
 
-  @media (max-width: 600px) {
+  ${media.mobile`
     margin-right: 10px;
     font-size: 12px;
 
@@ -178,14 +194,16 @@ const CheckboxLabel = styled.label`
       width: 15px;
       height: 15px;
     }
-  }
+  `}
 `;
 
+// 체크박스 그룹 스타일
 const CheckboxGroup = styled.div`
   display: ${({ $isVisible }) => ($isVisible ? 'flex' : 'none')};
   flex-wrap: wrap;
 `;
 
+// HiddenJsonModule 컴포넌트
 const HiddenJsonModule = () => {
   const [data] = useState(missionData);
   const [config, setConfig] = useState({
@@ -198,7 +216,7 @@ const HiddenJsonModule = () => {
     game_name: [],
   });
 
-  const [isRewardFilterVisible, setIsRewardFilterVisible] = useState(true); // 기본적으로 닫혀 있는 상태로 설정
+  const [isRewardFilterVisible, setIsRewardFilterVisible] = useState(false); // 기본적으로 닫혀 있는 상태로 설정
   const [isGameNameFilterVisible, setIsGameNameFilterVisible] = useState(false); // 기본적으로 닫혀 있는 상태로 설정
 
   const rewardTypes = ['캐릭터', '스킨', '코스튬', '배경음'];
@@ -314,15 +332,23 @@ const HiddenJsonModule = () => {
       });
   }, [data, config, filters]);
 
+  // 접근성: 키보드 포커스 관리 (필요 시 추가)
+  useEffect(() => {
+    // 예: 컴포넌트가 마운트될 때 특정 요소에 포커스를 맞추거나 기타 접근성 기능 추가 가능
+  }, []);
+
   return (
     <PageContainer>
       <MainContent>
+        {/* 보상 분류별 필터 */}
         <FilterFieldset>
-          <legend
-            onClick={() => setIsRewardFilterVisible(!isRewardFilterVisible)}
-          >
-            <ClearButton>
-              보상 분류별 필터 {isRewardFilterVisible ? ' ▲' : ' ▼'}
+          <legend>
+            <ClearButton
+              onClick={() => setIsRewardFilterVisible((prev) => !prev)}
+              aria-expanded={isRewardFilterVisible}
+              aria-controls="reward-filter-group"
+            >
+              보상 분류별 필터 {isRewardFilterVisible ? '▲' : '▼'}
             </ClearButton>
           </legend>
           {filters.reward_type.length > 0 && (
@@ -332,12 +358,16 @@ const HiddenJsonModule = () => {
                   {type}
                   <FaTimes
                     onClick={() => clearSingleFilter('reward_type', type)}
+                    aria-label={`Remove filter ${type}`}
                   />
                 </FilterTag>
               ))}
             </SelectedFilters>
           )}
-          <CheckboxGroup $isVisible={isRewardFilterVisible}>
+          <CheckboxGroup
+            id="reward-filter-group"
+            $isVisible={isRewardFilterVisible}
+          >
             {rewardTypes.map((type) => (
               <CheckboxLabel key={type}>
                 <input
@@ -346,6 +376,7 @@ const HiddenJsonModule = () => {
                   value={type}
                   checked={filters.reward_type.includes(type)}
                   onChange={handleCheckboxChange}
+                  aria-label={`Filter by reward type ${type}`}
                 />
                 {type}
               </CheckboxLabel>
@@ -353,12 +384,15 @@ const HiddenJsonModule = () => {
           </CheckboxGroup>
         </FilterFieldset>
 
+        {/* 게임별 필터 */}
         <FilterFieldset>
-          <legend
-            onClick={() => setIsGameNameFilterVisible(!isGameNameFilterVisible)}
-          >
-            <ClearButton>
-              게임별 필터 {isGameNameFilterVisible ? ' ▲' : ' ▼'}
+          <legend>
+            <ClearButton
+              onClick={() => setIsGameNameFilterVisible((prev) => !prev)}
+              aria-expanded={isGameNameFilterVisible}
+              aria-controls="game-name-filter-group"
+            >
+              게임별 필터 {isGameNameFilterVisible ? '▲' : '▼'}
             </ClearButton>
           </legend>
           {filters.game_name.length > 0 && (
@@ -368,12 +402,16 @@ const HiddenJsonModule = () => {
                   {name}
                   <FaTimes
                     onClick={() => clearSingleFilter('game_name', name)}
+                    aria-label={`Remove filter ${name}`}
                   />
                 </FilterTag>
               ))}
             </SelectedFilters>
           )}
-          <CheckboxGroup $isVisible={isGameNameFilterVisible}>
+          <CheckboxGroup
+            id="game-name-filter-group"
+            $isVisible={isGameNameFilterVisible}
+          >
             {gameNames.map((name) => (
               <CheckboxLabel key={name}>
                 <input
@@ -382,6 +420,7 @@ const HiddenJsonModule = () => {
                   value={name}
                   checked={filters.game_name.includes(name)}
                   onChange={handleCheckboxChange}
+                  aria-label={`Filter by game name ${name}`}
                 />
                 {name}
               </CheckboxLabel>
@@ -389,10 +428,15 @@ const HiddenJsonModule = () => {
           </CheckboxGroup>
         </FilterFieldset>
 
-        <AllClearButton onClick={clearAllFilters}>
+        {/* 모든 필터 초기화 버튼 */}
+        <AllClearButton
+          onClick={clearAllFilters}
+          aria-label="Clear all filters"
+        >
           필터 초기화 <FaSync />
         </AllClearButton>
 
+        {/* 데이터 표시 */}
         <DataFilteredDisplay
           data={filteredAndSortedData}
           columns={columns}
@@ -420,6 +464,11 @@ const HiddenJsonModule = () => {
       </Footer>
     </PageContainer>
   );
+};
+
+// PropTypes 정의
+HiddenJsonModule.propTypes = {
+  // 현재는 props를 받지 않으므로 빈 객체
 };
 
 export default HiddenJsonModule;
