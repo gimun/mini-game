@@ -19,7 +19,7 @@ const PageContainer = styled.div`
     color 0.3s ease;
 
   ${media.mobile`
-    padding: 10px;
+    padding: 1px;
   `}
 `;
 
@@ -29,7 +29,7 @@ const MainContent = styled.main`
   background-color: ${({ theme }) => theme.colors.background};
 
   ${media.mobile`
-    padding: 15px;
+    padding: 1px;
   `}
 `;
 
@@ -38,7 +38,7 @@ const MainTopContent = styled.section`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.primary};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-bottom: 2px solid ${({ theme }) => theme.colors.border};
 
   span {

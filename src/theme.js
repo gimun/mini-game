@@ -35,8 +35,8 @@ export const lightTheme = {
     desktop: '1024px',
   },
   spacing: {
-    small: '8px',
-    medium: '16px',
+    small: '2px',
+    medium: '10px',
     large: '24px',
   },
   fonts: {
@@ -79,8 +79,8 @@ export const darkTheme = {
     desktop: '1024px',
   },
   spacing: {
-    small: '8px',
-    medium: '16px',
+    small: '2px',
+    medium: '10px',
     large: '24px',
   },
   fonts: {

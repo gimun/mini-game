@@ -24,11 +24,11 @@ const LayoutWrapper = styled.div`
 
 const ContentWrapper = styled.main`
   flex: 1;
-  padding: 20px;
+  padding: 2px;
   background-color: ${({ theme }) => theme.colors.background};
 
   ${media.mobile`
-    padding: 15px;
+    padding: 1px;
   `}
 `;
 

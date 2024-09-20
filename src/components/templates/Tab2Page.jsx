@@ -9,7 +9,7 @@ import { media } from '../atoms/styles/media.js';
 
 const SubTabsWrapper = styled.main`
   background: none;
-  padding: ${({ theme }) => theme.spacing.medium};
+  padding: ${({ theme }) => theme.spacing.small};
 
   ${media.mobile`
     padding: ${({ theme }) => theme.spacing.small};

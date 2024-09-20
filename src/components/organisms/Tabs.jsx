@@ -36,10 +36,6 @@ const TabsContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-
-  ${media.mobile`
-    flex-direction: column;
-  `}
 `;
 
 const TabButton = styled.button`
