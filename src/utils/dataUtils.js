@@ -7,12 +7,12 @@
  * @returns {Array} - Array of data objects with rank added.
  */
 export const calculateRankings = (data, key) => {
-    // Clone data to avoid mutating original data
-    const sortedData = [...data].sort((a, b) => b[key] - a[key]);
+  // Clone data to avoid mutating original data
+  const sortedData = [...data].sort((a, b) => b[key] - a[key]);
 
-    // Add rank to each item
-    return sortedData.map((item, index) => ({
-        ...item,
-        rank: index + 1
-    }));
+  // Add rank to each item
+  return sortedData.map((item, index) => ({
+    ...item,
+    rank: index + 1,
+  }));
 };

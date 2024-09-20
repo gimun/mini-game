@@ -1,6 +1,7 @@
+// .eslintrc.cjs
 module.exports = {
     root: true,
-    env: {browser: true, es2020: true},
+    env: { browser: true, es2020: true },
     extends: [
         'eslint:recommended',
         'plugin:react/recommended',
@@ -8,7 +9,15 @@ module.exports = {
         'plugin:react-hooks/recommended',
         'plugin:prettier/recommended', // Prettier 추가
     ],
-    ignorePatterns: ['dist', '.eslintrc.cjs'],
+    ignorePatterns: [
+        'dist',
+        'node_modules',
+        '.eslintrc.cjs',
+        '.prettierrc.cjs',
+        'vite.config.js',
+        '.husky/**',
+        'firebase.js',
+    ],
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -17,14 +26,14 @@ module.exports = {
         },
     },
     settings: {
-        react: {version: '18.3.1'}, // package.json과 일치시키기
+        react: { version: '18.3.1' }, // package.json과 일치
     },
     plugins: ['react-refresh', 'prettier'], // Prettier 플러그인 추가
     rules: {
         'react/jsx-no-target-blank': 'off',
         'react-refresh/only-export-components': [
             'warn',
-            {allowConstantExport: true},
+            { allowConstantExport: true },
         ],
         'react/prop-types': 'warn', // PropTypes 경고 활성화
         'prettier/prettier': 'warn', // Prettier 경고 활성화
