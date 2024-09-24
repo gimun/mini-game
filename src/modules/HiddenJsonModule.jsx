@@ -67,7 +67,7 @@ const Footer = styled.footer`
 
   ${media.mobile`
     font-size: 12px; /* 모바일에서 폰트 크기 줄임 */
-    padding: ${({ theme }) => theme.spacing.small} 0; /* 모바일에서 패딩 줄임 */
+    padding: ${({ theme }) => theme.spacing.small}; /* 모바일에서 패딩 줄임 */
   `}
 `;
 
@@ -460,7 +460,7 @@ const HiddenJsonModule = () => {
             미니게임천국 공식 카페
           </a>
         </p>
-        <p>&copy; 2024 mini-game</p>
+        <p>&copy; 2024 고양이는야옹 - 미니게임천국</p>
       </Footer>
     </PageContainer>
   );

@@ -58,6 +58,17 @@ const HeaderSubTitle = styled.div`
   `}
 `;
 
+const RotatedEmoji = styled.span`
+  display: inline-block; /* 회전을 위해 블록 레벨 요소로 변경 */
+  transform: rotate(50deg);
+  margin-left: 1px;
+
+  ${media.mobile`
+    margin-left: 1px;
+    font-size: 1.2em;
+  `}
+`;
+
 const Header = ({ activeTab, onTabChange, tabs }) => {
   return (
     <HeaderWrapper>
@@ -70,7 +81,9 @@ const Header = ({ activeTab, onTabChange, tabs }) => {
             height={72}
           />
         </IconContainer>
-        <HeaderSubTitle>고양이는야옹</HeaderSubTitle>
+        <HeaderSubTitle>
+          고양이는야옹<RotatedEmoji>🐾</RotatedEmoji>
+        </HeaderSubTitle>
       </IconAndTitleWrapper>
       <nav aria-label="Main Navigation">
         <Tabs

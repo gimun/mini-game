@@ -6,6 +6,7 @@ import { media } from './media.js'; // Adjust the import path if necessary
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 5px;
   width: 100%;
   box-sizing: border-box; /* Ensure padding and border are included in the width */
 `;
