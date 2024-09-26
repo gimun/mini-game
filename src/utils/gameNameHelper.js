@@ -24,6 +24,7 @@ export const games = {
   22: { name: '삼단정리' },
   23: { name: '니편내편' },
   24: { name: '가둬가둬' },
+  25: { name: '치매예방' },
 };
 
 // Helper function to get game name by ID

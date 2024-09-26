@@ -7,8 +7,8 @@ import Footer from '../organisms/Footer.jsx';
 import styled from 'styled-components';
 import MemberJsonModule from '../../modules/MemberJsonModule.jsx';
 import PhotoGalleryModule from '../../modules/PhotoGalleryModule.jsx';
-import HiddenJsonModule from '../../modules/HiddenJsonModule.jsx';
 import Tab2Page from './Tab2Page.jsx';
+import Tab2Tip from './Tab2Tip.jsx';
 
 // 스타일 컴포넌트 정의
 const LayoutWrapper = styled.div`
@@ -81,7 +81,7 @@ const AppLayoutComponent = () => {
     {
       key: 'cat-tips',
       label: '냥냥 꿀팁방',
-      component: <HiddenJsonModule />,
+      component: <Tab2Tip />,
       protected: false,
       footerText: '',
       showFooter: false,

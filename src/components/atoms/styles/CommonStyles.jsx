@@ -39,7 +39,6 @@ export const TableHeader = styled.th`
   padding: 10px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   border-right: 1px solid ${({ theme }) => theme.colors.border};
-  flex: ${({ $flex }) => $flex || '1'};
 
   &:last-child {
     border-right: none; /* Remove right border for last column */
@@ -147,5 +146,46 @@ export const SearchInput = styled.input`
     width: 100%; /* Full width on mobile */
     font-size: 16px; /* Ensure font size is adequate */
     padding: 6px; /* Maintain padding */
+  `}
+`;
+
+// TableContainer 스타일 추가
+export const TableContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+
+  @media (max-width: 600px) {
+    padding: 10px; /* 모바일에서 패딩 줄이기 */
+  }
+`;
+
+// SearchButton 스타일링 추가
+export const SearchButton = styled.button`
+  padding: 6px 8px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-left: none;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: white;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primaryHover};
+  }
+
+  &:focus {
+    outline: 2px solid ${({ theme }) => theme.colors.focus};
+    outline-offset: 2px;
+  }
+
+  svg {
+    pointer-events: none;
+  }
+
+  ${media.mobile`
+    padding: 6px;
   `}
 `;

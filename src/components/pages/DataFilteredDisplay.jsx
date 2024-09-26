@@ -1,3 +1,4 @@
+// src/components/pages/DataFilteredDisplay.jsx
 import PropTypes from 'prop-types';
 import { SORT } from '../../constants/Keys.js';
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa';
@@ -7,92 +8,26 @@ import NoData from '../molecules/NoData.jsx';
 import {
   HighlightValue,
   InfoContainer,
-  SearchContainer,
   SortIcon,
-  SearchInput,
-} from '../atoms/styles/CommonStyles.jsx';
+  Table,
+  TableHeader,
+  TableRow,
+  TableData,
+  TableWrapper,
+  TableContainer,
+} from '../atoms/styles/CommonStyles.jsx'; // 스타일 컴포넌트 import
 import styled from 'styled-components';
+import { highlightText } from '../../utils/highlight.jsx'; // 수정된 import
 
-// 테이블 컨테이너 스타일 수정 (모바일 고려)
-const TableWrapper = styled.div`
-  width: 100%;
-  overflow-x: auto; // 수평 스크롤 허용
-  -webkit-overflow-scrolling: touch; // 모바일에서 부드러운 스크롤
-
-  @media (max-width: 600px) {
-  }
-`;
-
-// TableContainer로 이름 변경하여 중복 피함
-const TableContainer = styled.div`
-  padding: 20px;
-
-  @media (max-width: 600px) {
-    padding: 10px; // 모바일에서 패딩 줄이기
-  }
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: auto; // 열의 너비가 콘텐츠에 맞게 조정
-
-  @media (max-width: 600px) {
-    font-size: 12px; // 모바일에서 폰트 크기 줄이기
-  }
-`;
-
-const TableHeader = styled.th`
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  white-space: nowrap;
-  font-size: clamp(12px, 2vw, 16px);
-  border-right: 1px solid #e0e0e0;
-  flex: ${({ $flex }) => $flex || '1'}; // $flex 사용
-
-  &:last-child {
-    border-right: none;
-  }
-
-  @media (max-width: 600px) {
-    font-size: 10px;
-  }
-`;
-
-const TableRow = styled.tr`
-  @media (max-width: 600px) {
-    &:hover {
-      background-color: inherit; // 모바일에서는 호버 효과 제거
-    }
-  }
-`;
-
-const TableData = styled.td`
-  padding: 8px;
-  text-align: ${({ $align }) => $align || 'left'}; // $align으로 변경
-  white-space: nowrap; // 텍스트 줄바꿈 방지
-  font-size: clamp(10px, 1.8vw, 14px); // 반응형 폰트 크기 적용
-  border-right: 1px solid #e0e0e0; // 연한 회색 계열의 수직선 추가
-  border-bottom: 1px solid #ddd;
-
-  &:last-child {
-    border-right: none; // 마지막 열의 경계선 제거
-  }
-
-  @media (max-width: 600px) {
-    font-size: 12px; // 모바일에서 폰트 크기 줄이기
-  }
-`;
-
+// MissionText 스타일링 (별도 styled 컴포넌트)
 const MissionText = styled.span`
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
   font-size: clamp(12px, 1.5vw, 16px); /* 최소 크기와 최대 크기 조정 */
-  white-space: nowrap; // 줄바꿈을 하지 않음
-  overflow: hidden; // 넘칠 경우 숨김
-  text-overflow: ellipsis; // 넘칠 경우 점점점 처리
+  white-space: nowrap; /* 줄바꿈을 하지 않음 */
+  overflow: hidden; /* 넘칠 경우 숨김 */
+  text-overflow: ellipsis; /* 넘칠 경우 점점점 처리 */
   max-width: 100%;
 
   &:hover {
@@ -105,7 +40,7 @@ const MissionText = styled.span`
 `;
 
 // MissionTextComponent
-const MissionTextComponent = ({ text, onClick }) => {
+const MissionTextComponent = ({ text, onClick, searchTerm }) => {
   const textRef = useRef(null);
   const [isEllipsis, setIsEllipsis] = useState(false);
   const [isDragging, setIsDragging] = useState(false); // 드래그 상태 추가
@@ -143,7 +78,7 @@ const MissionTextComponent = ({ text, onClick }) => {
       onTouchStart={handleTouchStart} // 터치 시작 이벤트
       onTouchMove={handleTouchMove} // 터치 이동 이벤트
     >
-      {text}
+      {highlightText(text, searchTerm)}
     </MissionText>
   );
 };
@@ -152,17 +87,18 @@ const MissionTextComponent = ({ text, onClick }) => {
 MissionTextComponent.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  searchTerm: PropTypes.string, // 추가된 searchTerm prop
 };
 
 // DataFilteredDisplay 컴포넌트
-const DataFilteredDisplay = (props) => {
-  const { data, columns, onSort, config, onSearchChange } = props;
-
-  // JavaScript 환경에서 selectedMission의 타입은 string 또는 null로 관리
+const DataFilteredDisplay = ({ data, columns, onSort, config, searchTerm }) => {
+  // 선택된 미션을 관리하는 상태
   const [selectedMission, setSelectedMission] = useState(null);
 
+  // keyColumn 찾기
   const keyColumn = columns.find((col) => col.isKey);
 
+  // 정렬 아이콘 반환 함수
   const getSortIcon = (columnKey) => {
     if (config.sort.key !== columnKey) {
       return (
@@ -183,26 +119,45 @@ const DataFilteredDisplay = (props) => {
     );
   };
 
+  // 숫자 포맷팅 함수
   const formatNumber = (number) => {
     const safeNumber = number != null && !isNaN(number) ? number : 0;
     return new Intl.NumberFormat().format(safeNumber);
   };
 
+  // 각 열의 minWidth을 반환하는 함수
+  const getMinWidth = (key) => {
+    switch (key) {
+      case 'mission_id':
+        return '50px'; // No.
+      case 'reward_type':
+        return '100px'; // 분류
+      case 'game_name':
+        return '150px'; // 게임
+      case 'emblem':
+        return '150px'; // 칭호
+      case 'reward':
+        return '200px'; // 보상
+      case 'mission':
+        return '250px'; // 미션
+      default:
+        return '100px'; // 기본값
+    }
+  };
+
   return (
     <TableContainer>
       <TableWrapper>
-        <SearchContainer>
-          <InfoContainer>
-            Total Count: <HighlightValue>{data.length}</HighlightValue>
-          </InfoContainer>
-          <SearchInput
-            type="text"
-            value={config.search.term}
-            onChange={onSearchChange}
-            placeholder={`Search by ${config.search.placeholder}`}
-          />
-        </SearchContainer>
+        <InfoContainer>
+          총 개수: <HighlightValue>{data.length}</HighlightValue>
+        </InfoContainer>
         <Table>
+          {/* colgroup을 사용하여 열의 최소 너비 설정 */}
+          <colgroup>
+            {columns.map((col) => (
+              <col key={col.key} style={{ minWidth: getMinWidth(col.key) }} />
+            ))}
+          </colgroup>
           <thead>
             <tr>
               {columns.map(
@@ -211,7 +166,7 @@ const DataFilteredDisplay = (props) => {
                     <TableHeader
                       key={col.key}
                       onClick={() => onSort(col.key)}
-                      $flex={col.flex}
+                      // $flex 제거
                     >
                       {col.label}
                       {getSortIcon(col.key)}
@@ -239,17 +194,16 @@ const DataFilteredDisplay = (props) => {
                       >
                         {col.key === 'mission' ? (
                           <MissionTextComponent
-                            text={item[col.key] || 'No mission available'}
+                            text={item[col.key] || '미션 없음'}
                             onClick={() =>
-                              setSelectedMission(
-                                item[col.key] || 'No mission available'
-                              )
+                              setSelectedMission(item[col.key] || '미션 없음')
                             }
+                            searchTerm={searchTerm} // 검색어 전달
                           />
                         ) : col.type === 'number' ? (
                           formatNumber(item[col.key])
                         ) : (
-                          item[col.key]
+                          highlightText(item[col.key], searchTerm) // 검색어 하이라이트 적용
                         )}
                       </TableData>
                     ) : null
@@ -277,10 +231,10 @@ DataFilteredDisplay.propTypes = {
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-      flex: PropTypes.number.isRequired,
       align: PropTypes.string,
       type: PropTypes.string.isRequired,
       isKey: PropTypes.bool,
+      minWidth: PropTypes.string, // 추가된 minWidth prop
     })
   ).isRequired,
   onSort: PropTypes.func.isRequired,
@@ -294,7 +248,7 @@ DataFilteredDisplay.propTypes = {
       placeholder: PropTypes.string,
     }),
   }).isRequired,
-  onSearchChange: PropTypes.func.isRequired,
+  searchTerm: PropTypes.string, // 검색어 prop 추가
 };
 
 export default DataFilteredDisplay;
