@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { SORT } from '../../constants/Keys.js';
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa';
 import { useState, useEffect, useRef } from 'react';
-import Modal from '../molecules/Modal.jsx'; // 모달 컴포넌트 가져오기
+import Modal from '../molecules/Modal.jsx';
 import NoData from '../molecules/NoData.jsx';
 import {
   HighlightValue,
@@ -15,11 +15,10 @@ import {
   TableData,
   TableWrapper,
   TableContainer,
-} from '../atoms/styles/CommonStyles.jsx'; // 스타일 컴포넌트 import
+} from '../atoms/styles/CommonStyles.jsx';
 import styled from 'styled-components';
-import { highlightText } from '../../utils/highlight.jsx'; // 수정된 import
+import { highlightText } from '../atoms/styles/Highlight.jsx';
 
-// MissionText 스타일링 (별도 styled 컴포넌트)
 const MissionText = styled.span`
   display: inline-block;
   cursor: pointer;

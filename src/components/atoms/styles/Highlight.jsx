@@ -1,4 +1,4 @@
-// src/utils/highlight.jsx
+// src/utils/Highlight.jsx
 import styled from 'styled-components';
 
 /**
