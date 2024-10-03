@@ -57,6 +57,7 @@ export const members = {
   55: { name: '핑퐁당', status: 1 },
   56: { name: 'PerFume', status: 1 },
   57: { name: '묘연', status: 1 },
+  58: { name: '수진', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
