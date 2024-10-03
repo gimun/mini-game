@@ -36,7 +36,7 @@ export const TableHeader = styled.th`
   font-size: clamp(12px, 1.5vw, 16px); /* Responsive font size */
   cursor: pointer;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   border-right: 1px solid ${({ theme }) => theme.colors.border};
 
@@ -45,7 +45,7 @@ export const TableHeader = styled.th`
   }
 
   ${media.mobile`
-    padding: 8px;
+    padding: 3px;
     font-size: clamp(12px, 1.5vw, 16px);
   `}
 `;
@@ -64,7 +64,7 @@ export const TableData = styled.td`
   }
 
   ${media.mobile`
-    padding: 8px;
+    padding: 5px;
     font-size: clamp(12px, 1.5vw, 16px);
   `}
 `;
