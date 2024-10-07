@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState, useMemo } from 'react';
 import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { calculateRankings } from '../utils/dataUtils.js';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
-import { getMember } from '../utils/memberHelper.jsx'; // getMember로 변경
+import { getMember, getMemberMBTI } from '../utils/memberHelper.jsx'; // getMember로 변경
 
 const fileName = 'member_data.json';
 
@@ -52,6 +52,13 @@ const MemberJsonModule = () => {
         align: 'center',
         type: 'number',
       },
+      {
+        key: 'mbti',
+        label: 'MBTI',
+        flex: 3,
+        align: 'center',
+        type: 'string',
+      },
     ],
     []
   );
@@ -71,6 +78,7 @@ const MemberJsonModule = () => {
               return {
                 ...item,
                 [COLUMNS.NAME]: member.name,
+                ['mbti']: getMemberMBTI(item[COLUMNS.MEMBER_ID]),
               };
             }
             return null;

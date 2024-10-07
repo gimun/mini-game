@@ -60,6 +60,53 @@ export const members = {
   58: { name: '수진', status: 1 },
 };
 
+export const MBTIType = {
+  ISTJ: 'ISTJ',
+  ISFJ: 'ISFJ',
+  INFJ: 'INFJ',
+  INTJ: 'INTJ',
+  ISTP: 'ISTP',
+  ISFP: 'ISFP',
+  INFP: 'INFP',
+  INTP: 'INTP',
+  ESTP: 'ESTP',
+  ESFP: 'ESFP',
+  ENFP: 'ENFP',
+  ENTP: 'ENTP',
+  ESTJ: 'ESTJ',
+  ESFJ: 'ESFJ',
+  ENFJ: 'ENFJ',
+  ENTJ: 'ENTJ',
+  UNKNOWN: '-',
+};
+
+export const mbtiTypes = {
+  1: MBTIType.ISFJ,
+  44: MBTIType.ISFJ,
+  3: MBTIType.INFJ,
+  25: MBTIType.INFJ,
+  48: MBTIType.ISTP,
+  5: MBTIType.ISFP,
+  38: MBTIType.INFP,
+  23: MBTIType.INTP,
+  41: MBTIType.INTP,
+  17: MBTIType.ESFP,
+  36: MBTIType.ENFP,
+  4: MBTIType.ENFP,
+  9: MBTIType.ENTP,
+};
+
+export function getMemberMBTI(memberId) {
+  const mbti = mbtiTypes[memberId];
+
+  // 해당 멤버에 대한 MBTI 정보가 없으면 '-'를 반환
+  if (!mbti) {
+    return MBTIType.UNKNOWN;
+  }
+
+  return mbti;
+}
+
 // Helper function to get member names with numeric status handling
 export function getMemberName(memberId, includeDeleted = false) {
   const member = members[memberId];
