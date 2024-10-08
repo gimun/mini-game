@@ -1,7 +1,0 @@
-# .prettierignore
-node_modules
-dist
-.prettierrc.cjs
-.eslintrc.cjs
-.husky/**
-vite.config.js

@@ -15,7 +15,6 @@ module.exports = {
         '.eslintrc.cjs',
         '.prettierrc.cjs',
         'vite.config.js',
-        '.husky/**',
         'firebase.js',
     ],
     parserOptions: {
