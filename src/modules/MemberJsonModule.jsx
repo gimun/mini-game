@@ -68,11 +68,11 @@ const MemberJsonModule = () => {
     // fetch로 JSON 데이터 가져오기
     const fetchData = async () => {
       try {
-        // 멤버 데이터 가져오기
+        // 멤버 데이터
         const memberResponse = await fetch(`/mock-data/member/${fileName}`);
         const memberData = await memberResponse.json();
 
-        // MBTI 데이터 가져오기
+        // MBTI 데이터
         const mbtiResponse = await fetch(`/mock-data/member/${mbtiFileName}`);
         const mbtiData = await mbtiResponse.json();
 
