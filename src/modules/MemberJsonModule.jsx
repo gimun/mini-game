@@ -42,7 +42,7 @@ const MemberJsonModule = () => {
       {
         key: COLUMNS.ROLE,
         label: LABELS[COLUMNS.ROLE],
-        flex: 3,
+        flex: 2,
         align: 'center',
         type: 'string',
       },
