@@ -60,26 +60,6 @@ export const members = {
   58: { name: '수진', status: 1 },
 };
 
-export const MBTIType = {
-  ISTJ: 'ISTJ',
-  ISFJ: 'ISFJ',
-  INFJ: 'INFJ',
-  INTJ: 'INTJ',
-  ISTP: 'ISTP',
-  ISFP: 'ISFP',
-  INFP: 'INFP',
-  INTP: 'INTP',
-  ESTP: 'ESTP',
-  ESFP: 'ESFP',
-  ENFP: 'ENFP',
-  ENTP: 'ENTP',
-  ESTJ: 'ESTJ',
-  ESFJ: 'ESFJ',
-  ENFJ: 'ENFJ',
-  ENTJ: 'ENTJ',
-  UNKNOWN: '-',
-};
-
 // Helper function to get member names with numeric status handling
 export function getMemberName(memberId, includeDeleted = false) {
   const member = members[memberId];

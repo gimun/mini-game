@@ -1,5 +1,4 @@
-// src/utils/Highlight.jsx
-import styled from 'styled-components';
+import { HighlightSpan } from './CommonStyles.jsx';
 
 /**
  * 텍스트 내 검색어를 하이라이트합니다.
@@ -26,9 +25,3 @@ export const highlightText = (text, searchTerm) => {
 const escapeRegExp = (string) => {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 };
-
-// 하이라이트 스타일
-const HighlightSpan = styled.span`
-  background-color: yellow;
-  color: black;
-`;

@@ -189,3 +189,8 @@ export const SearchButton = styled.button`
     padding: 6px;
   `}
 `;
+
+export const HighlightSpan = styled.span`
+  background-color: yellow;
+  color: black;
+`;
