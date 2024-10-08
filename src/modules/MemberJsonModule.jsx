@@ -2,9 +2,10 @@ import { useCallback, useEffect, useState, useMemo } from 'react';
 import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { calculateRankings } from '../utils/dataUtils.js';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
-import { getMember, getMemberMBTI } from '../utils/memberHelper.jsx'; // getMember로 변경
+import { getMember } from '../utils/memberHelper.jsx';
 
 const fileName = 'member_data.json';
+const mbtiFileName = 'mbti_data.json';
 
 const MemberJsonModule = () => {
   const [data, setData] = useState([]);
@@ -67,8 +68,13 @@ const MemberJsonModule = () => {
     // fetch로 JSON 데이터 가져오기
     const fetchData = async () => {
       try {
-        const response = await fetch(`/mock-data/member/${fileName}`); // public 폴더에서 가져오는 경로
-        const memberData = await response.json();
+        // 멤버 데이터 가져오기
+        const memberResponse = await fetch(`/mock-data/member/${fileName}`);
+        const memberData = await memberResponse.json();
+
+        // MBTI 데이터 가져오기
+        const mbtiResponse = await fetch(`/mock-data/member/${mbtiFileName}`);
+        const mbtiData = await mbtiResponse.json();
 
         // 데이터에서 멤버 정보를 가져오고, status가 0이거나 멤버가 없는 경우 제외
         const enrichedData = memberData
@@ -78,7 +84,7 @@ const MemberJsonModule = () => {
               return {
                 ...item,
                 [COLUMNS.NAME]: member.name,
-                ['mbti']: getMemberMBTI(item[COLUMNS.MEMBER_ID]),
+                ['mbti']: mbtiData[item[COLUMNS.MEMBER_ID]] || '-',
               };
             }
             return null;

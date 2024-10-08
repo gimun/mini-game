@@ -80,44 +80,6 @@ export const MBTIType = {
   UNKNOWN: '-',
 };
 
-export const mbtiTypes = {
-  35: MBTIType.ISTJ,
-  51: MBTIType.ISTJ,
-  1: MBTIType.ISFJ,
-  44: MBTIType.ISFJ,
-  58: MBTIType.ISFJ,
-  55: MBTIType.ISFJ,
-  57: MBTIType.ISFJ,
-  3: MBTIType.INFJ,
-  25: MBTIType.INFJ,
-  6: MBTIType.INFJ,
-  20: MBTIType.INFJ,
-  48: MBTIType.ISTP,
-  5: MBTIType.ISFP,
-  8: MBTIType.ISFP,
-  45: MBTIType.ISFP,
-  38: MBTIType.INFP,
-  14: MBTIType.INFP,
-  23: MBTIType.INTP,
-  41: MBTIType.INTP,
-  7: MBTIType.INTP,
-  17: MBTIType.ESFP,
-  36: MBTIType.ENFP,
-  4: MBTIType.ENFP,
-  9: MBTIType.ENTP,
-};
-
-export function getMemberMBTI(memberId) {
-  const mbti = mbtiTypes[memberId];
-
-  // 해당 멤버에 대한 MBTI 정보가 없으면 '-'를 반환
-  if (!mbti) {
-    return MBTIType.UNKNOWN;
-  }
-
-  return mbti;
-}
-
 // Helper function to get member names with numeric status handling
 export function getMemberName(memberId, includeDeleted = false) {
   const member = members[memberId];
