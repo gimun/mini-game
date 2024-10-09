@@ -35,7 +35,7 @@ export const FileSelectLabel = styled.label`
   color: ${({ theme }) => theme.colors.text};
 
   ${media.mobile`
-    font-size: 14px;
+    fontSize: '16px', // 모바일 확대 방지용 폰트 크기 설정
   `}
 `;
 
