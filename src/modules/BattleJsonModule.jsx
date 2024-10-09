@@ -1,4 +1,5 @@
 import { useCallback, useState, useEffect, useMemo } from 'react';
+import Select from 'react-select';
 import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
 import { getMemberNameWithDefault } from '../utils/memberHelper.jsx';
@@ -6,10 +7,10 @@ import {
   Container,
   FileSelectContainer,
   FileSelectLabel,
-  FileSelect,
   LoadingMessage,
   ErrorMessage,
 } from '../components/atoms/styles/SelectBoxStyles.jsx';
+import { useTheme } from 'styled-components';
 
 const generateFileOptions = (dates) => {
   return dates.map((date) => {
@@ -52,7 +53,7 @@ const fetchData = async (file) => {
 };
 
 const BattleJsonModule = () => {
-  const [selectedFile, setSelectedFile] = useState(fileOptions[0].value);
+  const [selectedFile, setSelectedFile] = useState(fileOptions[0]);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -61,12 +62,47 @@ const BattleJsonModule = () => {
     search: { term: '', placeholder: LABELS[COLUMNS.NAME] || 'Name' },
   });
 
+  const theme = useTheme();
+
+  const customSelectStyles = {
+    control: (provided) => ({
+      ...provided,
+      backgroundColor: theme.colors.background,
+      color: theme.colors.text,
+      borderColor: theme.colors.border,
+      padding: '6px 10px',
+      borderRadius: '10px',
+      boxShadow: 'none',
+      transition: 'border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease',
+      '&:hover': {
+        borderColor: theme.colors.primary,
+      },
+      '@media (max-width: 768px)': {
+        fontSize: '14px',
+        padding: '6px 8px',
+      },
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? theme.colors.primary : theme.colors.background,
+      color: theme.colors.text,
+    }),
+    menu: (provided) => ({
+      ...provided,
+      backgroundColor: theme.colors.background,
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: theme.colors.text,
+    }),
+  };
+
   const loadData = useCallback(async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const jsonData = await fetchData(selectedFile);
+      const jsonData = await fetchData(selectedFile.value);
       const updatedData = jsonData.map((item) => ({
         ...item,
         [COLUMNS.NAME]: getMemberNameWithDefault(
@@ -161,25 +197,21 @@ const BattleJsonModule = () => {
       });
   }, [data, config]);
 
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.value);
+  const handleFileChange = (selectedOption) => {
+    setSelectedFile(selectedOption);
   };
 
   return (
     <Container>
       <FileSelectContainer>
         <FileSelectLabel htmlFor="file-select"></FileSelectLabel>
-        <FileSelect
+        <Select
           id="file-select"
+          options={fileOptions}
           value={selectedFile}
           onChange={handleFileChange}
-        >
-          {fileOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </FileSelect>
+          styles={customSelectStyles}
+        />
       </FileSelectContainer>
 
       {loading ? (
