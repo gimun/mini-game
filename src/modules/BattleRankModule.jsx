@@ -61,14 +61,15 @@ const MainTopContent = styled.section`
   `}
 `;
 
-const fileName = 'grouped_rank_score.json';
-
-const BattleRankModuleComponent = () => {
+const BattleRankModuleComponent = ({ isMonthly }) => {
   const [data, setData] = useState([]);
   const [config, setConfig] = useState({
     sort: { key: 'rank_score', direction: SORT.DESC },
     search: { term: '', placeholder: LABELS[COLUMNS.NAME] || 'Name' },
   });
+
+  // 종합 랭킹과 월간 랭킹에 따라 파일명을 결정
+  const fileName = isMonthly ? 'monthly_rank_score.json' : 'grouped_rank_score.json';
 
   // 테이블 컬럼 정의
   const columns = useMemo(
@@ -142,7 +143,7 @@ const BattleRankModuleComponent = () => {
     };
 
     fetchData();
-  }, []);
+  }, [fileName]);
 
   const handleSort = useCallback((key) => {
     setConfig((prevConfig) => {
