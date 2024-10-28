@@ -206,5 +206,77 @@
     "emblem": "아는 맛 음미하기",
     "reward": "부드러운 티슈",
     "mission": "올라올라 1회 동안 같은 무지개 단단 구름을 2번 밟아요."
+  },
+  {
+    "mission_id": 303,
+    "reward_type": "캐릭터",
+    "game_name": "갈랑말랑",
+    "emblem": "깔맞춤",
+    "reward": "셸리",
+    "mission": "갈랑말랑 1회 동안 내가 밟고 있는 발판의 색과 동일한 색의 별을 3번 연속으로 얻어요."
+  },
+  {
+    "mission_id": 304,
+    "reward_type": "스킨",
+    "game_name": "갈랑말랑",
+    "emblem": "초코초코초",
+    "reward": "초코 셸리",
+    "mission": "갈랑말랑 1회 동안 같은 초콜릿 발판에 도합 5초 이상 서 있어요."
+  },
+  {
+    "mission_id": 305,
+    "reward_type": "코스튬",
+    "game_name": "갈랑말랑",
+    "emblem": "강심장",
+    "reward": "셸리의 카카오 모자",
+    "mission": "갈랑말랑 1회 동안 3번 이내로 점프하면서 화면 세로 길이의 2배 이상의 길이만큼 낙하해요."
+  },
+  {
+    "mission_id": 306,
+    "reward_type": "코스튬",
+    "game_name": "갈랑말랑",
+    "emblem": "싫증이 난",
+    "reward": "셸리의 코코아",
+    "mission": "갈랑말랑 1회 동안 같은 라인 위에서 3개의 다른 발판을 밟아요."
+  },
+  {
+    "mission_id": 307,
+    "reward_type": "코스튬",
+    "game_name": "갈랑말랑",
+    "emblem": "파도를 타는",
+    "reward": "셸리의 황금 티스푼",
+    "mission": "갈랑말랑 1회 동안 라인의 가장 위 또는 아래를 번갈아가며 점프해서 5라인을 진행해요."
+  },
+  {
+    "mission_id": 308,
+    "reward_type": "스킨",
+    "game_name": "갈랑말랑",
+    "emblem": "와구와구",
+    "reward": "레몬 셸리",
+    "mission": "갈랑말랑 1회 동안 자석 효과를 사용하지 않고 케이크 발판으로 생성된 아이템을 10라인 연속으로 획득해요."
+  },
+  {
+    "mission_id": 309,
+    "reward_type": "코스튬",
+    "game_name": "갈랑말랑",
+    "emblem": "색다른",
+    "reward": "화이트초콜릿 레몬 크림",
+    "mission": "갈랑말랑 1회 동안 직전과 다른 색의 젤리 발판을 연속 20번 밟아요."
+  },
+  {
+    "mission_id": 310,
+    "reward_type": "코스튬",
+    "game_name": "갈랑말랑",
+    "emblem": "올라갑니다",
+    "reward": "레몬 귀걸이",
+    "mission": "갈랑말랑 1회 동안 화면 위쪽에서만 발판을 밟아 20라인 이상 진행해요."
+  },
+  {
+    "mission_id": 311,
+    "reward_type": "코스튬",
+    "game_name": "갈랑말랑",
+    "emblem": "내려갑니다",
+    "reward": "화이트초콜릿 레몬 휘핑",
+    "mission": "갈랑말랑 1회 동안 화면 아래쪽에서만 발판을 밟아 20라인 이상 진행해요."
   }
 ]
