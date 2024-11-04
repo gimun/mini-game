@@ -59,7 +59,7 @@ const AppLayoutComponent = () => {
       label: '냥냥 패밀리',
       component: <MemberJsonModule />,
       protected: false,
-      footerText: '데이터 최신화: 2024-10-28',
+      footerText: '데이터 최신화: 2024-11-04',
       showFooter: true,
     },
     {
@@ -67,7 +67,7 @@ const AppLayoutComponent = () => {
       label: '냥냥 대전',
       component: <Tab2Page />,
       protected: false,
-      footerText: '데이터 최신화: 2024-10-27',
+      footerText: '데이터 최신화: 2024-11-03',
       showFooter: true,
     },
     {
