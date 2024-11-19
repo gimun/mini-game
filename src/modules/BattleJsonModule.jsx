@@ -25,6 +25,7 @@ const generateFileOptions = (dates) => {
 
 // 날짜 배열
 const dates = [
+  new Date('2024-11-17'),
   new Date('2024-11-10'),
   new Date('2024-11-03'),
   new Date('2024-10-27'),
