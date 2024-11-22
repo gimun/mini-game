@@ -79,7 +79,8 @@ const BattleJsonModule = () => {
       padding: '6px 10px',
       borderRadius: '10px',
       boxShadow: 'none',
-      transition: 'border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease',
+      transition:
+        'border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease',
       '&:hover': {
         borderColor: theme.colors.primary,
       },
@@ -90,7 +91,9 @@ const BattleJsonModule = () => {
     }),
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isFocused ? theme.colors.primary : theme.colors.background,
+      backgroundColor: state.isFocused
+        ? theme.colors.primary
+        : theme.colors.background,
       color: theme.colors.text,
     }),
     menu: (provided) => ({

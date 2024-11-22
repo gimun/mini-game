@@ -1,5 +1,6 @@
 // src/modules/BattleRankModule.jsx
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
@@ -69,7 +70,9 @@ const BattleRankModuleComponent = ({ isMonthly }) => {
   });
 
   // 종합 랭킹과 월간 랭킹에 따라 파일명을 결정
-  const fileName = isMonthly ? 'monthly_rank_score.json' : 'grouped_rank_score.json';
+  const fileName = isMonthly
+    ? 'monthly_rank_score.json'
+    : 'grouped_rank_score.json';
 
   // 테이블 컬럼 정의
   const columns = useMemo(
@@ -215,7 +218,9 @@ const BattleRankModuleComponent = ({ isMonthly }) => {
 };
 
 // PropTypes 정의
-BattleRankModuleComponent.propTypes = {};
+BattleRankModuleComponent.propTypes = {
+  isMonthly: PropTypes.bool.isRequired,
+};
 
 // displayName 설정
 BattleRankModuleComponent.displayName = 'BattleRankModuleComponent';

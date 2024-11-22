@@ -23,7 +23,7 @@ export const FileSelectContainer = styled.div`
   display: flex;
   align-items: center;
   padding-top: 10px;
-  
+
   margin-bottom: ${({ theme }) => theme.spacing.small};
 `;
 

@@ -19,8 +19,16 @@ const Tab2Page = () => {
   const [activeSubTab, setActiveSubTab] = useState('subTab1');
 
   const subTabs = [
-    { key: 'subTab1', label: '종합 랭킹', component: <BattleRankModule isMonthly={false} /> },
-    { key: 'subTab2', label: '월간 랭킹', component: <BattleRankModule isMonthly={true} /> },
+    {
+      key: 'subTab1',
+      label: '종합 랭킹',
+      component: <BattleRankModule isMonthly={false} />,
+    },
+    {
+      key: 'subTab2',
+      label: '월간 랭킹',
+      component: <BattleRankModule isMonthly={true} />,
+    },
     { key: 'subTab3', label: '히스토리', component: <BattleJsonModule /> },
   ];
 
