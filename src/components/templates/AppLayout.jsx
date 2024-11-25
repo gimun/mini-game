@@ -67,7 +67,7 @@ const AppLayoutComponent = () => {
       label: '냥냥 대전',
       component: <Tab2Page />,
       protected: false,
-      footerText: '데이터 최신화: 2024-11-17',
+      footerText: '데이터 최신화: 2024-11-24',
       showFooter: true,
     },
     {
