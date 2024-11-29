@@ -73,6 +73,7 @@ export const TableData = styled.td`
 export const TableRow = styled.tr`
   background-color: ${({ theme }) => theme.colors.background};
   transition: background-color 0.3s;
+  white-space: nowrap;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.rowHover};

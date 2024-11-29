@@ -9,7 +9,6 @@ import {
   HighlightValue,
   InfoContainer,
   SortIcon,
-  Table,
   TableHeader,
   TableRow,
   TableData,
@@ -18,6 +17,12 @@ import {
 } from '../atoms/styles/CommonStyles.jsx';
 import styled from 'styled-components';
 import { highlightText } from '../atoms/styles/Highlight.jsx';
+
+export const MissionTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+`;
 
 const MissionText = styled.span`
   display: inline-block;
@@ -124,49 +129,19 @@ const DataFilteredDisplay = ({ data, columns, onSort, config, searchTerm }) => {
     return new Intl.NumberFormat().format(safeNumber);
   };
 
-  // 각 열의 minWidth을 반환하는 함수
-  const getMinWidth = (key) => {
-    switch (key) {
-      case 'mission_id':
-        return '50px'; // No.
-      case 'reward_type':
-        return '100px'; // 분류
-      case 'game_name':
-        return '150px'; // 게임
-      case 'emblem':
-        return '150px'; // 칭호
-      case 'reward':
-        return '200px'; // 보상
-      case 'mission':
-        return '250px'; // 미션
-      default:
-        return '100px'; // 기본값
-    }
-  };
-
   return (
     <TableContainer>
       <TableWrapper>
         <InfoContainer>
           총 개수: <HighlightValue>{data.length}</HighlightValue>
         </InfoContainer>
-        <Table>
-          {/* colgroup을 사용하여 열의 최소 너비 설정 */}
-          <colgroup>
-            {columns.map((col) => (
-              <col key={col.key} style={{ minWidth: getMinWidth(col.key) }} />
-            ))}
-          </colgroup>
+        <MissionTable>
           <thead>
             <tr>
               {columns.map(
                 (col) =>
                   col !== keyColumn && (
-                    <TableHeader
-                      key={col.key}
-                      onClick={() => onSort(col.key)}
-                      // $flex 제거
-                    >
+                    <TableHeader key={col.key} onClick={() => onSort(col.key)}>
                       {col.label}
                       {getSortIcon(col.key)}
                     </TableHeader>
@@ -189,6 +164,7 @@ const DataFilteredDisplay = ({ data, columns, onSort, config, searchTerm }) => {
                       <TableData
                         key={col.key}
                         $align={col.align}
+                        minWidth={col.minWidth}
                         className={col.key === 'mission' ? 'clickable' : ''}
                       >
                         {col.key === 'mission' ? (
@@ -211,7 +187,7 @@ const DataFilteredDisplay = ({ data, columns, onSort, config, searchTerm }) => {
               ))
             )}
           </tbody>
-        </Table>
+        </MissionTable>
       </TableWrapper>
       {/* 모달 표시 */}
       {selectedMission && (
