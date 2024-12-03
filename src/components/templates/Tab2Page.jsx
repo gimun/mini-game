@@ -2,6 +2,7 @@
 import { Suspense, useState } from 'react';
 import styled from 'styled-components';
 import Tabs from '../organisms/Tabs.jsx';
+import BattleRankNewModule from '../../modules/BattleRankNewModule.jsx';
 import BattleRankModule from '../../modules/BattleRankModule.jsx';
 import BattleJsonModule from '../../modules/BattleJsonModule.jsx';
 import { media } from '../atoms/styles/media.js';
@@ -21,15 +22,24 @@ const Tab2Page = () => {
   const subTabs = [
     {
       key: 'subTab1',
-      label: '종합 랭킹',
-      component: <BattleRankModule isMonthly={false} />,
+      label: '종합 랭킹 (new)',
+      component: <BattleRankNewModule isMonthly={false} />,
     },
     {
       key: 'subTab2',
-      label: '월간 랭킹',
-      component: <BattleRankModule isMonthly={true} />,
+      label: '종합 랭킹 (~24.11.24)',
+      component: <BattleRankModule isMonthly={false} />,
     },
-    { key: 'subTab3', label: '히스토리', component: <BattleJsonModule /> },
+    {
+      key: 'subTab11',
+      label: '월간 랭킹',
+      component: <BattleRankNewModule isMonthly={true} />,
+    },
+    {
+      key: 'subTab21',
+      label: '히스토리',
+      component: <BattleJsonModule />,
+    },
   ];
 
   const handleSubTabChange = (tabKey) => setActiveSubTab(tabKey);
