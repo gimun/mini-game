@@ -13,6 +13,7 @@ import {
   TableWrapper,
   SearchInput,
 } from '../atoms/styles/CommonStyles.jsx';
+import { SORT } from '../../constants/Keys.js';
 
 // 수정된 TableHeader, TableData에서 $로 변경하여 transient props로 처리
 const DataDisplay = (props) => {
@@ -29,7 +30,7 @@ const DataDisplay = (props) => {
       ); // $active로 변경
     }
 
-    return config.sort.direction === 'ASC' ? (
+    return config.sort.direction === SORT.ASC ? (
       <SortIcon $active>
         <FaSortUp />
       </SortIcon>
