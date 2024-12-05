@@ -1,71 +1,71 @@
 [
   {
-    "rank": 1,
-    "name": "기무니",
-    "total_score": 285587842,
+    "rank": 2,
+    "name": "무니는 야옹",
+    "total_score": 286582740,
     "role": "대표",
     "member_id": 1
   },
   {
-    "rank": 2,
+    "rank": 1,
     "name": "주키니콩",
-    "total_score": 282671215,
+    "total_score": 289619617,
     "role": "부대표",
     "member_id": 2
   },
   {
     "rank": 3,
-    "name": "유디",
-    "total_score": 207611979,
+    "name": "유디는 야옹",
+    "total_score": 211529012,
     "role": "부대표",
     "member_id": 3
   },
   {
     "rank": 4,
-    "name": "우리집왕떡이",
-    "total_score": 197571375,
+    "name": "왕떡이는 야옹",
+    "total_score": 201991616,
     "role": "부대표",
     "member_id": 4
   },
   {
     "rank": 6,
     "name": "졔타몽",
-    "total_score": 166377248,
+    "total_score": 176680924,
     "role": "부대표",
     "member_id": 5
   },
   {
-    "rank": 11,
-    "name": "비셩이",
+    "rank": 12,
+    "name": "비셩이는 야옹",
     "total_score": 135471061,
     "role": "부대표",
     "member_id": 6
   },
   {
-    "rank": 8,
+    "rank": 7,
     "name": "시간부자무직백수",
-    "total_score": 147035101,
+    "total_score": 172810722,
     "role": "부대표",
     "member_id": 7
   },
   {
-    "rank": 15,
+    "rank": 14,
     "name": "미동",
-    "total_score": 112143114,
+    "total_score": 118923894,
     "role": "장로",
     "member_id": 8
   },
   {
-    "rank": 7,
+    "rank": 8,
     "name": "도라지공주",
-    "total_score": 164915469,
+    "total_score": 168833198,
     "role": "부대표",
     "member_id": 9
   },
   {
     "rank": 5,
     "name": "보석리아",
-    "total_score": 172152326,
+    "total_score": 178258748,
     "role": "장로",
     "member_id": 10
   },
@@ -78,64 +78,64 @@
   },
   {
     "rank": 9,
-    "name": "무명",
-    "total_score": 141470901,
+    "name": "무명이는 야옹",
+    "total_score": 160450419,
     "role": "장로",
     "member_id": 12
   },
   {
-    "rank": 14,
+    "rank": 16,
     "name": "하얀빈 장첸",
-    "total_score": 113064604,
+    "total_score": 114908938,
     "role": "장로",
     "member_id": 13
   },
   {
-    "rank": 12,
+    "rank": 13,
     "name": "고구마깡",
-    "total_score": 122174262,
+    "total_score": 128243627,
     "role": "부대표",
     "member_id": 14
   },
   {
-    "rank": 22,
+    "rank": 23,
     "name": "감자깡",
-    "total_score": 90940486,
+    "total_score": 91018347,
     "role": "장로",
     "member_id": 15
   },
   {
     "rank": 18,
-    "name": "행복한곰이",
-    "total_score": 102172312,
+    "name": "행복한곰이는 야옹",
+    "total_score": 102603946,
     "role": "장로",
     "member_id": 16
   },
   {
-    "rank": 19,
+    "rank": 20,
     "name": "먼지야",
-    "total_score": 96359228,
+    "total_score": 97230689,
     "role": "부대표",
     "member_id": 17
   },
   {
-    "rank": 26,
+    "rank": 28,
     "name": "우당탕탕",
-    "total_score": 81761108,
+    "total_score": 82078000,
     "role": "장로",
     "member_id": 20
   },
   {
-    "rank": 28,
-    "name": "쿵짜자쿵짝",
-    "total_score": 76292494,
+    "rank": 26,
+    "name": "쿵야는 야옹",
+    "total_score": 83336698,
     "role": "장로",
     "member_id": 21
   },
   {
-    "rank": 27,
+    "rank": 25,
     "name": "디제이",
-    "total_score": 79829719,
+    "total_score": 87285661,
     "role": "장로",
     "member_id": 22
   },
@@ -147,98 +147,98 @@
     "member_id": 23
   },
   {
-    "rank": 23,
+    "rank": 22,
     "name": "백현",
-    "total_score": 89292983,
+    "total_score": 91393039,
     "role": "장로",
     "member_id": 25
   },
   {
     "rank": 32,
     "name": "밤양갱",
-    "total_score": 64940412,
+    "total_score": 65462383,
     "role": "장로",
     "member_id": 26
   },
   {
-    "rank": 21,
+    "rank": 19,
     "name": "클라우드",
-    "total_score": 92948095,
+    "total_score": 101223049,
     "role": "장로",
     "member_id": 28
   },
   {
-    "rank": 29,
+    "rank": 30,
     "name": "치즈",
-    "total_score": 74763649,
-    "role": "장로",
+    "total_score": 77863589,
+    "role": "클랜원",
     "member_id": 29
   },
   {
     "rank": 34,
     "name": "유진공주",
-    "total_score": 62972991,
+    "total_score": 63145990,
     "role": "장로",
     "member_id": 30
   },
   {
     "rank": 37,
     "name": "전애옹이다옹",
-    "total_score": 55574395,
+    "total_score": 56700929,
     "role": "장로",
     "member_id": 31
   },
   {
     "rank": 45,
     "name": "오농농",
-    "total_score": 33716082,
+    "total_score": 33892491,
     "role": "장로",
     "member_id": 35
   },
   {
     "rank": 36,
     "name": "고짱이",
-    "total_score": 57063642,
+    "total_score": 60064372,
     "role": "장로",
     "member_id": 36
   },
   {
-    "rank": 43,
+    "rank": 42,
     "name": "보라너굴",
-    "total_score": 41575256,
+    "total_score": 42387997,
     "role": "장로",
     "member_id": 37
   },
   {
     "rank": 41,
     "name": "하눌",
-    "total_score": 44819402,
-    "role": "장로",
+    "total_score": 45935112,
+    "role": "클랜원",
     "member_id": 38
   },
   {
-    "rank": 42,
+    "rank": 43,
     "name": "타기",
-    "total_score": 41871630,
+    "total_score": 42112548,
     "role": "장로",
     "member_id": 39
   },
   {
     "rank": 44,
     "name": "초코칩쿠키",
-    "total_score": 40436819,
+    "total_score": 41776122,
     "role": "장로",
     "member_id": 40
   },
   {
     "rank": 35,
     "name": "티티나나",
-    "total_score": 62583329,
+    "total_score": 62992581,
     "role": "장로",
     "member_id": 41
   },
   {
-    "rank": 39,
+    "rank": 40,
     "name": "슈퍼샤이",
     "total_score": 48108015,
     "role": "장로",
@@ -246,106 +246,99 @@
   },
   {
     "rank": 38,
-    "name": "나무",
-    "total_score": 51834063,
+    "name": "나무는 야옹",
+    "total_score": 55293826,
     "role": "장로",
     "member_id": 44
   },
   {
     "rank": 48,
     "name": "빌런즈",
-    "total_score": 22132322,
+    "total_score": 22166668,
     "role": "클랜원",
     "member_id": 45
   },
   {
-    "rank": 50,
+    "rank": 49,
     "name": "아르미아",
-    "total_score": 16296607,
+    "total_score": 16352957,
     "role": "클랜원",
     "member_id": 46
   },
   {
     "rank": 46,
     "name": "문짱이",
-    "total_score": 26667680,
-    "role": "장로",
+    "total_score": 26925011,
+    "role": "클랜원",
     "member_id": 48
   },
   {
-    "rank": 49,
+    "rank": 47,
     "name": "펭도리",
-    "total_score": 22127811,
-    "role": "장로",
+    "total_score": 23085850,
+    "role": "클랜원",
     "member_id": 49
   },
   {
-    "rank": 40,
+    "rank": 39,
     "name": "조니",
-    "total_score": 47883442,
-    "role": "장로",
+    "total_score": 48572816,
+    "role": "클랜원",
     "member_id": 51
   },
   {
-    "rank": 20,
+    "rank": 21,
     "name": "riguleto",
-    "total_score": 93761405,
+    "total_score": 95295107,
     "role": "장로",
     "member_id": 53
   },
   {
     "rank": 10,
     "name": "닝곰",
-    "total_score": 139252261,
+    "total_score": 157627728,
     "role": "부대표",
     "member_id": 54
   },
   {
-    "rank": 16,
+    "rank": 15,
     "name": "핑퐁당",
-    "total_score": 111162581,
+    "total_score": 116002825,
     "role": "부대표",
     "member_id": 55
   },
   {
-    "rank": 25,
+    "rank": 27,
     "name": "PerFume",
-    "total_score": 82373475,
+    "total_score": 83145306,
     "role": "장로",
     "member_id": 56
   },
   {
     "rank": 24,
     "name": "묘연",
-    "total_score": 88423692,
+    "total_score": 90208308,
     "role": "장로",
     "member_id": 57
   },
   {
     "rank": 31,
     "name": "수진",
-    "total_score": 64962418,
-    "role": "장로",
+    "total_score": 66219424,
+    "role": "클랜원",
     "member_id": 58
   },
   {
-    "rank": 47,
-    "name": "윤ㅇ",
-    "total_score": 24335120,
-    "role": "장로",
-    "member_id": 60
-  },
-  {
-    "rank": 30,
+    "rank": 29,
     "name": "모모토리",
-    "total_score": 66001672,
+    "total_score": 79651435,
     "role": "장로",
     "member_id": 61
   },
   {
-    "rank": 13,
+    "rank": 11,
     "name": "차닝",
-    "total_score": 114712738,
+    "total_score": 149312215,
     "role": "장로",
     "member_id": 62
   }
