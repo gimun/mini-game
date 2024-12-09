@@ -62,7 +62,13 @@ const MainTopContent = styled.section`
   `}
 `;
 
-const BattleRankNewModuleComponent = ({ isMonthly }) => {
+// 테이블 컨테이너 스타일 (가로 스크롤 활성화)
+const TableContainer = styled.div`
+  overflow-x: auto;
+  width: 100%;
+`;
+
+const BattleRankNewModuleComponent = ({ isMonthly, gameCount }) => {
   const [data, setData] = useState([]);
   const [config, setConfig] = useState({
     sort: { key: 'rank_score', direction: SORT.DESC },
@@ -74,9 +80,9 @@ const BattleRankNewModuleComponent = ({ isMonthly }) => {
     ? 'monthly_rank_score.json'
     : 'grouped_rank_score.json';
 
-  // 테이블 컬럼 정의
-  const columns = useMemo(
-    () => [
+  // 동적으로 테이블 컬럼 정의
+  const columns = useMemo(() => {
+    const baseColumns = [
       {
         key: COLUMNS.MEMBER_ID,
         label: '',
@@ -113,30 +119,19 @@ const BattleRankNewModuleComponent = ({ isMonthly }) => {
         align: 'center',
         type: 'number',
       },
-      {
-        key: 'game_1_rank_score',
-        label: '1종목',
-        flex: 4,
-        align: 'center',
-        type: 'number',
-      },
-      {
-        key: 'game_2_rank_score',
-        label: '2종목',
-        flex: 4,
-        align: 'center',
-        type: 'number',
-      },
-      {
-        key: 'game_3_rank_score',
-        label: '3종목',
-        flex: 4,
-        align: 'center',
-        type: 'number',
-      },
-    ],
-    []
-  );
+    ];
+
+    // gameCount에 따라 동적으로 종목 컬럼 추가
+    const gameColumns = Array.from({ length: gameCount }, (_, index) => ({
+      key: `game_${index + 1}_rank_score`,
+      label: `${index + 1}종목`,
+      flex: 4,
+      align: 'center',
+      type: 'number',
+    }));
+
+    return [...baseColumns, ...gameColumns];
+  }, [gameCount]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -241,14 +236,15 @@ const BattleRankNewModuleComponent = ({ isMonthly }) => {
             순위를 건너뛰게 됩니다.
           </p>
         </MainTopContent>
-
-        <DataDisplay
-          data={filteredAndSortedData}
-          columns={columns}
-          onSort={handleSort}
-          config={config}
-          onSearchChange={handleSearchChange}
-        />
+        <TableContainer>
+          <DataDisplay
+            data={filteredAndSortedData}
+            columns={columns}
+            onSort={handleSort}
+            config={config}
+            onSearchChange={handleSearchChange}
+          />
+        </TableContainer>
       </MainContent>
     </PageContainer>
   );
@@ -257,6 +253,7 @@ const BattleRankNewModuleComponent = ({ isMonthly }) => {
 // PropTypes 정의
 BattleRankNewModuleComponent.propTypes = {
   isMonthly: PropTypes.bool.isRequired,
+  gameCount: PropTypes.number.isRequired,
 };
 
 // displayName 설정

@@ -68,7 +68,7 @@ const AppLayoutComponent = () => {
       component: <Tab2Page />,
       protected: false,
       footerText: '데이터 최신화: 2024-11-24',
-      showFooter: true,
+      showFooter: false,
     },
     {
       key: 'cat-images',

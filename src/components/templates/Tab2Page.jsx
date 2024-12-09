@@ -22,22 +22,22 @@ const Tab2Page = () => {
   const subTabs = [
     {
       key: 'subTab1',
-      label: '종합 랭킹 (new)',
-      component: <BattleRankNewModule isMonthly={false} />,
+      label: '월간 랭킹 (new)',
+      component: <BattleRankNewModule isMonthly={false} gameCount={6} />,
     },
     {
-      key: 'subTab2',
+      key: 'subTab11',
+      label: '주간 랭킹',
+      component: <BattleRankNewModule isMonthly={true} gameCount={3} />,
+    },
+    {
+      key: 'subTab20',
       label: '종합 랭킹 (~24.11.24)',
       component: <BattleRankModule isMonthly={false} />,
     },
     {
-      key: 'subTab11',
-      label: '월간 랭킹',
-      component: <BattleRankNewModule isMonthly={true} />,
-    },
-    {
       key: 'subTab21',
-      label: '히스토리',
+      label: '히스토리 (~24.11.24)',
       component: <BattleJsonModule />,
     },
   ];
