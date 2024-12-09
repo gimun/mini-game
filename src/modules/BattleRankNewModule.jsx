@@ -39,8 +39,29 @@ const MainTopContent = styled.section`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.primary};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
   margin-bottom: 10px;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.border};
+  border: 2px solid ${({ theme }) => theme.colors.border}; // 전체 섹션 경계
+  border-radius: 8px; // 부드러운 모서리
+  cursor: pointer; // 클릭 가능하게 설정
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: ${({ theme }) => theme.colors.background}; // 헤더 배경색
+    padding: 5px;
+    border-radius: 8px 8px 0 0; // 상단 모서리만 둥글게
+  }
+
+  .content {
+    margin-top: 10px;
+    padding: 5px;
+    background-color: ${({ theme }) => theme.colors.background}; // 내용 배경색
+    border-top: 2px solid ${({ theme }) => theme.colors.border}; // 헤더와 내용 경계
+    border-radius: 0 0 8px 8px; // 하단 모서리만 둥글게
+    display: ${({ isOpen }) => (isOpen ? 'block' : 'none')}; // 상태에 따라 표시
+  }
 
   span {
     color: ${({ theme }) => theme.colors.primary};
@@ -74,6 +95,9 @@ const BattleRankNewModuleComponent = ({ isMonthly, gameCount }) => {
     sort: { key: 'rank_score', direction: SORT.DESC },
     search: { term: '', placeholder: LABELS[COLUMNS.NAME] || 'Name' },
   });
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleOpen = () => setIsOpen((prev) => !prev);
 
   // 종합 랭킹과 월간 랭킹에 따라 파일명을 결정
   const fileName = isMonthly
@@ -206,35 +230,42 @@ const BattleRankNewModuleComponent = ({ isMonthly, gameCount }) => {
   return (
     <PageContainer>
       <MainContent>
-        <MainTopContent>
-          <p>
-            <strong>🥇 게임 순위별 점수 부여:</strong>
-          </p>
-          <p>- 각 리그에서 참가자들은 순위에 따라 점수를 받습니다.</p>
-          <p>
-            - 1등에게는 50점을, 2등에게는 49점을, 3등에게는 48점을 부여하며,
-            이후 순위에 따라 점수가 1점씩 감소합니다. 즉, 50등은 1점을 받습니다.
-          </p>
-          <p>
-            <strong>🏆 총점 계산:</strong>
-          </p>
-          <p>- 3개의 게임에서 얻은 점수를 합산하여 총점을 산출합니다.</p>
-          <p>
-            - 예를 들어, 3게임 모두 1등을 하면 최대 150점(50점 × 3게임)을 받을
-            수 있습니다.
-          </p>
-          <p>
-            - 이 점수는 매주 갱신되며, 각 리그의 결과에 따라 클랜원들의 총합
-            점수가 재산출됩니다.
-          </p>
-          <p>
-            <strong>🏅 동일 점수 시 동일 순위 부여:</strong>
-          </p>
-          <p>- 동일한 순위를 가진 클랜원들은 같은 순위를 부여받습니다.</p>
-          <p>
-            - 동점으로 인해 동일한 순위를 부여받은 클랜원이 있을 경우, 그만큼의
-            순위를 건너뛰게 됩니다.
-          </p>
+        <MainTopContent isOpen={isOpen}>
+          <div className="header" onClick={toggleOpen}>
+            <strong>📋 점수 산정 기준</strong>
+            <span>{isOpen ? '▲' : '▼'}</span> {/* 상태에 따라 아이콘 변경 */}
+          </div>
+          <div className="content">
+            <p>
+              <strong>🥇 게임 순위별 점수 부여:</strong>
+            </p>
+            <p>- 각 리그에서 참가자들은 순위에 따라 점수를 받습니다.</p>
+            <p>
+              - 1등에게는 50점을, 2등에게는 49점을, 3등에게는 48점을 부여하며,
+              이후 순위에 따라 점수가 1점씩 감소합니다. 즉, 50등은 1점을
+              받습니다.
+            </p>
+            <p>
+              <strong>🏆 총점 계산:</strong>
+            </p>
+            <p>- 3개의 게임에서 얻은 점수를 합산하여 총점을 산출합니다.</p>
+            <p>
+              - 예를 들어, 3게임 모두 1등을 하면 최대 150점(50점 × 3게임)을 받을
+              수 있습니다.
+            </p>
+            <p>
+              - 이 점수는 매주 갱신되며, 각 리그의 결과에 따라 클랜원들의 총합
+              점수가 재산출됩니다.
+            </p>
+            <p>
+              <strong>🏅 동일 점수 시 동일 순위 부여:</strong>
+            </p>
+            <p>- 동일한 순위를 가진 클랜원들은 같은 순위를 부여받습니다.</p>
+            <p>
+              - 동점으로 인해 동일한 순위를 부여받은 클랜원이 있을 경우,
+              그만큼의 순위를 건너뛰게 됩니다.
+            </p>
+          </div>
         </MainTopContent>
         <TableContainer>
           <DataDisplay
