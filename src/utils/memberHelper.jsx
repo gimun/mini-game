@@ -1,6 +1,6 @@
 // Enum-like object with numeric status
 export const members = {
-  1: { name: '기무니는 야옹', status: 1 },
+  1: { name: '무니는 야옹', status: 1 },
   2: { name: '주키니콩', status: 1 },
   3: { name: '유디는 야옹', status: 1 },
   4: { name: '왕떡이는 야옹', status: 1 },
