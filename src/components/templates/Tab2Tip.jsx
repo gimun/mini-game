@@ -21,7 +21,7 @@ const Tab2Tip = () => {
 
   const subTabs = [
     { key: 'subTab1', label: '신규 히든', component: <HiddenNewJsonModule /> },
-    { key: 'subTab2', label: '클래식 히든', component: <HiddenJsonModule /> },
+    { key: 'subTab2', label: '전체 히든', component: <HiddenJsonModule /> },
     { key: 'subTab3', label: 'Sub Tab 3', component: <UnderConstruction3 /> },
   ];
 

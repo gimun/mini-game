@@ -43,11 +43,11 @@ const FooterContainer = styled.footer`
 const Footer = () => (
   <FooterContainer>
     <p>
-      이 페이지는 <strong>물베님</strong>이{' '}
-      <strong>미니게임천국 공식 카페</strong>의<strong>공략&Tip 게시판</strong>
-      에 게시한 자료를 기반으로 검색 기능을 구현한 것입니다. 출처:
+      이 페이지는 <strong>미니게임천국 공식 카페</strong>의
+      <strong>공략&Tip 게시판</strong>에 게시한 자료를 기반으로 검색 기능을
+      구현한 것입니다. 출처:
       <a
-        href="https://cafe.naver.com/minigameparty/31951"
+        href="https://cafe.naver.com/minigameparty"
         target="_blank"
         rel="noopener noreferrer"
       >
