@@ -3,6 +3,7 @@ import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { calculateRankings } from '../utils/dataUtils.js';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
 import { getMember } from '../utils/memberHelper.jsx';
+import jsConfetti from 'js-confetti';
 
 const fileName = 'member_data.json';
 const mbtiFileName = 'mbti_data.json';
@@ -13,6 +14,24 @@ const MemberJsonModule = () => {
     sort: { key: COLUMNS.TOTAL_SCORE, direction: SORT.DESC },
     search: { term: '', placeholder: LABELS[COLUMNS.NAME] || 'Name' },
   });
+  const [isBirthday, setIsBirthday] = useState(false);
+
+  useEffect(() => {
+    // 특정 멤버가 생일인지 확인
+    const checkBirthday = () => {
+      const today = new Date().toISOString().slice(5, 10); // MM-DD 형식
+      const birthday = '12-26'; // 나무는 야옹님의 생일
+      if (today === birthday) {
+        setIsBirthday(true);
+        const confetti = new jsConfetti();
+        confetti.addConfetti({
+          emojis: ['🎉', '✨', '🎊', '🎂'],
+        });
+      }
+    };
+
+    checkBirthday();
+  }, []);
 
   // 테이블 컬럼 정의
   const columns = useMemo(
@@ -143,6 +162,18 @@ const MemberJsonModule = () => {
 
   return (
     <>
+      {isBirthday && (
+        <div
+          style={{
+            textAlign: 'center',
+            padding: '10px',
+            fontSize: '20px',
+            color: 'red',
+          }}
+        >
+          🎉 나무는 야옹님의 생일을 축하합니다! 🎂
+        </div>
+      )}
       <DataDisplay
         data={filteredAndSortedData}
         columns={columns}
