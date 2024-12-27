@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Tabs from '../organisms/Tabs.jsx';
 import HiddenNewJsonModule from '../../modules/HiddenNewJsonModule.jsx';
 import HiddenJsonModule from '../../modules/HiddenJsonModule.jsx';
-import UnderConstruction3 from '../pages/UnderConstruction3.jsx';
+import PodiumComponent from '../pages/PodiumComponent.jsx';
 import { media } from '../atoms/styles/media.js';
 
 const SubTabsWrapper = styled.main`
@@ -22,7 +22,7 @@ const Tab2Tip = () => {
   const subTabs = [
     { key: 'subTab1', label: '신규 히든', component: <HiddenNewJsonModule /> },
     { key: 'subTab2', label: '전체 히든', component: <HiddenJsonModule /> },
-    { key: 'subTab3', label: 'Sub Tab 3', component: <UnderConstruction3 /> },
+    { key: 'subTab3', label: 'Sub Tab 3', component: <PodiumComponent /> },
   ];
 
   const handleSubTabChange = (tabKey) => setActiveSubTab(tabKey);
