@@ -23,7 +23,7 @@ const Tab2Page = () => {
     {
       key: 'subTab1',
       label: '월간 랭킹 (new)',
-      component: <BattleRankNewModule isMonthly={false} gameCount={12} />,
+      component: <BattleRankNewModule isMonthly={false} gameCount={15} />,
     },
     {
       key: 'subTab11',
