@@ -43,7 +43,7 @@ const FooterContainer = styled.footer`
 const Footer = () => (
   <FooterContainer>
     <p>
-      이 페이지는 <strong>미니게임천국 공식 카페</strong>의
+      이 페이지는 <strong>미니게임천국 공식 카페</strong>의{' '}
       <strong>공략&Tip 게시판</strong>에 게시한 자료를 기반으로 검색 기능을
       구현한 것입니다. 출처:
       <a
