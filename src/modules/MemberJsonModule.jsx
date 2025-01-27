@@ -59,13 +59,6 @@ const MemberJsonModule = () => {
         type: 'string',
       },
       {
-        key: COLUMNS.ROLE,
-        label: LABELS[COLUMNS.ROLE],
-        flex: 2,
-        align: 'center',
-        type: 'string',
-      },
-      {
         key: COLUMNS.TOTAL_SCORE,
         label: LABELS[COLUMNS.TOTAL_SCORE],
         flex: 4,
