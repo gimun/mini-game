@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
-import { getMember } from '../utils/memberHelper.jsx';
+import { getMemberNameWithDefault } from '../utils/memberHelper.jsx';
 import { calculateRankings } from '../utils/dataUtils.js';
 import { media } from '../components/atoms/styles/media.js'; // 미디어 헬퍼 임포트
 
@@ -166,14 +166,13 @@ const BattleRankNewModuleComponent = ({ isMonthly, gameCount }) => {
         // 데이터에서 멤버 정보를 가져오고, status가 1인 멤버만 포함
         const enrichedData = rankData
           .map((item) => {
-            const member = getMember(item[COLUMNS.MEMBER_ID]);
-            if (member && member.status === 1) {
-              return {
-                ...item,
-                [COLUMNS.NAME]: member.name,
-              };
-            }
-            return null;
+            return {
+              ...item,
+              [COLUMNS.NAME]: getMemberNameWithDefault(
+                item[COLUMNS.MEMBER_ID],
+                item[COLUMNS.NAME]
+              ),
+            };
           })
           .filter((item) => item !== null);
 
