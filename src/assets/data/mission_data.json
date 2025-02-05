@@ -2550,5 +2550,77 @@
     "emblem": "색채의 마술사",
     "reward": "홀리데이 나잇 창문",
     "mission": "뽀샤뽀샤 1회 동안 폭탄으로 5가지 색 이상의 일반 블록을 한 번에 터뜨려요."
+  },
+  {
+    "mission_id": 330,
+    "reward_type": "캐릭터",
+    "game_name": "저어말어",
+    "emblem": "너 내 동료가 돼라",
+    "reward": "스큐",
+    "mission": "저어말어 1회 동안 15레벨이 될 때까지 등장한 친구가 바뀌지 않아요."
+  },
+  {
+    "mission_id": 331,
+    "reward_type": "스킨",
+    "game_name": "저어말어",
+    "emblem": "예약 손님",
+    "reward": "해적나라 스큐",
+    "mission": "저어말어 1회 동안 곰탱이, 너굴이, 닭병아리, 개굴이, 시드를 순서대로 태워요."
+  },
+  {
+    "mission_id": 332,
+    "reward_type": "코스튬",
+    "game_name": "저어말어",
+    "emblem": "보물 사냥꾼",
+    "reward": "해적나라 선장 모자",
+    "mission": "저어말어 1회 동안 황금 나무통을 터뜨려요."
+  },
+  {
+    "mission_id": 333,
+    "reward_type": "코스튬",
+    "game_name": "저어말어",
+    "emblem": "단골손님",
+    "reward": "해적나라 무시무시 폭탄",
+    "mission": "저어말어 1회 동안 시드를 연속 3번 태워요."
+  },
+  {
+    "mission_id": 334,
+    "reward_type": "코스튬",
+    "game_name": "저어말어",
+    "emblem": "일심동체",
+    "reward": "해적나라 커틀러스",
+    "mission": "저어말어 1회 동안 친구와 동시에 연속 5번 노를 저어요."
+  },
+  {
+    "mission_id": 335,
+    "reward_type": "스킨",
+    "game_name": "저어말어",
+    "emblem": "묘기의 달인",
+    "reward": "바다나라 스큐",
+    "mission": "저어말어 1회 동안 나무통을 밀어내서 암초에 맞혀요."
+  },
+  {
+    "mission_id": 336,
+    "reward_type": "코스튬",
+    "game_name": "저어말어",
+    "emblem": "초보운전",
+    "reward": "말미잘 왕국 왕관",
+    "mission": "저어말어 1회 동안 암초에 연속 3번 부딪혀요."
+  },
+  {
+    "mission_id": 337,
+    "reward_type": "코스튬",
+    "game_name": "저어말어",
+    "emblem": "절대 서행",
+    "reward": "말미잘 왕국 주민",
+    "mission": "저어말어 1회 동안 17레벨까지 등장하는 모든 부스터를 놓쳐요."
+  },
+  {
+    "mission_id": 338,
+    "reward_type": "코스튬",
+    "game_name": "저어말어",
+    "emblem": "깜빡 졸았어",
+    "reward": "말미잘 왕국 진주조개",
+    "mission": "저어말어 1회 동안 친구가 연속 3번 노를 저을 때까지 노를 젓지 않아요."
   }
 ]
