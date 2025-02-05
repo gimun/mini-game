@@ -164,7 +164,7 @@ const DataFilteredDisplay = ({ data, columns, onSort, config, searchTerm }) => {
                       <TableData
                         key={col.key}
                         $align={col.align}
-                        minWidth={col.minWidth}
+                        $minWidth={col.minWidth}
                         className={col.key === 'mission' ? 'clickable' : ''}
                       >
                         {col.key === 'mission' ? (

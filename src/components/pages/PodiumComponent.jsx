@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import UnderConstruction from './UnderConstruction.jsx';
 import cat1 from '../../assets/images/podium/cat-1.webp';
 import cat2 from '../../assets/images/podium/cat-2.webp';
 import cat3 from '../../assets/images/podium/cat-3.webp';
@@ -69,21 +70,24 @@ const RankBadge = styled.div`
 // eslint-disable-next-line react/prop-types
 const PodiumComponent = ({ podiumData }) => {
   return (
-    <Podium>
-      {/* eslint-disable-next-line react/prop-types */}
-      {podiumData.map((step, index) => (
-        <PodiumStep
-          key={index}
-          color={step.color}
-          height={step.height}
-          width={step.width}
-        >
-          <Image src={step.image} alt={`${step.name}'s avatar`} />
-          <Name>{step.name}</Name>
-          <RankBadge badgeColor={step.color}>{index + 1}등</RankBadge>
-        </PodiumStep>
-      ))}
-    </Podium>
+    <>
+      <UnderConstruction />
+      <Podium>
+        {/* eslint-disable-next-line react/prop-types */}
+        {podiumData.map((step, index) => (
+          <PodiumStep
+            key={index}
+            color={step.color}
+            height={step.height}
+            width={step.width}
+          >
+            <Image src={step.image} alt={`${step.name}'s avatar`} />
+            <Name>{step.name}</Name>
+            <RankBadge badgeColor={step.color}>{index + 1}등</RankBadge>
+          </PodiumStep>
+        ))}
+      </Podium>
+    </>
   );
 };
 
