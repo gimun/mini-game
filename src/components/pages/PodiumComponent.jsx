@@ -21,28 +21,28 @@ const PodiumStep = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin: 0 10px;
+  margin: 0 5px;
   background-color: ${({ color }) => color || '#ddd'};
   width: ${({ width }) => width || '80px'};
   height: ${({ height }) => height || '150px'};
   border-radius: 10px;
   text-align: center;
   border: 3px solid #ffffff;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
-  padding-top: 50px; /* 이미지와 시상대 간 여백 */
+  padding-top: 5px; /* 이미지와 시상대 간 여백 */
 `;
 
 const Name = styled.div`
   position: absolute;
-  top: -40px; /* 이름이 이미지 위로 올라오도록 설정 */
+  top: -60px; /* 이름이 이미지 위로 올라오도록 설정 */
   font-size: 14px;
   font-weight: bold;
   color: #333;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 5px 10px;
   border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const Image = styled.img`
@@ -50,14 +50,14 @@ const Image = styled.img`
   height: 60px;
   border-radius: 50%;
   border: 3px solid #fff;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: absolute;
   top: -30px; /* 이미지를 시상대 위로 올림 */
 `;
 
 const RankBadge = styled.div`
   position: absolute;
-  top: 10px; /* 배지가 시상대 상단에 표시되도록 조정 */
+  top: 30px; /* 배지가 시상대 상단에 표시되도록 조정 */
   background-color: ${({ badgeColor }) => badgeColor || '#000'};
   color: #fff;
   font-size: 14px;
@@ -83,7 +83,7 @@ const PodiumComponent = ({ podiumData }) => {
           >
             <Image src={step.image} alt={`${step.name}'s avatar`} />
             <Name>{step.name}</Name>
-            <RankBadge badgeColor={step.color}>{index + 1}등</RankBadge>
+            <RankBadge badgeColor={step.color}>{step.rank}등</RankBadge>
           </PodiumStep>
         ))}
       </Podium>
@@ -94,25 +94,28 @@ const PodiumComponent = ({ podiumData }) => {
 export default function App() {
   const podiumData = [
     {
+      rank: 2,
       name: '왕떡이는 야옹',
       image: cat2,
       color: '#c0c0c0',
       height: '200px',
-      width: '100px',
-    },
-    {
-      name: '무니는 야옹',
-      image: cat1,
-      color: '#ffd700',
-      height: '250px',
       width: '120px',
     },
     {
+      rank: 1,
+      name: '무니는 야옹',
+      image: cat1,
+      color: '#ffd700',
+      height: '240px',
+      width: '120px',
+    },
+    {
+      rank: 3,
       name: '유디는 야옹',
       image: cat3,
       color: '#cd7f32',
-      height: '180px',
-      width: '80px',
+      height: '170px',
+      width: '120px',
     },
   ];
 
