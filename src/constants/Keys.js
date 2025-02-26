@@ -7,7 +7,7 @@ export const COLUMNS = {
   ID: 'id',
   NAME: 'name',
   ROLE: 'role',
-  TOTAL_SCORE: 'total_score',
+  TOTAL_SCORE: 'score',
   SCORE: 'score',
   MEMBER_ID: 'member_id',
   RANK: 'rank',
