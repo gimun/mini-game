@@ -11,7 +11,7 @@ export const members = {
   9: { name: '도라지공주', status: 1 },
   10: { name: '보석리아', status: 1 },
   11: { name: '희크리', status: 1 },
-  12: { name: '무명이는 야옹', status: 0 },
+  12: { name: '무명이는 야옹', status: 1 },
   13: { name: '≈...≈', status: 1 },
   14: { name: '고구마깡', status: 1 },
   15: { name: '감자깡', status: 1 },
@@ -66,7 +66,7 @@ export const members = {
   64: { name: '코코아', status: 1 },
   65: { name: '치즈', status: 1 },
   66: { name: '윤쫑쫑', status: 1 },
-  67: { name: '포챠코', status: 1 },
+  67: { name: '포챠코', status: 0 },
 };
 
 // Helper function to get member names with numeric status handling
