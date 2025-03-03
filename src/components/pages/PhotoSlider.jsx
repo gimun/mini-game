@@ -247,7 +247,7 @@ PhotoSliderComponent.propTypes = {
     PropTypes.shape({
       src: PropTypes.string.isRequired,
       alt: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
   onGalleryClick: PropTypes.func.isRequired, // 갤러리 클릭 핸들러
 };

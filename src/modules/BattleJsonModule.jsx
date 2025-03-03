@@ -117,7 +117,7 @@ const BattleJsonModule = () => {
         ...item,
         [COLUMNS.NAME]: getMemberNameWithDefault(
           item[COLUMNS.MEMBER_ID],
-          item[COLUMNS.NAME]
+          item[COLUMNS.NAME],
         ),
       }));
       setData(updatedData);
@@ -166,7 +166,7 @@ const BattleJsonModule = () => {
         type: 'number',
       },
     ],
-    []
+    [],
   );
 
   const handleSort = useCallback((key) => {
@@ -195,7 +195,7 @@ const BattleJsonModule = () => {
         item[COLUMNS.NAME]
           ?.toString()
           .toLowerCase()
-          .includes(config.search.term.toLowerCase())
+          .includes(config.search.term.toLowerCase()),
       )
       .sort((a, b) => {
         const aValue = a[config.sort.key];

@@ -73,7 +73,7 @@ const MemberJsonModule = () => {
         type: 'string',
       },
     ],
-    []
+    [],
   );
 
   useEffect(() => {
@@ -141,7 +141,7 @@ const MemberJsonModule = () => {
         item[COLUMNS.NAME]
           ?.toString()
           .toLowerCase()
-          .includes(config.search.term.toLowerCase())
+          .includes(config.search.term.toLowerCase()),
       )
       .sort((a, b) => {
         const aValue = a[config.sort.key];

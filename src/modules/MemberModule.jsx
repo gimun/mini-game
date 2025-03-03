@@ -93,7 +93,7 @@ const MemberModule = () => {
     item[COLUMNS.NAME]
       ?.toString()
       .toLowerCase()
-      .includes(config.search.term.toLowerCase())
+      .includes(config.search.term.toLowerCase()),
   );
 
   return (

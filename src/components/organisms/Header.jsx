@@ -104,7 +104,7 @@ Header.propTypes = {
     PropTypes.shape({
       key: PropTypes.string.isRequired, // key 속성으로 변경
       label: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
 };
 

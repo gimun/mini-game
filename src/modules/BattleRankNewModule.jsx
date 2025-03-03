@@ -170,7 +170,7 @@ const BattleRankNewModuleComponent = ({ isMonthly, gameCount }) => {
               ...item,
               [COLUMNS.NAME]: getMemberNameWithDefault(
                 item[COLUMNS.MEMBER_ID],
-                item[COLUMNS.NAME]
+                item[COLUMNS.NAME],
               ),
             };
           })
@@ -214,7 +214,7 @@ const BattleRankNewModuleComponent = ({ isMonthly, gameCount }) => {
         item[COLUMNS.NAME]
           ?.toString()
           .toLowerCase()
-          .includes(config.search.term.toLowerCase())
+          .includes(config.search.term.toLowerCase()),
       )
       .sort((a, b) => {
         const aValue = a[config.sort.key];

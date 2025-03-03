@@ -89,18 +89,18 @@ const useFilterSort = (initialData, columns) => {
           item[field]
             ?.toString()
             .toLowerCase()
-            .includes(config.search.term.toLowerCase())
-        )
+            .includes(config.search.term.toLowerCase()),
+        ),
       )
       .filter(
         (item) =>
           filters.reward_type.length === 0 ||
-          filters.reward_type.includes(item.reward_type)
+          filters.reward_type.includes(item.reward_type),
       )
       .filter(
         (item) =>
           filters.game_name.length === 0 ||
-          filters.game_name.includes(item.game_name)
+          filters.game_name.includes(item.game_name),
       )
       .sort((a, b) => {
         const aValue = a[config.sort.key];

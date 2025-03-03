@@ -145,7 +145,7 @@ const DataFilteredDisplay = ({ data, columns, onSort, config, searchTerm }) => {
                       {col.label}
                       {getSortIcon(col.key)}
                     </TableHeader>
-                  )
+                  ),
               )}
             </tr>
           </thead>
@@ -181,7 +181,7 @@ const DataFilteredDisplay = ({ data, columns, onSort, config, searchTerm }) => {
                           highlightText(item[col.key], searchTerm) // 검색어 하이라이트 적용
                         )}
                       </TableData>
-                    ) : null
+                    ) : null,
                   )}
                 </TableRow>
               ))
@@ -210,7 +210,7 @@ DataFilteredDisplay.propTypes = {
       type: PropTypes.string.isRequired,
       isKey: PropTypes.bool,
       minWidth: PropTypes.string, // 추가된 minWidth prop
-    })
+    }),
   ).isRequired,
   onSort: PropTypes.func.isRequired,
   config: PropTypes.shape({

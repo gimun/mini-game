@@ -9,7 +9,7 @@ const horizontalImages = import.meta.glob(
   {
     eager: true,
     query: { w: 800, format: 'webp' },
-  }
+  },
 );
 
 // 세로형 이미지 가져오기
@@ -18,7 +18,7 @@ const verticalImages = import.meta.glob(
   {
     eager: true,
     query: { h: 800, format: 'webp' },
-  }
+  },
 );
 
 // 가로형 이미지를 배열로 변환
@@ -27,7 +27,7 @@ const horizontalImageList = Object.entries(horizontalImages).map(
     src: module.default,
     alt: `Horizontal cat image from ${path.split('/').pop()}`,
     name: path.split('/').pop(),
-  })
+  }),
 );
 
 // 세로형 이미지를 배열로 변환
@@ -36,7 +36,7 @@ const verticalImageList = Object.entries(verticalImages).map(
     src: module.default,
     alt: `Vertical cat image from ${path.split('/').pop()}`,
     name: path.split('/').pop(),
-  })
+  }),
 );
 
 // 전체 이미지 리스트 (가로형과 세로형을 합침)
@@ -83,7 +83,7 @@ const PhotoGalleryModule = () => {
   // 멤버 이름 클릭 시 갤러리로 이동
   const openGallery = (member_id) => {
     const selected = galleries.find(
-      (gallery) => gallery.member_id === member_id
+      (gallery) => gallery.member_id === member_id,
     );
     setSelectedGallery({
       title: selected.title,

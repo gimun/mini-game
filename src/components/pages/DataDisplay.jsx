@@ -74,7 +74,7 @@ const DataDisplay = (props) => {
                       {col.label}
                       {getSortIcon(col.key)}
                     </TableHeader>
-                  )
+                  ),
               )}
             </tr>
           </thead>
@@ -82,7 +82,7 @@ const DataDisplay = (props) => {
             {data.map(
               (
                 item,
-                index // key에 index 추가하여 고유하게 만듦
+                index, // key에 index 추가하여 고유하게 만듦
               ) => (
                 <TableRow key={`${item[keyColumn.key]}-${index}`}>
                   {columns.map((col) =>
@@ -95,10 +95,10 @@ const DataDisplay = (props) => {
                           ? formatNumber(item[col.key])
                           : item[col.key]}
                       </TableData>
-                    ) : null
+                    ) : null,
                   )}
                 </TableRow>
-              )
+              ),
             )}
           </tbody>
         </Table>
@@ -117,7 +117,7 @@ DataDisplay.propTypes = {
       align: PropTypes.string,
       type: PropTypes.string.isRequired,
       isKey: PropTypes.bool,
-    })
+    }),
   ).isRequired,
   onSort: PropTypes.func.isRequired,
   config: PropTypes.shape({

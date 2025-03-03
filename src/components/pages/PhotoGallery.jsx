@@ -84,7 +84,7 @@ PhotoGallery.propTypes = {
     PropTypes.shape({
       src: PropTypes.string.isRequired,
       alt: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
   onBackClick: PropTypes.func.isRequired, // 뒤로가기 버튼 클릭 시 실행될 함수
 };

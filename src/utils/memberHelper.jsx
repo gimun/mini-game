@@ -89,7 +89,7 @@ export function getMemberName(memberId, includeDeleted = false) {
 export function getMemberNameWithDefault(
   memberId,
   defaultName,
-  includeDeleted = false
+  includeDeleted = false,
 ) {
   const member = members[memberId];
 

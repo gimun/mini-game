@@ -13,7 +13,7 @@ export const highlightText = (text, searchTerm) => {
   const parts = text.split(regex);
 
   return parts.map((part, index) =>
-    regex.test(part) ? <HighlightSpan key={index}>{part}</HighlightSpan> : part
+    regex.test(part) ? <HighlightSpan key={index}>{part}</HighlightSpan> : part,
   );
 };
 

@@ -114,7 +114,7 @@ const BattleRankModuleComponent = ({ isMonthly }) => {
         type: 'number',
       },
     ],
-    []
+    [],
   );
 
   useEffect(() => {
@@ -175,7 +175,7 @@ const BattleRankModuleComponent = ({ isMonthly }) => {
         item[COLUMNS.NAME]
           ?.toString()
           .toLowerCase()
-          .includes(config.search.term.toLowerCase())
+          .includes(config.search.term.toLowerCase()),
       )
       .sort((a, b) => {
         const aValue = a[config.sort.key];
