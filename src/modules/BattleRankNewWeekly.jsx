@@ -179,7 +179,7 @@ const BattleRankNewWeeklyComponent = ({ gameCount }) => {
           }))
           .filter((item) => item !== null);
 
-        setData(calculateRankings(enrichedData, 'rank_score'));
+        setData(enrichedData);
       } catch (error) {
         console.error('데이터 로드 중 오류 발생:', error);
       }

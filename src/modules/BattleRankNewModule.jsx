@@ -174,9 +174,7 @@ const BattleRankNewModuleComponent = ({ gameCount }) => {
           })
           .filter((item) => item !== null);
 
-        // 점수에 따라 랭킹을 계산한 데이터
-        const rankedData = calculateRankings(enrichedData, 'rank_score');
-        setData(rankedData);
+        setData(enrichedData);
       } catch (error) {
         console.error('데이터를 가져오는 중 에러가 발생했습니다:', error);
       }
