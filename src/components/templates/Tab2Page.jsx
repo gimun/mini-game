@@ -3,6 +3,7 @@ import { Suspense, useState } from 'react';
 import styled from 'styled-components';
 import Tabs from '../organisms/Tabs.jsx';
 import BattleRankNewModule from '../../modules/BattleRankNewModule.jsx';
+import BattleRankNewWeekly from '../../modules/BattleRankNewWeekly.jsx';
 import BattleRankModule from '../../modules/BattleRankModule.jsx';
 import BattleJsonModule from '../../modules/BattleJsonModule.jsx';
 import { media } from '../atoms/styles/media.js';
@@ -23,12 +24,12 @@ const Tab2Page = () => {
     {
       key: 'subTab1',
       label: '월간 랭킹 (new)',
-      component: <BattleRankNewModule isMonthly={false} gameCount={12} />,
+      component: <BattleRankNewModule gameCount={12} />,
     },
     {
       key: 'subTab11',
       label: '주간 랭킹',
-      component: <BattleRankNewModule isMonthly={true} gameCount={3} />,
+      component: <BattleRankNewWeekly gameCount={3} />,
     },
     {
       key: 'subTab20',

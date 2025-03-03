@@ -1,4 +1,4 @@
-// src/modules/BattleRankNewModule.jsx
+// src/modules/BattleRankNewWeekly.jsx
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -6,13 +6,13 @@ import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
 import { getMemberNameWithDefault } from '../utils/memberHelper.jsx';
 import { calculateRankings } from '../utils/dataUtils.js';
-import { media } from '../components/atoms/styles/media.js'; // 미디어 헬퍼 임포트
+import { media } from '../components/atoms/styles/media.js';
 
-// 전체 레이아웃 스타일 정의 (flexbox)
+// 스타일 정의
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh; // 페이지 전체 높이 설정
+  min-height: 100vh;
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
   transition:
@@ -89,7 +89,7 @@ const TableContainer = styled.div`
   width: 100%;
 `;
 
-const BattleRankNewModuleComponent = ({ gameCount }) => {
+const BattleRankNewWeeklyComponent = ({ gameCount }) => {
   const [data, setData] = useState([]);
   const [config, setConfig] = useState({
     sort: { key: 'rank_score', direction: SORT.DESC },
@@ -99,10 +99,9 @@ const BattleRankNewModuleComponent = ({ gameCount }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
-  // 종합 랭킹과 월간 랭킹에 따라 파일명을 결정
-  const fileName = 'grouped_rank_score.json';
+  // 월간 랭킹 전용 JSON 파일 로드
+  const fileName = 'monthly_rank_score.json';
 
-  // 동적으로 테이블 컬럼 정의
   const columns = useMemo(() => {
     const baseColumns = [
       {
@@ -136,7 +135,7 @@ const BattleRankNewModuleComponent = ({ gameCount }) => {
       },
       {
         key: 'rank_score',
-        label: '종합 점수',
+        label: '총점',
         flex: 4,
         align: 'center',
         type: 'number',
@@ -144,13 +143,22 @@ const BattleRankNewModuleComponent = ({ gameCount }) => {
     ];
 
     // gameCount에 따라 동적으로 종목 컬럼 추가
-    const gameColumns = Array.from({ length: gameCount }, (_, index) => ({
-      key: `game_${index + 1}_rank_score`,
-      label: `${index + 1}종목`,
-      flex: 4,
-      align: 'center',
-      type: 'number',
-    }));
+    const gameColumns = Array.from({ length: gameCount }, (_, index) => [
+      {
+        key: `game_${index + 1}_rank_score`,
+        label: `${index + 1}종목`,
+        flex: 4,
+        align: 'center',
+        type: 'number',
+      },
+      {
+        key: `game_${index + 1}_score`,
+        label: `${index + 1}종목 상세`,
+        flex: 4,
+        align: 'center',
+        type: 'number',
+      },
+    ]).flat();
 
     return [...baseColumns, ...gameColumns];
   }, [gameCount]);
@@ -161,24 +169,19 @@ const BattleRankNewModuleComponent = ({ gameCount }) => {
         const response = await fetch(`/mock-data/rank_battle/${fileName}`);
         const rankData = await response.json();
 
-        // 데이터에서 멤버 정보를 가져오고, status가 1인 멤버만 포함
         const enrichedData = rankData
-          .map((item) => {
-            return {
-              ...item,
-              [COLUMNS.NAME]: getMemberNameWithDefault(
-                item[COLUMNS.MEMBER_ID],
-                item[COLUMNS.NAME],
-              ),
-            };
-          })
+          .map((item) => ({
+            ...item,
+            [COLUMNS.NAME]: getMemberNameWithDefault(
+              item[COLUMNS.MEMBER_ID],
+              item[COLUMNS.NAME],
+            ),
+          }))
           .filter((item) => item !== null);
 
-        // 점수에 따라 랭킹을 계산한 데이터
-        const rankedData = calculateRankings(enrichedData, 'rank_score');
-        setData(rankedData);
+        setData(calculateRankings(enrichedData, 'rank_score'));
       } catch (error) {
-        console.error('데이터를 가져오는 중 에러가 발생했습니다:', error);
+        console.error('데이터 로드 중 오류 발생:', error);
       }
     };
 
@@ -279,14 +282,14 @@ const BattleRankNewModuleComponent = ({ gameCount }) => {
 };
 
 // PropTypes 정의
-BattleRankNewModuleComponent.propTypes = {
+BattleRankNewWeeklyComponent.propTypes = {
   gameCount: PropTypes.number.isRequired,
 };
 
 // displayName 설정
-BattleRankNewModuleComponent.displayName = 'BattleRankNewModuleComponent';
+BattleRankNewWeeklyComponent.displayName = 'BattleRankNewWeeklyComponent';
 
 // React.memo로 최적화된 BattleRankModule 컴포넌트 생성
-const BattleRankNewModule = React.memo(BattleRankNewModuleComponent);
+const BattleRankNewWeekly = React.memo(BattleRankNewWeeklyComponent);
 
-export default BattleRankNewModule;
+export default BattleRankNewWeekly;
