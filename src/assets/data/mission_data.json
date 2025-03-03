@@ -2622,5 +2622,69 @@
     "emblem": "깜빡 졸았어",
     "reward": "말미잘 왕국 진주조개",
     "mission": "저어말어 1회 동안 친구가 연속 3번 노를 저을 때까지 노를 젓지 않아요."
+  },
+  {
+    "mission_id": 339,
+    "reward_type": "캐릭터",
+    "game_name": "잡아잡아",
+    "emblem": "친구가 필요해",
+    "reward": "드로니",
+    "mission": "잡아잡아 1회 동안 꼬리 친구를 한 명도 잃지 않고 70초 버텨요."
+  },
+  {
+    "mission_id": 340,
+    "reward_type": "코스튬",
+    "game_name": "잡아잡아",
+    "emblem": "붕어빵 3개에 천원",
+    "reward": "백신 가방 미니 드로니",
+    "mission": "잡아잡아 1회 동안 꼬리 친구 붕어빵으로 버섯돌이를 3번 잡아요."
+  },
+  {
+    "mission_id": 341,
+    "reward_type": "코스튬",
+    "game_name": "잡아잡아",
+    "emblem": "쌀과 보리가 자란다",
+    "reward": "카누용 노",
+    "mission": "잡아잡아 1회 동안 친구와 폭탄을 번갈아서 연속 4번 잡아요."
+  },
+  {
+    "mission_id": 342,
+    "reward_type": "코스튬",
+    "game_name": "잡아잡아",
+    "emblem": "좁고 깊은 인간관계",
+    "reward": "토끼의 당근 한 입",
+    "mission": "잡아잡아 1회 동안 ?????."
+  },
+  {
+    "mission_id": 343,
+    "reward_type": "코스튬",
+    "game_name": "잡아잡아",
+    "emblem": "옴짝달싹",
+    "reward": "비상구 안내",
+    "mission": "잡아잡아 1회 동안 1회 동안 한쪽 벽에 20초 이상 가만히 서 있어요."
+  },
+  {
+    "mission_id": 344,
+    "reward_type": "코스튬",
+    "game_name": "잡아잡아",
+    "emblem": "질서정연한",
+    "reward": "백신의 효능",
+    "mission": "잡아잡아 1회 동안 ?????."
+  },
+  {
+    "mission_id": 345,
+    "reward_type": "코스튬",
+    "game_name": "잡아잡아",
+    "emblem": "나이스 캐치",
+    "reward": "백신 캡슐",
+    "mission": "잡아잡아 1회 동안 양쪽에서 날아오는 친구를 동시에 내 캐릭터로 잡아요."
+  },
+  {
+    "mission_id": 346,
+    "reward_type": "스킨",
+    "game_name": "잡아잡아",
+    "emblem": "구미호? 아니 삼미호!",
+    "reward": "백신 드로니",
+    "mission": "잡아잡아 1회 동안 꼬리 친구를 3명 이상 모은 다음 뒤에서부터 순서대로 없애요."
   }
 ]

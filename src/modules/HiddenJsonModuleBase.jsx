@@ -137,6 +137,7 @@ const HiddenJsonModuleBase = ({ missionData, showFooter = false }) => {
             placeholder={config.search.placeholder}
             value={searchInput}
             onChange={handleSearchInputChange}
+            onKeyDown={(e) => e.key === 'Enter' && triggerSearch()}
             aria-label="검색"
           />
           <SearchButton onClick={triggerSearch} aria-label="검색">
