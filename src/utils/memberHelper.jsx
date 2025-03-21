@@ -62,7 +62,7 @@ export const members = {
   60: { name: '윤ㅇ', status: 0 },
   61: { name: '모모토리는 야옹', status: 1 },
   62: { name: '차닝', status: 1 },
-  63: { name: '듕이쓰', status: 1 },
+  63: { name: '듕이쓰', status: 0 },
   64: { name: '코코아', status: 1 },
   65: { name: '치즈', status: 1 },
   66: { name: '윤쫑쫑', status: 1 },
