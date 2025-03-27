@@ -8,7 +8,7 @@ export const members = {
   6: { name: '비셩이는 야옹', status: 1 },
   7: { name: '시간부자무직백수', status: 1 },
   8: { name: '미동', status: 1 },
-  9: { name: '도라지공주', status: 1 },
+  9: { name: '도라지공주', status: 0 },
   10: { name: '보석리아', status: 1 },
   11: { name: '희크리', status: 1 },
   12: { name: '무명이는 야옹', status: 1 },
