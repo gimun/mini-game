@@ -30,6 +30,7 @@ export const games = {
   28: { name: '뽀샤뽀샤' },
   29: { name: '저어말어' },
   30: { name: '잡아잡아' },
+  31: { name: '털썩털썩' },
 };
 
 // Helper function to get game name by ID
@@ -37,7 +38,6 @@ export function getGameName(gameId) {
   const game = games[gameId];
 
   if (!game) {
-    console.error(`Game not found for ID: ${gameId}`);
     return 'Unknown Game';
   }
 

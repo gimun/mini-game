@@ -45,7 +45,7 @@
     "game_name": "잡아잡아",
     "emblem": "질서정연한",
     "reward": "백신의 효능",
-    "mission": "잡아잡아 1회 동안 ?????."
+    "mission": "잡아잡아 1회 동안 방향을 50번 바꾸고 5번째 친구를 잡아요."
   },
   {
     "mission_id": 345,
@@ -62,5 +62,69 @@
     "emblem": "구미호? 아니 삼미호!",
     "reward": "백신 드로니",
     "mission": "잡아잡아 1회 동안 꼬리 친구를 3명 이상 모은 다음 뒤에서부터 순서대로 없애요."
+  },
+  {
+    "mission_id": 347,
+    "reward_type": "캐릭터",
+    "game_name": "털썩털썩",
+    "emblem": "황금 보기를 돌같이 하는",
+    "reward": "듀고",
+    "mission": "털썩털썩 1회 동안 5레벨까지 콤보를 얻지 않아요."
+  },
+  {
+    "mission_id": 348,
+    "reward_type": "스킨",
+    "game_name": "털썩털썩",
+    "emblem": "저층 선호",
+    "reward": "식사 당번 듀고",
+    "mission": "털썩털썩 1회 동안 화면 중앙을 넘어 올라오지 않고 발판 30개를 밟아요."
+  },
+  {
+    "mission_id": 349,
+    "reward_type": "코스튬",
+    "game_name": "털썩털썩",
+    "emblem": "샹들리에",
+    "reward": "단순하고 튼튼한 모험가의 두건",
+    "mission": "털썩털썩 1회 동안 공중에서 방향을 4번 바꿔요"
+  },
+  {
+    "mission_id": 350,
+    "reward_type": "코스튬",
+    "game_name": "털썩털썩",
+    "emblem": "돌벽의 뒤편",
+    "reward": "단순하고 튼튼한 모험가의 옷",
+    "mission": "털썩털썩 1회 동안 화면 바깥에서 5초 동안 머물러요."
+  },
+  {
+    "mission_id": 351,
+    "reward_type": "코스튬",
+    "game_name": "털썩털썩",
+    "emblem": "돌다리 안전진단",
+    "reward": "가장 단순한 몽둥이",
+    "mission": "털썩털썩 1회 동안 1번 밟았던 발판을 5번 더 밟아요."
+  },
+  {
+    "mission_id": 352,
+    "reward_type": "코스튬",
+    "game_name": "털썩털썩",
+    "emblem": "바실리스크와 마주친",
+    "reward": "화살 맞은 식사 당번 모자",
+    "mission": "털썩털썩 1회 동안 게임 시작 후 8초 동안 가만히 있어요."
+  },
+  {
+    "mission_id": 353,
+    "reward_type": "코스튬",
+    "game_name": "털썩털썩",
+    "emblem": "우주에서 온 색채",
+    "reward": "식사 당번의 재료",
+    "mission": "털썩털썩 1회 동안 1회 동안 별을 하나도 모으지 않고 7레벨을 달성해요."
+  },
+  {
+    "mission_id": 354,
+    "reward_type": "코스튬",
+    "game_name": "털썩털썩",
+    "emblem": "산이 거기에 있기에",
+    "reward": "식사 당번의 도구",
+    "mission": "털썩털썩 1회 동안 1회 동안 기울어진 발판의 높은 쪽을 15번 넘어가요."
   }
 ]
