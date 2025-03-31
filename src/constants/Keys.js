@@ -11,6 +11,8 @@ export const COLUMNS = {
   SCORE: 'score',
   MEMBER_ID: 'member_id',
   RANK: 'rank',
+  RANK_SCORE: 'rank_score',
+  PLAY_COUNT: 'play_count',
 };
 
 export const LABELS = {
@@ -19,6 +21,8 @@ export const LABELS = {
   [COLUMNS.TOTAL_SCORE]: '역대 기록',
   [COLUMNS.SCORE]: '점수',
   [COLUMNS.RANK]: '순위',
+  [COLUMNS.RANK_SCORE]: '종합 점수',
+  [COLUMNS.PLAY_COUNT]: '참여 수',
 };
 
 export const SORT = {

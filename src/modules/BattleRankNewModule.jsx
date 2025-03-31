@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import DataDisplay from '../components/pages/DataDisplay.jsx';
 import { COLUMNS, LABELS, SORT } from '../constants/Keys.js';
 import { getMemberNameWithDefault } from '../utils/memberHelper.jsx';
-import { calculateRankings } from '../utils/dataUtils.js';
 import { media } from '../components/atoms/styles/media.js'; // 미디어 헬퍼 임포트
 
 // 전체 레이아웃 스타일 정의 (flexbox)
