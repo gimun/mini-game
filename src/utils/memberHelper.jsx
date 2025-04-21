@@ -69,6 +69,7 @@ export const members = {
   67: { name: '포챠코', status: 0 },
   68: { name: '파랑곤듀', status: 1 },
   69: { name: 'Ellie', status: 1 },
+  70: { name: '꼬꼬니', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
@@ -76,7 +77,6 @@ export function getMemberName(memberId, includeDeleted = false) {
   const member = members[memberId];
 
   if (!member) {
-    console.error(`Member not found for memberId: ${memberId}`);
     return 'Unknown';
   }
 
@@ -96,8 +96,6 @@ export function getMemberNameWithDefault(
   const member = members[memberId];
 
   if (!member) {
-    console.error(`Member not found for memberId: ${memberId}`);
-    // 기본 이름에 취소선 적용하여 반환
     return <s>{defaultName}</s>;
   }
 
@@ -113,7 +111,6 @@ export function getMember(memberId) {
   const member = members[memberId];
 
   if (!member) {
-    console.error(`Member not found for memberId: ${memberId}`);
     return null;
   }
 
