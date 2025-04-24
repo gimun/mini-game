@@ -70,6 +70,7 @@ export const members = {
   68: { name: '파랑곤듀', status: 1 },
   69: { name: 'Ellie', status: 0 },
   70: { name: '꼬꼬니', status: 1 },
+  71: { name: '뭉이완댜', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
