@@ -126,5 +126,69 @@
     "emblem": "산이 거기에 있기에",
     "reward": "식사 당번의 도구",
     "mission": "털썩털썩 1회 동안 1회 동안 기울어진 발판의 높은 쪽을 15번 넘어가요."
+  },
+  {
+    "mission_id": 355,
+    "reward_type": "캐릭터",
+    "game_name": "굴러굴러",
+    "emblem": "진희",
+    "reward": "지나갈게요!",
+    "mission": "굴러굴러 1회 동안 게임 쪼꼬미버섯을 먹고 작아진 라트무스와 밀리 사이로 지나가요."
+  },
+  {
+    "mission_id": 356,
+    "reward_type": "코스튬",
+    "game_name": "굴러굴러",
+    "emblem": "만복이 모자",
+    "reward": "수학 천재",
+    "mission": "굴러굴러 1회 동안 바람개비에서 아이템을 1개, 2개, 3개, 5개 순서대로 얻어요."
+  },
+  {
+    "mission_id": 357,
+    "reward_type": "코스튬",
+    "game_name": "굴러굴러",
+    "emblem": "응원단장의 왼손 술",
+    "reward": "내가 하늘에 서겠다",
+    "mission": "굴러굴러 1회 동안 20레벨까지 라트무스의 위로만 지나가요."
+  },
+  {
+    "mission_id": 358,
+    "reward_type": "코스튬",
+    "game_name": "굴러굴러",
+    "emblem": "하트 스페이드 창",
+    "reward": "편식쟁이",
+    "mission": "굴러굴러 1회 동안 ?????."
+  },
+  {
+    "mission_id": 359,
+    "reward_type": "코스튬",
+    "game_name": "굴러굴러",
+    "emblem": "응원단장의 가랜드",
+    "reward": "슈퍼 파워",
+    "mission": "굴러굴러 1회 동안 한 번의 슈퍼 구르기로 친구를 2명 이상 날려요."
+  },
+  {
+    "mission_id": 360,
+    "reward_type": "스킨",
+    "game_name": "굴러굴러",
+    "emblem": "응원단장 진희",
+    "reward": "느긋한 산책러",
+    "mission": "굴러굴러 1회 동안 게임 시작 후 한 번도 구르지 않고 친구 7명을 지나가요."
+  },
+  {
+    "mission_id": 361,
+    "reward_type": "코스튬",
+    "game_name": "굴러굴러",
+    "emblem": "스케이트보드",
+    "reward": "바쁘다 바빠!",
+    "mission": "굴러굴러 1회 동안 15초 동안 콤보를 쌓지 않고 굴러요."
+  },
+  {
+    "mission_id": 362,
+    "reward_type": "코스튬",
+    "game_name": "굴러굴러",
+    "emblem": "응원단장의 오른손 술",
+    "reward": "버섯보다 작은",
+    "mission": "굴러굴러 파로미의 아래로 연속 3번 지나가요."
   }
 ]

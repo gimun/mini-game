@@ -31,6 +31,7 @@ export const games = {
   29: { name: '저어말어' },
   30: { name: '잡아잡아' },
   31: { name: '털썩털썩' },
+  32: { name: '굴러굴러' },
 };
 
 // Helper function to get game name by ID
