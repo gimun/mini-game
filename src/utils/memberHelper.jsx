@@ -69,7 +69,7 @@ export const members = {
   67: { name: '포챠코', status: 0 },
   68: { name: '파랑곤듀', status: 1 },
   69: { name: 'Ellie', status: 0 },
-  70: { name: '꼬꼬니', status: 1 },
+  70: { name: '꼬꼬니는 야옹', status: 1 },
   71: { name: '뭉이완댜', status: 1 },
 };
 
