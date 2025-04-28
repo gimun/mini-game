@@ -71,6 +71,7 @@ export const members = {
   69: { name: 'Ellie', status: 0 },
   70: { name: '꼬꼬니는 야옹', status: 1 },
   71: { name: '뭉이완댜', status: 1 },
+  72: { name: '다콩', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
