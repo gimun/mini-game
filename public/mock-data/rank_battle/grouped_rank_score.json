@@ -635,5 +635,32 @@
     "game_4_rank_score": 9,
     "game_5_rank_score": 10,
     "game_6_rank_score": 13
+  },
+  {
+    "member_id": 73,
+    "name": "뉴온",
+    "play_count": 0,
+    "rank_score": 0,
+    "rank": 50,
+    "game_1_rank_score": 0,
+    "game_2_rank_score": 0,
+    "game_3_rank_score": 0,
+    "game_4_rank_score": 0,
+    "game_5_rank_score": 0,
+    "game_6_rank_score": 0
+  },
+  {
+    "member_id": 74,
+    "name": "데스몬드",
+    "play_count": 0,
+    "rank_score": 0,
+    "rank": 50,
+    "game_1_rank_score": 0,
+    "game_2_rank_score": 0,
+    "game_3_rank_score": 0,
+    "game_4_rank_score": 0,
+    "game_5_rank_score": 0,
+    "game_6_rank_score": 0
   }
+
 ]
