@@ -15,7 +15,7 @@ export const members = {
   13: { name: '몽실이는 야옹', status: 1 },
   14: { name: '고구마깡', status: 0 },
   15: { name: '감자깡', status: 1 },
-  16: { name: '행복한곰이는 야옹', status: 1 },
+  16: { name: '행복한곰이는 야옹', status: 0 },
   17: { name: '먼지야', status: 1 },
   18: { name: '비둘기님', status: 0 },
   19: { name: '비누칠', status: 0 },
