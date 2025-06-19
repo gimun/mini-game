@@ -50,7 +50,7 @@ export const members = {
   48: { name: '문짱이는 야옹', status: 1 },
   49: { name: '펭도리', status: 0 },
   50: { name: 'SNFZO', status: 0 },
-  51: { name: '조니', status: 1 },
+  51: { name: '조니', status: 0 },
   52: { name: '할매', status: 0 },
   53: { name: 'bashumet', status: 1 },
   54: { name: '닝곰', status: 1 },
