@@ -10,7 +10,7 @@ export const members = {
   8: { name: '미동', status: 0 },
   9: { name: '도라지공주', status: 0 },
   10: { name: '보석리아', status: 0 },
-  11: { name: '희크리', status: 1 },
+  11: { name: '희크리', status: 0 },
   12: { name: '무명이는 야옹', status: 1 },
   13: { name: '몽실이는 야옹', status: 1 },
   14: { name: '고구마깡', status: 0 },
@@ -67,7 +67,7 @@ export const members = {
   65: { name: '치즈', status: 1 },
   66: { name: '윤쫑쫑', status: 1 },
   67: { name: '포챠코', status: 0 },
-  68: { name: '파랑곤듀', status: 1 },
+  68: { name: '파랑곤듀', status: 0 },
   69: { name: 'Ellie', status: 0 },
   70: { name: '꼬꼬니는 야옹', status: 1 },
   71: { name: '뭉이완댜', status: 1 },
@@ -81,6 +81,9 @@ export const members = {
   79: { name: '승찌', status: 1 },
   80: { name: '봄가을', status: 1 },
   81: { name: '제리', status: 1 },
+  82: { name: '여름겨울', status: 1 },
+  83: { name: '헨이', status: 1 },
+  84: { name: '탱꿀', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
