@@ -25,7 +25,7 @@ export const members = {
   23: { name: '고양이랑', status: 1 },
   24: { name: '룰루', status: 0 },
   25: { name: '백현', status: 1 },
-  26: { name: '밤양갱', status: 1 },
+  26: { name: '밤양갱', status: 0 },
   27: { name: '큐밍', status: 0 },
   28: { name: '클라우드', status: 1 },
   29: { name: '치즈는 야옹', status: 1 },
