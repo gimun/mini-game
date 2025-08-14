@@ -61,7 +61,7 @@ export const members = {
   59: { name: '유리짱', status: 0 },
   60: { name: '윤ㅇ', status: 0 },
   61: { name: '모모토리는 야옹', status: 0 },
-  62: { name: '차닝', status: 1 },
+  62: { name: '차닝', status: 0 },
   63: { name: '듕이쓰', status: 0 },
   64: { name: '코코아', status: 1 },
   65: { name: '치즈', status: 0 },
@@ -78,7 +78,7 @@ export const members = {
   76: { name: '제로', status: 0 },
   77: { name: '꿀상', status: 0 },
   78: { name: '부르주아', status: 1 },
-  79: { name: '승찌', status: 1 },
+  79: { name: '승찌', status: 0 },
   80: { name: '봄가을', status: 0 },
   81: { name: '제리', status: 0 },
   82: { name: '여름겨울', status: 0 },
@@ -90,9 +90,12 @@ export const members = {
   88: { name: '지민', status: 1 },
   89: { name: '대허니', status: 1 },
   90: { name: '백호', status: 1 },
-  91: { name: '다곰', status: 1 },
+  91: { name: '다곰', status: 0 },
   92: { name: '일산슈퍼스타', status: 1 },
   93: { name: 'YuY', status: 1 },
+  94: { name: '도라희', status: 1 },
+  95: { name: '3838382', status: 1 },
+  96: { name: '혜원이궁둥짝', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
