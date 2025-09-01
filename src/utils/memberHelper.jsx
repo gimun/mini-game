@@ -91,13 +91,15 @@ export const members = {
   89: { name: '대허니', status: 1 },
   90: { name: '백호', status: 1 },
   91: { name: '다곰', status: 0 },
-  92: { name: '일산슈퍼스타', status: 1 },
+  92: { name: '일산슈퍼스타', status: 0 },
   93: { name: 'YuY', status: 1 },
   94: { name: '도라희', status: 1 },
   95: { name: '3838382', status: 1 },
   96: { name: '혜원이궁둥짝', status: 1 },
   97: { name: '이구월', status: 1 },
   98: { name: 'ฅ^ˋ•ﻌ•ˊ^ฅ', status: 1 },
+  99: { name: '꿀꿀한 롱롱', status: 1 },
+  100: { name: '뚱인데요', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
