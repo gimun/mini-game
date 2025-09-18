@@ -98,11 +98,13 @@ export const members = {
   96: { name: '혜원이궁둥짝', status: 0 },
   97: { name: '이구월', status: 1 },
   98: { name: 'ฅ^ˋ•ﻌ•ˊ^ฅ', status: 1 },
-  99: { name: '꿀꿀한 롱롱', status: 1 },
+  99: { name: '꿀꿀한 롱롱', status: 0 },
   100: { name: '뚱인데요', status: 1 },
   101: { name: '뭉치', status: 1 },
   102: { name: '바라기아들', status: 1 },
   103: { name: 'James', status: 1 },
+  104: { name: '전응가', status: 1 },
+  105: { name: '이서안', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
