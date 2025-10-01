@@ -74,7 +74,7 @@ export const members = {
   72: { name: '다콩', status: 1 },
   73: { name: '뉴온', status: 1 },
   74: { name: '데스몬드', status: 1 },
-  75: { name: '동동', status: 1 },
+  75: { name: '동동', status: 0 },
   76: { name: '제로', status: 0 },
   77: { name: '꿀상', status: 0 },
   78: { name: '부르주아', status: 0 },
