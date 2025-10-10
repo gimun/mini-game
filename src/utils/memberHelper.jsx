@@ -105,6 +105,9 @@ export const members = {
   103: { name: 'James', status: 1 },
   104: { name: '전응가', status: 1 },
   105: { name: '이서안', status: 1 },
+  106: { name: '이민형', status: 1 },
+  107: { name: '오뚜기형제들', status: 1 },
+  108: { name: '떡부띠', status: 1 },
 };
 
 // Helper function to get member names with numeric status handling
