@@ -100,7 +100,7 @@ export const members = {
   98: { name: 'ฅ^ˋ•ﻌ•ˊ^ฅ', status: 1 },
   99: { name: '꿀꿀한 롱롱', status: 0 },
   100: { name: '뚱인데요', status: 1 },
-  101: { name: '뭉치', status: 1 },
+  101: { name: '뭉치', status: 0 },
   102: { name: '바라기아들', status: 0 },
   103: { name: 'James', status: 1 },
   104: { name: '전응가', status: 1 },
